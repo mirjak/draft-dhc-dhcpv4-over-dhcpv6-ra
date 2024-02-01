@@ -1,6 +1,6 @@
 ---
 title: "DHCPv4 over DHCPv6 with Relay Agent Support"
-abbrev: "4o6 Relay Agent"
+abbrev: "DCHP 4o6 Relay Agent"
 category: std
 
 docname: draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest
