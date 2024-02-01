@@ -15,10 +15,6 @@ venue:
   type: "Working Group"
   github: "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra"
 
-stand_alone: yes
-smart_quotes: no
-pi: [toc, sortrefs, symrefs]
-
 author:
  -
     ins: C. Porfiri
