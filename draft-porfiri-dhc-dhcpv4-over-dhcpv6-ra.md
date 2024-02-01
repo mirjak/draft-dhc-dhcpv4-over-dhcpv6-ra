@@ -56,11 +56,11 @@ informative:
 --- abstract
 
 This document describes a general mechanism for networks
-with legacy IPv4 only clients to use DHCPv4-over-DHCPv6
+with legacy IPv4-only clients to use DHCPv4-over-DHCPv6
 (DHCP 4o6) for discovering information about network Topology.
 To address this scenario, this document specifies an amendment
 to RFC7341 that allows a new 4o6 Relay Agent (4o6RA) to perform
-the 4o6 DHCP en- and decapsultion instead of the client.
+the 4o6 DHCP en- and decapsulation instead of the client.
 
 --- middle
 
