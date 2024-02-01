@@ -33,7 +33,7 @@ About This Document
    dhcpv6-ra/.
 
    Source for this draft and an issue tracker can be found at
-   https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra.
+   https://github.com/mirjak/dhc-dhcpv4-over-dhcpv6-ra.
 
 Status of This Memo
 
@@ -309,7 +309,7 @@ Table of Contents
 
 7.  IANA Considerations
 
-   This document makes no request for IANA.
+   This document has no IANA actions.
 
 8.  References
 
