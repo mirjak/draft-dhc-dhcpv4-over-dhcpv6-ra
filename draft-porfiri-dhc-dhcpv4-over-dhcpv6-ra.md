@@ -16,7 +16,7 @@ keyword:
 venue:
   group: "Dynamic Host Configuration"
   type: "Working Group"
-  github: "mirjak/draft-test-repo"
+  github: "mirjak/dhc-dhcpv4-over-dhcpv6-ra"
 
 author:
  -
