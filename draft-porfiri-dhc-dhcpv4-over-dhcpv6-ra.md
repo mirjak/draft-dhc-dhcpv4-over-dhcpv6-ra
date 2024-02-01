@@ -134,7 +134,7 @@ between the Radio Units themselves and the physical ports where they are connect
 The Radio Units are the client hosts in the switched Fronthaul network and
 need to be configured based on their Topology.
 
-~~~~~~~~~~~ aasvg
+~~~
      +--------+
      |  RU1   |     P1 +-+------+     |                   |
      |        +--------| | L2RA |     |  +----+------+    |
@@ -154,8 +154,8 @@ need to be configured based on their Topology.
      |  RU4   +--------|  #2    +-----|  |           +----|
      |        |        +--------+     |  +-----------+    |
      +--------+                       |                   |
-~~~~~~~~~~~
-{: #l2_switched_fh title="Layer 2 Switched Fronthaul Example" artwork-align="center"}
+~~~
+{: #l2_switched_fh title="Layer 2 Switched Fronthaul Example"}
 
 {{l2_switched_fh}} shows multiple Radio Units that are connected
 to one Baseband Unit by means of a Layer 2 switched network.
@@ -187,7 +187,7 @@ can be used for Topology Discovery whereas DHCP is used still for IP address ass
 
 An example network with 4o6 compliant clients can be sketched as follows:
 
-~~~~~~~~~~~ aasvg
+~~~
      +---------+
      |   4o6   |    P1 +-+------+     |                   |  +---------+
      | Client  +-------| | LDRA |     |  +----+------+    |  |  4o6    |
@@ -199,8 +199,8 @@ An example network with 4o6 compliant clients can be sketched as follows:
      +---------+                      |                   |
 
 
-~~~~~~~~~~~
-{: #l2_switched_4o6 title="Layer 2 Topology discover with 4o6" artwork-align="center"}
+~~~
+{: #l2_switched_4o6 title="Layer 2 Topology discover with 4o6"}
 
 In {{l2_switched_4o6}} the client supports {{RFC7341}} by implementing the 4o6 encapsulation
 whereas the intermediate nodes implement LDRA {{RFC6221}} or L3RA {{RFC8415}} and finally
@@ -216,7 +216,7 @@ encapsulation is implemented at the Relay Agent instead of the DHCP client.
 This makes it possible to enable Topology Discovery for legacy IPv4 DHCP clients
 through a 4o6-DHCP-enabled network.
 
-~~~~~~~~~~~ aasvg
+~~~
      +---------+
      |   4o6   |    P1 +-+------+     |                   |  +---------+
      | Client  +-------| | LDRA |     |  +----+------+    |  |  4o6    |
@@ -229,8 +229,8 @@ through a 4o6-DHCP-enabled network.
                                                           +--|  DHCP   |
                                                           |  | Server  |
                                                           |  +---------+
-~~~~~~~~~~~
-{: #l2_switched_4o6_leg title="Layer 2 architecture with 4o6 and legacy client" artwork-align="center"}
+~~~
+{: #l2_switched_4o6_leg title="Layer 2 architecture with 4o6 and legacy client"}
 
 The new scenario, not described in {{RFC7341}}, is shown in {{l2_switched_4o6_leg}}.
 In such a scenario, the 4o6 encapsulation is implemented in the Relay Agent deployed
