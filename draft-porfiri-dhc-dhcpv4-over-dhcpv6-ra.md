@@ -3,7 +3,7 @@ title: "DHCPv4 over DHCPv6 with Relay Agent Support"
 abbrev: "4o6 Relay Agent"
 category: std
 
-docname: draft-porfiri-dhc-4o6-ra-latest
+docname: draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest
 submissiontype: IETF
 number:
 date:
