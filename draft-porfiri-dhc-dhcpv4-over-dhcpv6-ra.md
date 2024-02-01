@@ -4,7 +4,7 @@ abbrev: "DHCPv4o6 Relay Agents"
 category: std
 
 docname: draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest
-submissiontype: IETF  
+submissiontype: IETF
 number:
 date:
 v: 3
