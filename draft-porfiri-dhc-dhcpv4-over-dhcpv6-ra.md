@@ -1,19 +1,22 @@
 ---
 title: "DHCPv4 over DHCPv6 with Relay Agent Support"
-abbrev: "DHCPv4o6 Relay Agents"
+abbrev: "4o6 Relay Agent"
 category: std
 
-docname: draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest
+docname: draft-porfiri-dhc-4o6-ra-latest
 submissiontype: IETF
 number:
 date:
+consensus: true
 v: 3
 area: "Internet"
 workgroup: "Dynamic Host Configuration"
+keyword:
+ - dhcp
 venue:
   group: "Dynamic Host Configuration"
   type: "Working Group"
-  github: "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra"
+  github: "mirjak/draft-test-repo"
 
 author:
  -
@@ -94,7 +97,7 @@ this document specifies an amendment to {{RFC7341}} that allows a Relay Agent
 to perform the 4o6 DHCP en- and decapsultion instead of the client in order to
 address the specific scenario that is detailed in {{l2discipv4}}.
 
-# Conventions and Definitions {#def}
+# Conventions and Definitions
 
 The following terms and acronyms are used in this document:
 
@@ -123,6 +126,7 @@ The following terms and acronyms are used in this document:
    carry suboptions {{RFC6925}}.
 
 {::boilerplate bcp14-tagged}
+
 
 # Example Use Case: Switched Fronthaul  {#usecase}
 
@@ -232,6 +236,7 @@ through a 4o6-DHCP-enabled network.
 ~~~
 {: #l2_switched_4o6_leg title="Layer 2 architecture with 4o6 and legacy client"}
 
+
 The new scenario, not described in {{RFC7341}}, is shown in {{l2_switched_4o6_leg}}.
 In such a scenario, the 4o6 encapsulation is implemented in the Relay Agent deployed
 in the edge L2 switch, or in general in the edge device providing connectivity
@@ -259,7 +264,6 @@ message and forward the encapsulated DHCPv4-response to the legacy DHCPv4 client
 An Layer 2 Relay Agent receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
 will handle them as specified in Section 6 of {{RFC6221}}.
 
-
 # Security Considerations {#seccons}
 
 This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
@@ -272,14 +276,17 @@ when 4o6 DHCP is used, the client does not have any control about the
 information provided by the Relay agent. As such this change does not
 provide any additional secruity concerns.
 
-# IANA Considerations {#ianacons}
 
-This document makes no request for IANA.
+# IANA Considerations
+
+This document has no IANA actions.
+
 
 --- back
 
 # Acknowledgments
 {:numbered="false"}
+
 
 The authors would also like to acknowledge interesting discussions in
 this problem space with Sarah Gannon, Ines Ramadza and Siddharth Sharma.
