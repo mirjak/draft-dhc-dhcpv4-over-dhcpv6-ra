@@ -8,12 +8,12 @@ submissiontype: IETF
 number:
 date:
 v: 3
-area: Internet
-workgroup: WG Working Group
+area: "Internet"
+workgroup: "Dynamic Host Configuration"
 venue:
-  group: DHC
-  type: Working Group
-  github: USER/REPO
+  group: "Dynamic Host Configuration"
+  type: "Working Group"
+  github: "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra"
 
 stand_alone: yes
 smart_quotes: no
