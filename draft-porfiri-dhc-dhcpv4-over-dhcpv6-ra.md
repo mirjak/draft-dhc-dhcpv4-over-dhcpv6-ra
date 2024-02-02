@@ -138,7 +138,7 @@ between the Radio Units themselves and the physical ports where they are connect
 The Radio Units are the client hosts in the switched Fronthaul network and
 need to be configured based on their Topology.
 
-~~~
+~~~aasvg
      +--------+
      |  RU1   |     P1 +-+------+     |                   |
      |        +--------| | L2RA |     |  +----+------+    |
@@ -191,7 +191,7 @@ can be used for Topology Discovery whereas DHCP is used still for IP address ass
 
 An example network with 4o6 compliant clients can be sketched as follows:
 
-~~~
+~~~aasvg
      +---------+
      |   4o6   |    P1 +-+------+     |                   |  +---------+
      | Client  +-------| | LDRA |     |  +----+------+    |  |  4o6    |
@@ -220,7 +220,7 @@ encapsulation is implemented at the Relay Agent instead of the DHCP client.
 This makes it possible to enable Topology Discovery for legacy IPv4 DHCP clients
 through a 4o6-DHCP-enabled network.
 
-~~~
+~~~aasvg
      +---------+
      |   4o6   |    P1 +-+------+     |                   |  +---------+
      | Client  +-------| | LDRA |     |  +----+------+    |  |  4o6    |
