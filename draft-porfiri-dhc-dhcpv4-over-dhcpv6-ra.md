@@ -159,7 +159,7 @@ need to be configured based on their Topology.
      |        |        +--------+     |  +-----------+    |
      +--------+                       |                   |
 ~~~
-{: #l2_switched_fh title="Layer 2 Switched Fronthaul Example"}
+{: #l2_switched_fh title="Layer 2 Switched Fronthaul Example" artwork-align="center"}
 
 {{l2_switched_fh}} shows multiple Radio Units that are connected
 to one Baseband Unit by means of a Layer 2 switched network.
@@ -204,7 +204,7 @@ An example network with 4o6 compliant clients can be sketched as follows:
 
 
 ~~~
-{: #l2_switched_4o6 title="Layer 2 Topology discover with 4o6"}
+{: #l2_switched_4o6 title="Layer 2 Topology discover with 4o6" artwork-align="center"}
 
 In {{l2_switched_4o6}} the client supports {{RFC7341}} by implementing the 4o6 encapsulation
 whereas the intermediate nodes implement LDRA {{RFC6221}} or L3RA {{RFC8415}} and finally
@@ -234,7 +234,7 @@ through a 4o6-DHCP-enabled network.
                                                           |  | Server  |
                                                           |  +---------+
 ~~~
-{: #l2_switched_4o6_leg title="Layer 2 architecture with 4o6 and legacy client"}
+{: #l2_switched_4o6_leg title="Layer 2 architecture with 4o6 and legacy client" artwork-align="center"}
 
 
 The new scenario, not described in {{RFC7341}}, is shown in {{l2_switched_4o6_leg}}.
