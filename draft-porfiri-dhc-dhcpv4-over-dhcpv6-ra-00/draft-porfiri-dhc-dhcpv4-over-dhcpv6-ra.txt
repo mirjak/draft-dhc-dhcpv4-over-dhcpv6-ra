@@ -1,0 +1,395 @@
+
+
+
+
+Dynamic Host Configuration                                    C. Porfiri
+Internet-Draft                                                  Ericsson
+Intended status: Standards Track                             S. Krishnan
+Expires: 4 August 2024                                             Cisco
+                                                                J. Arkko
+                                                            M. Kühlewind
+                                                                Ericsson
+                                                         1 February 2024
+
+
+              DHCPv4 over DHCPv6 with Relay Agent Support
+             draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest
+
+Abstract
+
+   This document describes a general mechanism for networks with legacy
+   IPv4 only clients to use DHCPv4-over-DHCPv6 (DHCP 4o6) for
+   discovering information about network Topology.  To address this
+   scenario, this document specifies an amendment to RFC7341 that allows
+   a new 4o6 Relay Agent (4o6RA) to perform the 4o6 DHCP en- and
+   decapsultion instead of the client.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-porfiri-dhc-dhcpv4-over-
+   dhcpv6-ra/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/mirjak/dhc-dhcpv4-over-dhcpv6-ra.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 4 August 2024.
+
+Copyright Notice
+
+   Copyright (c) 2024 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Example Use Case: Switched Fronthaul
+   4.  Existing DHCP-based Solutions for Topology Discovery
+     4.1.  IPv6 Clients using DHCPv6
+     4.2.  Clients with Dual Connectivity and 4o6 DHCP support
+   5.  Layer 2 Topogoy Discovery using 4o6 DHCP with legacy IPv4
+           clients
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
+   Acknowledgments
+   Authors' Addresses
+
+1.  Introduction
+
+   In some networks the configuration of a client host may depend on the
+   Topology.  However, when a new client host gets connected to the
+   network, it may be unaware of the Topology and respectively how it
+   has to be configured.
+
+   In IPv6 networks, Topology discover can be realized using DHCPv6
+   Relay Agents [RFC6221] that insert relay agent options in DHCPv6
+   message exchanges in order to identify the client-facing interfaces,
+   e.g. using the Serial Number or other hardcoded information.  Then, a
+   reference host that is responsible for providing configuration to the
+   client host can obtain Topology information from the DHCP server.
+
+   In DHCPv6, a Relay Agent can encapsulate the DHCP message from the
+   client in a new DHCP message along with any options it chooses to add
+   to provide information to the DHCP server.  This mode of operation
+   also supports networks that include a hierarchy of switches.
+
+   However, if the client only supports IPv4 and cannot easily be
+   replaced or updated, this approach does not work, as DHCPv4 support
+   for relays is much more limited.  For instance, there is no support
+   in DHCPv4 for hierarchical modes of deployment, as the specifications
+   prohibit chaining of Relay Agent Information Options (RAIOs)
+   [RFC3046].
+
+   A typical example where Topology Discovery is needed for host
+   configuration is the switched fronthaul in the Radio Access Network
+   (see Section 3).  However, the specified approach in this document is
+   not limited to that example.
+
+   This document specifies how to provide Topology Discover using Relay
+   Agent functionality for legacy IPv4 clients using DHCPv4-over-DHCPv6
+   (DHCP 4o6) [RFC7341].  No new protocols or extensions are needed,
+   instead this document specifies an amendment to [RFC7341] that allows
+   a Relay Agent to perform the 4o6 DHCP en- and decapsultion instead of
+   the client in order to address the specific scenario that is detailed
+   in Section 4.2.
+
+2.  Conventions and Definitions
+
+   The following terms and acronyms are used in this document:
+
+   *  4o6 The architecture, the procedures and the protocols described
+      in the DHCPv4-over-DHCPv6 document [RFC7341].
+
+   *  4o6RA The 4o6 Relay Agent is the part of an LDRA implementing 4o6
+
+   *  DHCP Relay Agent
+
+      This is a concept in all of the protocols, BOOTP [RFC0951]
+      [RFC1542], DHCPv4 [RFC2131] [RFC2132], and DHCPv6 [RFC8415],
+      although the details differ between the protocols.
+
+   *  Lightweight DHCPv6 Relay Agent (LDRA)
+
+      This is an extension of the original DHCPv6 Relay Agent mechanism,
+      to support also Layer 2 devices performing a Relay Agent function
+      [RFC6221].
+
+   *  Relay Agent Information Option (RAIO)
+
+      This is a DHCP option defined in [RFC3046].  Also commonly
+      referred to as "Option 82".  RAIO options were later extended to
+      be able to carry suboptions [RFC6925].
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+3.  Example Use Case: Switched Fronthaul
+
+   In Radio Access Networks (RANs) the Fronthaul is the network segment
+   that connects Radio Units, the distributed radio elements in a mobile
+   network, to other network elements.  The aggregation of Radio Unit
+   devices (also known as Switched Fronthaul) hides the relationship
+   between the Radio Units themselves and the physical ports where they
+   are connected.  The Radio Units are the client hosts in the switched
+   Fronthaul network and need to be configured based on their Topology.
+
+     +--------+
+     |  RU1   |     P1 +-+------+     |                   |
+     |        +--------| | L2RA |     |  +----+------+    |
+     +--------+        | +------+     |  |    | L3RA |    |
+                       |  L2    |     +--|    +------+    |
+     +--------+     P2 | switch |     |  |           |    |
+     |  RU2   +--------|  #1    +-----|  |   Router  +----|
+     |        |        +--------+     |  +-----------+    |  +---------+
+     +--------+                       |                   |  |         |
+                                      |                   +--| DHCP    |
+     +--------+                       |                   |  | Server  |
+     |  RU3   |     P1 +-+------+     |                   |  |   #1    |
+     |        +--------| | L2RA |     |  +-----------+    |  +---------+
+     +--------+        | +------+     |  |           |    |
+                       |  L2    |     +--| Baseband  |    |
+     +--------+     P2 | switch |     |  |   Unit    |    |
+     |  RU4   +--------|  #2    +-----|  |           +----|
+     |        |        +--------+     |  +-----------+    |
+     +--------+                       |                   |
+
+             Figure 1: Layer 2 Switched Fronthaul Example
+
+   Figure 1 shows multiple Radio Units that are connected to one
+   Baseband Unit by means of a Layer 2 switched network.  The Baseband
+   Unit is the central processing unit that handles baseband
+   information.  A Baseband Unit is often placed rather centrally, while
+   the Radio Units need to be distributed to be co-located with or near
+   the antennas.  Traffic between Radio Units and Bandband Units is both
+   IP-based and Layer-2-based and may pass a hierarchy of L2 switches.
+
+   In order to properly address the Radio Unit, the Baseband Unit needs
+   to associate the Radio Unit's MAC address to the L2 switch and
+   respective port where the Radio Unit is connected.  To realize this
+   device configuration in the Switched Fronthaul network, DHCP can be
+   used to discover the network Topology.
+
+4.  Existing DHCP-based Solutions for Topology Discovery
+
+4.1.  IPv6 Clients using DHCPv6
+
+   If the network is fully IPv6 enabled, DHCPv6 [RFC8415] can be used
+   for Topology Discovery.  This solution exploits DHCPv6 Relay Agent
+   support in the server, whilst Lightweight DHCPv6 Relay Agents (LDRA)
+   [RFC6221] are implemented in the L2 switches to inform DHCPv6 server
+   about the L2 Topology.
+
+4.2.  Clients with Dual Connectivity and 4o6 DHCP support
+
+   When the client needs an IPv4 address but is dual connected and can
+   support DHCPv4-over-DHCPv6 [RFC7341], DHCPv6 [RFC8415] with a DHCPv4-
+   over-DHCPv6 compliant DHCP server can be used for Topology Discovery
+   whereas DHCP is used still for IP address assignment.
+
+   An example network with 4o6 compliant clients can be sketched as
+   follows:
+
+     +---------+
+     |   4o6   |    P1 +-+------+     |                   |  +---------+
+     | Client  +-------| | LDRA |     |  +----+------+    |  |  4o6    |
+     +---------+       | +------+     |  |    | L3RA |    +--|  DHCP   |
+                       |  L2    |     +--|    +------+    |  | Server  |
+     +---------+    P2 | switch |     |  |           |    |  |         |
+     |   4o6   +-------|        +-----|  |   Router  +----|  +---------+
+     | Client  |       +--------+     |  +-----------+    |
+     +---------+                      |                   |
+
+             Figure 2: Layer 2 Topology discover with 4o6
+
+   In Figure 2 the client supports [RFC7341] by implementing the 4o6
+   encapsulation whereas the intermediate nodes implement LDRA [RFC6221]
+   or L3RA [RFC8415] and finally the DHCP server is 4o6 DHCP capable
+   [RFC7341].
+
+   Still, [RFC7341] does not provide a solution for legacy IPv4 clients
+   that respectively do not support 4o6 encapsulation.
+
+5.  Layer 2 Topogoy Discovery using 4o6 DHCP with legacy IPv4 clients
+
+   This document extends [RFC7341] to enable a deployment scenario where
+   the 4o6 encapsulation is implemented at the Relay Agent instead of
+   the DHCP client.  This makes it possible to enable Topology Discovery
+   for legacy IPv4 DHCP clients through a 4o6-DHCP-enabled network.
+
+     +---------+
+     |   4o6   |    P1 +-+------+     |                   |  +---------+
+     | Client  +-------| | LDRA |     |  +----+------+    |  |  4o6    |
+     +---------+       | +------+     |  |    | L3RA |    +--|  DHCP   |
+                       |  L2    |     +--|    +------+    |  | Server  |
+     +---------+       | switch |     |  |           |    |  +---------+
+     | Legacy  |    P2 +------+ +-----|  |   Router  +----|
+     | Client  +-------+ 4o6  | |     |  +-----------+    |  +---------+
+     +---------+       +------+-+     |                   |  | Legacy  |
+                                                          +--|  DHCP   |
+                                                          |  | Server  |
+                                                          |  +---------+
+
+      Figure 3: Layer 2 architecture with 4o6 and legacy client
+
+   The new scenario, not described in [RFC7341], is shown in Figure 3.
+   In such a scenario, the 4o6 encapsulation is implemented in the Relay
+   Agent deployed in the edge L2 switch, or in general in the edge
+   device providing connectivity to the legacy client.  In this case it
+   is up to the Relay Agent to provide the full 4o6 DHCP set of
+   functionality whereas the legacy client is not aware of being served
+   via a 4o6 DHCP service.
+
+   This new 4o6 Relay Agent (4o6RA), as specified in this document,
+   exchanges DHCP messages between clients and servers using the message
+   formats established in [RFC8415].  To maintain interoperability with
+   existing DHCP relays and servers, the message format is unchanged
+   from [RFC8415].  The 4o6RA implements the same message types as a
+   normal DHCPv6 Relay Agent Section 6 of [RFC7341].  They are: - Relay-
+   Forward Messages - Relay-Reply Messages
+
+   In this specification, the 4o6RA creates the DHCPV4-QUERY Message and
+   encapsulates the DHCP request message received from the legacy DHCPv4
+   client.
+
+   When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent, it
+   looks for the DHCPv4 Message option within this message.  If this
+   option is not found, the DHCPv4-response message MUST be discarded.
+   If the DHCPv4 Message option is present, the 4o6RA MUST extract the
+   DHCPv4 message and forward the encapsulated DHCPv4-response to the
+   legacy DHCPv4 client.
+
+   An Layer 2 Relay Agent receiving DHCPV4-QUERY or DHCPV4-RESPONSE
+   messages will handle them as specified in Section 6 of [RFC6221].
+
+6.  Security Considerations
+
+   This documents applies 4o6 DHCP in a scenario where legacy IPv4
+   clients are connected to 4o6 DHCP Relay Agent that performs the en-
+   and decapsulation.  This document does not change anything else in
+   the 4o6 DHCP speacification and therefore the security consideration
+   of [RFC7341] still apply.
+
+   The legacy IPv4 client is not aware of this mechanism, however, even
+   when 4o6 DHCP is used, the client does not have any control about the
+   information provided by the Relay agent.  As such this change does
+   not provide any additional secruity concerns.
+
+7.  IANA Considerations
+
+   This document has no IANA actions.
+
+8.  References
+
+8.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC3046]  Patrick, M., "DHCP Relay Agent Information Option",
+              RFC 3046, DOI 10.17487/RFC3046, January 2001,
+              <https://www.rfc-editor.org/rfc/rfc3046>.
+
+   [RFC6221]  Miles, D., Ed., Ooghe, S., Dec, W., Krishnan, S., and A.
+              Kavanagh, "Lightweight DHCPv6 Relay Agent", RFC 6221,
+              DOI 10.17487/RFC6221, May 2011,
+              <https://www.rfc-editor.org/rfc/rfc6221>.
+
+   [RFC6925]  Joshi, B., Desetti, R., and M. Stapp, "The DHCPv4 Relay
+              Agent Identifier Sub-Option", RFC 6925,
+              DOI 10.17487/RFC6925, April 2013,
+              <https://www.rfc-editor.org/rfc/rfc6925>.
+
+   [RFC7341]  Sun, Q., Cui, Y., Siodelski, M., Krishnan, S., and I.
+              Farrer, "DHCPv4-over-DHCPv6 (DHCP 4o6) Transport",
+              RFC 7341, DOI 10.17487/RFC7341, August 2014,
+              <https://www.rfc-editor.org/rfc/rfc7341>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC8415]  Mrugalski, T., Siodelski, M., Volz, B., Yourtchenko, A.,
+              Richardson, M., Jiang, S., Lemon, T., and T. Winters,
+              "Dynamic Host Configuration Protocol for IPv6 (DHCPv6)",
+              RFC 8415, DOI 10.17487/RFC8415, November 2018,
+              <https://www.rfc-editor.org/rfc/rfc8415>.
+
+8.2.  Informative References
+
+   [RFC0951]  Croft, W. and J. Gilmore, "Bootstrap Protocol", RFC 951,
+              DOI 10.17487/RFC0951, September 1985,
+              <https://www.rfc-editor.org/rfc/rfc951>.
+
+   [RFC1542]  Wimer, W., "Clarifications and Extensions for the
+              Bootstrap Protocol", RFC 1542, DOI 10.17487/RFC1542,
+              October 1993, <https://www.rfc-editor.org/rfc/rfc1542>.
+
+   [RFC2131]  Droms, R., "Dynamic Host Configuration Protocol",
+              RFC 2131, DOI 10.17487/RFC2131, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2131>.
+
+   [RFC2132]  Alexander, S. and R. Droms, "DHCP Options and BOOTP Vendor
+              Extensions", RFC 2132, DOI 10.17487/RFC2132, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2132>.
+
+Acknowledgments
+
+   The authors would also like to acknowledge interesting discussions in
+   this problem space with Sarah Gannon, Ines Ramadza and Siddharth
+   Sharma.
+
+Authors' Addresses
+
+   Claudio Porfiri
+   Ericsson
+   Email: claudio.porfiri@ericsson.com
+
+
+   Suresh Krishnan
+   Cisco
+   Email: suresh.krishnan@gmail.com
+
+
+   Jari Arkko
+   Ericsson
+   Email: jari.arkko@ericsson.com
+
+
+   Mirja Kühlewind
+   Ericsson
+   Email: mirja.kuhlewind@ericsson.com
