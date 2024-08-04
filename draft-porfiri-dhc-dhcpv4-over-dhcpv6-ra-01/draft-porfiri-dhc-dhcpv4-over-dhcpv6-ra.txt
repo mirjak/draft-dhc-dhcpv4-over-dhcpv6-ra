@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 4 August 2024                                             Cisco
+Expires: 5 February 2025                                           Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                         1 February 2024
+                                                           4 August 2024
 
 
               DHCPv4 over DHCPv6 with Relay Agent Support
@@ -18,11 +18,11 @@ Expires: 4 August 2024                                             Cisco
 Abstract
 
    This document describes a general mechanism for networks with legacy
-   IPv4 only clients to use DHCPv4-over-DHCPv6 (DHCP 4o6) for
+   IPv4-only clients to use DHCPv4-over-DHCPv6 (DHCP 4o6) for
    discovering information about network Topology.  To address this
    scenario, this document specifies an amendment to RFC7341 that allows
    a new 4o6 Relay Agent (4o6RA) to perform the 4o6 DHCP en- and
-   decapsultion instead of the client.
+   decapsulation instead of the client.
 
 About This Document
 
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 August 2024.
+   This Internet-Draft will expire on 5 February 2025.
 
 Copyright Notice
 

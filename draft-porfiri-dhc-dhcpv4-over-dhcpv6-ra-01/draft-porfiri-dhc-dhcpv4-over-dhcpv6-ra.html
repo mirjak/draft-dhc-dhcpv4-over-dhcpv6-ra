@@ -11,29 +11,28 @@
 <meta content="Mirja Kühlewind" name="author">
 <meta content="
        This document describes a general mechanism for networks
-with legacy IPv4 only clients to use DHCPv4-over-DHCPv6
+with legacy IPv4-only clients to use DHCPv4-over-DHCPv6
 (DHCP 4o6) for discovering information about network Topology.
 To address this scenario, this document specifies an amendment
 to RFC7341 that allows a new 4o6 Relay Agent (4o6RA) to perform
-the 4o6 DHCP en- and decapsultion instead of the client. 
+the 4o6 DHCP en- and decapsulation instead of the client. 
     " name="description">
-<meta content="xml2rfc 3.19.1" name="generator">
+<meta content="xml2rfc 3.22.0" name="generator">
 <meta content="dhcp" name="keyword">
 <meta content="draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.1
-    Python 3.11.6
+  xml2rfc 3.22.0
+    Python 3.12.3
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
-    Jinja2 3.1.2
-    lxml 4.9.3
-    platformdirs 4.1.0
+    Jinja2 3.1.4
+    lxml 4.9.4
+    platformdirs 4.2.2
     pycountry 22.3.5
     PyYAML 6.0.1
-    requests 2.31.0
-    setuptools 68.2.2
-    six 1.16.0
+    requests 2.32.3
+    setuptools 69.5.1
     wcwidth 0.2.13
 -->
 <link href="draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra.xml" rel="alternate" type="application/rfc+xml">
@@ -1033,11 +1032,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">DCHP 4o6 Relay Agent</td>
-<td class="right">February 2024</td>
+<td class="right">August 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Porfiri, et al.</td>
-<td class="center">Expires 4 August 2024</td>
+<td class="center">Expires 5 February 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1049,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-01" class="published">1 February 2024</time>
+<time datetime="2024-08-04" class="published">4 August 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-04">4 August 2024</time></dd>
+<dd class="expires"><time datetime="2025-02-05">5 February 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1081,11 +1080,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document describes a general mechanism for networks
-with legacy IPv4 only clients to use DHCPv4-over-DHCPv6
+with legacy IPv4-only clients to use DHCPv4-over-DHCPv6
 (DHCP 4o6) for discovering information about network Topology.
 To address this scenario, this document specifies an amendment
 to RFC7341 that allows a new 4o6 Relay Agent (4o6RA) to perform
-the 4o6 DHCP en- and decapsultion instead of the client.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+the 4o6 DHCP en- and decapsulation instead of the client.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1116,7 +1115,7 @@ the 4o6 DHCP en- and decapsultion instead of the client.<a href="#section-abstra
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 4 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 5 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1284,28 +1283,91 @@ The Radio Units are the client hosts in the switched Fronthaul network and
 need to be configured based on their Topology.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <span id="name-layer-2-switched-fronthaul-"></span><div id="l2_switched_fh">
 <figure id="figure-1">
-        <div class="alignLeft art-text artwork" id="section-3-2.1">
-<pre>
-     +--------+
-     |  RU1   |     P1 +-+------+     |                   |
-     |        +--------| | L2RA |     |  +----+------+    |
-     +--------+        | +------+     |  |    | L3RA |    |
-                       |  L2    |     +--|    +------+    |
-     +--------+     P2 | switch |     |  |           |    |
-     |  RU2   +--------|  #1    +-----|  |   Router  +----|
-     |        |        +--------+     |  +-----------+    |  +---------+
-     +--------+                       |                   |  |         |
-                                      |                   +--| DHCP    |
-     +--------+                       |                   |  | Server  |
-     |  RU3   |     P1 +-+------+     |                   |  |   #1    |
-     |        +--------| | L2RA |     |  +-----------+    |  +---------+
-     +--------+        | +------+     |  |           |    |
-                       |  L2    |     +--| Baseband  |    |
-     +--------+     P2 | switch |     |  |   Unit    |    |
-     |  RU4   +--------|  #2    +-----|  |           +----|
-     |        |        +--------+     |  +-----------+    |
-     +--------+                       |                   |
-</pre>
+        <div id="section-3-2.1">
+          <div class="alignCenter art-svg artwork" id="section-3-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="352" width="544" viewBox="0 0 544 352" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
+              <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
+              <path d="M 8,192 L 8,240" fill="none" stroke="black"></path>
+              <path d="M 8,272 L 8,320" fill="none" stroke="black"></path>
+              <path d="M 80,32 L 80,80" fill="none" stroke="black"></path>
+              <path d="M 80,112 L 80,160" fill="none" stroke="black"></path>
+              <path d="M 80,192 L 80,240" fill="none" stroke="black"></path>
+              <path d="M 80,272 L 80,320" fill="none" stroke="black"></path>
+              <path d="M 152,48 L 152,144" fill="none" stroke="black"></path>
+              <path d="M 152,208 L 152,304" fill="none" stroke="black"></path>
+              <path d="M 168,48 L 168,80" fill="none" stroke="black"></path>
+              <path d="M 168,208 L 168,240" fill="none" stroke="black"></path>
+              <path d="M 224,48 L 224,144" fill="none" stroke="black"></path>
+              <path d="M 224,208 L 224,304" fill="none" stroke="black"></path>
+              <path d="M 272,48 L 272,320" fill="none" stroke="black"></path>
+              <path d="M 296,64 L 296,144" fill="none" stroke="black"></path>
+              <path d="M 296,224 L 296,304" fill="none" stroke="black"></path>
+              <path d="M 336,64 L 336,96" fill="none" stroke="black"></path>
+              <path d="M 392,64 L 392,144" fill="none" stroke="black"></path>
+              <path d="M 392,224 L 392,304" fill="none" stroke="black"></path>
+              <path d="M 432,48 L 432,320" fill="none" stroke="black"></path>
+              <path d="M 456,144 L 456,224" fill="none" stroke="black"></path>
+              <path d="M 536,144 L 536,224" fill="none" stroke="black"></path>
+              <path d="M 8,32 L 80,32" fill="none" stroke="black"></path>
+              <path d="M 152,48 L 224,48" fill="none" stroke="black"></path>
+              <path d="M 80,64 L 144,64" fill="none" stroke="black"></path>
+              <path d="M 296,64 L 392,64" fill="none" stroke="black"></path>
+              <path d="M 8,80 L 80,80" fill="none" stroke="black"></path>
+              <path d="M 168,80 L 224,80" fill="none" stroke="black"></path>
+              <path d="M 272,96 L 288,96" fill="none" stroke="black"></path>
+              <path d="M 336,96 L 392,96" fill="none" stroke="black"></path>
+              <path d="M 8,112 L 80,112" fill="none" stroke="black"></path>
+              <path d="M 80,128 L 144,128" fill="none" stroke="black"></path>
+              <path d="M 224,128 L 264,128" fill="none" stroke="black"></path>
+              <path d="M 392,128 L 424,128" fill="none" stroke="black"></path>
+              <path d="M 152,144 L 224,144" fill="none" stroke="black"></path>
+              <path d="M 296,144 L 392,144" fill="none" stroke="black"></path>
+              <path d="M 456,144 L 536,144" fill="none" stroke="black"></path>
+              <path d="M 8,160 L 80,160" fill="none" stroke="black"></path>
+              <path d="M 432,176 L 448,176" fill="none" stroke="black"></path>
+              <path d="M 8,192 L 80,192" fill="none" stroke="black"></path>
+              <path d="M 152,208 L 224,208" fill="none" stroke="black"></path>
+              <path d="M 80,224 L 144,224" fill="none" stroke="black"></path>
+              <path d="M 296,224 L 392,224" fill="none" stroke="black"></path>
+              <path d="M 456,224 L 536,224" fill="none" stroke="black"></path>
+              <path d="M 8,240 L 80,240" fill="none" stroke="black"></path>
+              <path d="M 168,240 L 224,240" fill="none" stroke="black"></path>
+              <path d="M 272,256 L 288,256" fill="none" stroke="black"></path>
+              <path d="M 8,272 L 80,272" fill="none" stroke="black"></path>
+              <path d="M 80,288 L 144,288" fill="none" stroke="black"></path>
+              <path d="M 224,288 L 264,288" fill="none" stroke="black"></path>
+              <path d="M 392,288 L 424,288" fill="none" stroke="black"></path>
+              <path d="M 152,304 L 224,304" fill="none" stroke="black"></path>
+              <path d="M 296,304 L 392,304" fill="none" stroke="black"></path>
+              <path d="M 8,320 L 80,320" fill="none" stroke="black"></path>
+              <g class="text">
+                <text x="40" y="52">RU1</text>
+                <text x="132" y="52">P1</text>
+                <text x="196" y="68">L2RA</text>
+                <text x="364" y="84">L3RA</text>
+                <text x="180" y="100">L2</text>
+                <text x="132" y="116">P2</text>
+                <text x="188" y="116">switch</text>
+                <text x="40" y="132">RU2</text>
+                <text x="180" y="132">#1</text>
+                <text x="348" y="132">Router</text>
+                <text x="484" y="180">DHCP</text>
+                <text x="492" y="196">Server</text>
+                <text x="40" y="212">RU3</text>
+                <text x="132" y="212">P1</text>
+                <text x="492" y="212">#1</text>
+                <text x="196" y="228">L2RA</text>
+                <text x="180" y="260">L2</text>
+                <text x="340" y="260">Baseband</text>
+                <text x="132" y="276">P2</text>
+                <text x="188" y="276">switch</text>
+                <text x="340" y="276">Unit</text>
+                <text x="40" y="292">RU4</text>
+                <text x="180" y="292">#2</text>
+              </g>
+            </svg><a href="#section-3-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-layer-2-switched-fronthaul-" class="selfRef">Layer 2 Switched Fronthaul Example</a>
@@ -1351,20 +1413,59 @@ can be used for Topology Discovery whereas DHCP is used still for IP address ass
 <p id="section-4.2-2">An example network with 4o6 compliant clients can be sketched as follows:<a href="#section-4.2-2" class="pilcrow">¶</a></p>
 <span id="name-layer-2-topology-discover-w"></span><div id="l2_switched_4o6">
 <figure id="figure-2">
-          <div class="alignLeft art-text artwork" id="section-4.2-3.1">
-<pre>
-     +---------+
-     |   4o6   |    P1 +-+------+     |                   |  +---------+
-     | Client  +-------| | LDRA |     |  +----+------+    |  |  4o6    |
-     +---------+       | +------+     |  |    | L3RA |    +--|  DHCP   |
-                       |  L2    |     +--|    +------+    |  | Server  |
-     +---------+    P2 | switch |     |  |           |    |  |         |
-     |   4o6   +-------|        +-----|  |   Router  +----|  +---------+
-     | Client  |       +--------+     |  +-----------+    |
-     +---------+                      |                   |
-
-
-</pre>
+          <div id="section-4.2-3.1">
+            <div class="alignCenter art-svg artwork" id="section-4.2-3.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="224" width="544" viewBox="0 0 544 224" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
+                <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
+                <path d="M 88,32 L 88,80" fill="none" stroke="black"></path>
+                <path d="M 88,112 L 88,160" fill="none" stroke="black"></path>
+                <path d="M 152,48 L 152,144" fill="none" stroke="black"></path>
+                <path d="M 168,48 L 168,80" fill="none" stroke="black"></path>
+                <path d="M 224,48 L 224,144" fill="none" stroke="black"></path>
+                <path d="M 272,48 L 272,160" fill="none" stroke="black"></path>
+                <path d="M 296,64 L 296,144" fill="none" stroke="black"></path>
+                <path d="M 336,64 L 336,96" fill="none" stroke="black"></path>
+                <path d="M 392,64 L 392,144" fill="none" stroke="black"></path>
+                <path d="M 432,48 L 432,160" fill="none" stroke="black"></path>
+                <path d="M 456,48 L 456,128" fill="none" stroke="black"></path>
+                <path d="M 536,48 L 536,128" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 88,32" fill="none" stroke="black"></path>
+                <path d="M 152,48 L 224,48" fill="none" stroke="black"></path>
+                <path d="M 456,48 L 536,48" fill="none" stroke="black"></path>
+                <path d="M 88,64 L 144,64" fill="none" stroke="black"></path>
+                <path d="M 296,64 L 392,64" fill="none" stroke="black"></path>
+                <path d="M 8,80 L 88,80" fill="none" stroke="black"></path>
+                <path d="M 168,80 L 224,80" fill="none" stroke="black"></path>
+                <path d="M 432,80 L 448,80" fill="none" stroke="black"></path>
+                <path d="M 272,96 L 288,96" fill="none" stroke="black"></path>
+                <path d="M 336,96 L 392,96" fill="none" stroke="black"></path>
+                <path d="M 8,112 L 88,112" fill="none" stroke="black"></path>
+                <path d="M 88,128 L 144,128" fill="none" stroke="black"></path>
+                <path d="M 224,128 L 264,128" fill="none" stroke="black"></path>
+                <path d="M 392,128 L 424,128" fill="none" stroke="black"></path>
+                <path d="M 456,128 L 536,128" fill="none" stroke="black"></path>
+                <path d="M 152,144 L 224,144" fill="none" stroke="black"></path>
+                <path d="M 296,144 L 392,144" fill="none" stroke="black"></path>
+                <path d="M 8,160 L 88,160" fill="none" stroke="black"></path>
+                <g class="text">
+                  <text x="48" y="52">4o6</text>
+                  <text x="132" y="52">P1</text>
+                  <text x="44" y="68">Client</text>
+                  <text x="196" y="68">LDRA</text>
+                  <text x="488" y="68">4o6</text>
+                  <text x="364" y="84">L3RA</text>
+                  <text x="492" y="84">DHCP</text>
+                  <text x="180" y="100">L2</text>
+                  <text x="492" y="100">Server</text>
+                  <text x="132" y="116">P2</text>
+                  <text x="188" y="116">switch</text>
+                  <text x="48" y="132">4o6</text>
+                  <text x="348" y="132">Router</text>
+                  <text x="44" y="148">Client</text>
+                </g>
+              </svg><a href="#section-4.2-3.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
 <a href="#name-layer-2-topology-discover-w" class="selfRef">Layer 2 Topology discover with 4o6</a>
@@ -1390,21 +1491,70 @@ This makes it possible to enable Topology Discovery for legacy IPv4 DHCP clients
 through a 4o6-DHCP-enabled network.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <span id="name-layer-2-architecture-with-4"></span><div id="l2_switched_4o6_leg">
 <figure id="figure-3">
-        <div class="alignLeft art-text artwork" id="section-5-2.1">
-<pre>
-     +---------+
-     |   4o6   |    P1 +-+------+     |                   |  +---------+
-     | Client  +-------| | LDRA |     |  +----+------+    |  |  4o6    |
-     +---------+       | +------+     |  |    | L3RA |    +--|  DHCP   |
-                       |  L2    |     +--|    +------+    |  | Server  |
-     +---------+       | switch |     |  |           |    |  +---------+
-     | Legacy  |    P2 +------+ +-----|  |   Router  +----|
-     | Client  +-------+ 4o6  | |     |  +-----------+    |  +---------+
-     +---------+       +------+-+     |                   |  | Legacy  |
-                                                          +--|  DHCP   |
-                                                          |  | Server  |
-                                                          |  +---------+
-</pre>
+        <div id="section-5-2.1">
+          <div class="alignCenter art-svg artwork" id="section-5-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="240" width="544" viewBox="0 0 544 240" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
+              <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
+              <path d="M 88,32 L 88,80" fill="none" stroke="black"></path>
+              <path d="M 88,112 L 88,160" fill="none" stroke="black"></path>
+              <path d="M 152,48 L 152,160" fill="none" stroke="black"></path>
+              <path d="M 168,48 L 168,80" fill="none" stroke="black"></path>
+              <path d="M 208,128 L 208,160" fill="none" stroke="black"></path>
+              <path d="M 224,48 L 224,160" fill="none" stroke="black"></path>
+              <path d="M 272,48 L 272,160" fill="none" stroke="black"></path>
+              <path d="M 296,64 L 296,144" fill="none" stroke="black"></path>
+              <path d="M 336,64 L 336,96" fill="none" stroke="black"></path>
+              <path d="M 392,64 L 392,144" fill="none" stroke="black"></path>
+              <path d="M 432,48 L 432,208" fill="none" stroke="black"></path>
+              <path d="M 456,48 L 456,112" fill="none" stroke="black"></path>
+              <path d="M 456,144 L 456,208" fill="none" stroke="black"></path>
+              <path d="M 536,48 L 536,112" fill="none" stroke="black"></path>
+              <path d="M 536,144 L 536,208" fill="none" stroke="black"></path>
+              <path d="M 8,32 L 88,32" fill="none" stroke="black"></path>
+              <path d="M 152,48 L 224,48" fill="none" stroke="black"></path>
+              <path d="M 456,48 L 536,48" fill="none" stroke="black"></path>
+              <path d="M 88,64 L 144,64" fill="none" stroke="black"></path>
+              <path d="M 296,64 L 392,64" fill="none" stroke="black"></path>
+              <path d="M 8,80 L 88,80" fill="none" stroke="black"></path>
+              <path d="M 168,80 L 224,80" fill="none" stroke="black"></path>
+              <path d="M 432,80 L 448,80" fill="none" stroke="black"></path>
+              <path d="M 272,96 L 288,96" fill="none" stroke="black"></path>
+              <path d="M 336,96 L 392,96" fill="none" stroke="black"></path>
+              <path d="M 8,112 L 88,112" fill="none" stroke="black"></path>
+              <path d="M 456,112 L 536,112" fill="none" stroke="black"></path>
+              <path d="M 152,128 L 208,128" fill="none" stroke="black"></path>
+              <path d="M 224,128 L 264,128" fill="none" stroke="black"></path>
+              <path d="M 392,128 L 424,128" fill="none" stroke="black"></path>
+              <path d="M 88,144 L 152,144" fill="none" stroke="black"></path>
+              <path d="M 296,144 L 392,144" fill="none" stroke="black"></path>
+              <path d="M 456,144 L 536,144" fill="none" stroke="black"></path>
+              <path d="M 8,160 L 88,160" fill="none" stroke="black"></path>
+              <path d="M 152,160 L 224,160" fill="none" stroke="black"></path>
+              <path d="M 432,176 L 448,176" fill="none" stroke="black"></path>
+              <path d="M 456,208 L 536,208" fill="none" stroke="black"></path>
+              <g class="text">
+                <text x="48" y="52">4o6</text>
+                <text x="132" y="52">P1</text>
+                <text x="44" y="68">Client</text>
+                <text x="196" y="68">LDRA</text>
+                <text x="488" y="68">4o6</text>
+                <text x="364" y="84">L3RA</text>
+                <text x="492" y="84">DHCP</text>
+                <text x="180" y="100">L2</text>
+                <text x="492" y="100">Server</text>
+                <text x="188" y="116">switch</text>
+                <text x="44" y="132">Legacy</text>
+                <text x="132" y="132">P2</text>
+                <text x="348" y="132">Router</text>
+                <text x="44" y="148">Client</text>
+                <text x="176" y="148">4o6</text>
+                <text x="492" y="164">Legacy</text>
+                <text x="492" y="180">DHCP</text>
+                <text x="492" y="196">Server</text>
+              </g>
+            </svg><a href="#section-5-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
 <a href="#name-layer-2-architecture-with-4" class="selfRef">Layer 2 architecture with 4o6 and legacy client</a>
@@ -1457,6 +1607,7 @@ provide any additional secruity concerns.<a href="#section-6-2" class="pilcrow">
 <p id="section-7-1">This document has no IANA actions.<a href="#section-7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="sec-combined-references">
 <section id="section-8">
       <h2 id="name-references">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-references" class="section-name selfRef">References</a>
@@ -1524,6 +1675,7 @@ provide any additional secruity concerns.<a href="#section-6-2" class="pilcrow">
 </section>
 </div>
 </section>
+</div>
 <div id="acknowledgments">
 <section id="appendix-A">
       <h2 id="name-acknowledgments">
