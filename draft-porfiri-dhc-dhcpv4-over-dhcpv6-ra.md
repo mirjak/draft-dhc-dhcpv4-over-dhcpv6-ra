@@ -233,7 +233,7 @@ where DHCP client and 4o6RA are connected to.
 ## Topology considerations {#topology_considerations}
 
 The scenario depicted in {{architecture_overview_fig1}} preserves the topology
-infomation as the DHCPv6 Relay Agent has the knowledge of the interface where the
+information as the DHCPv6 Relay Agent has the knowledge of the interface where the
 encapsulated DHCP request comes from.
 
 Moving 4o6 in the intermediate node rather than at the client breaks the topology
