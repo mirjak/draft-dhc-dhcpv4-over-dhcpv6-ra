@@ -311,7 +311,34 @@ The network configuration shall guarantee that no DHCP server
 are reacheable from the DHCP client and that at least one 4o6RA
 can be reached.
 
-# Move to Appendix
+
+# Security Considerations {#seccons}
+
+This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
+connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
+does not change anything else in the 4o6 DHCP speacification and therefore the
+security consideration of {{RFC7341}} still apply.
+
+The legacy IPv4 client is not aware of this mechanism, however, even
+when 4o6 DHCP is used, the client does not have any control about the
+information provided by the Relay agent. As such this change does not
+provide any additional secruity concerns.
+
+
+# IANA Considerations
+
+This document has no IANA actions.
+
+
+--- back
+
+# Acknowledgments
+
+
+The authors would also like to acknowledge interesting discussions in
+this problem space with Sarah Gannon, Ines Ramadza and Siddharth Sharma.
+
+# Topology Discovery at the RAN
 
 ## Example Use Case: Switched Fronthaul  {#usecase}
 
@@ -476,29 +503,4 @@ message and forward the encapsulated DHCPv4-response to the legacy DHCPv4 client
 Any Layer 2 Relay Agent receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
 will handle them as specified in Section 6 of {{RFC6221}}.
 
-# Security Considerations {#seccons}
-
-This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
-connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
-does not change anything else in the 4o6 DHCP speacification and therefore the
-security consideration of {{RFC7341}} still apply.
-
-The legacy IPv4 client is not aware of this mechanism, however, even
-when 4o6 DHCP is used, the client does not have any control about the
-information provided by the Relay agent. As such this change does not
-provide any additional secruity concerns.
-
-
-# IANA Considerations
-
-This document has no IANA actions.
-
-
---- back
-
-# Acknowledgments
 {:numbered="false"}
-
-
-The authors would also like to acknowledge interesting discussions in
-this problem space with Sarah Gannon, Ines Ramadza and Siddharth Sharma.
