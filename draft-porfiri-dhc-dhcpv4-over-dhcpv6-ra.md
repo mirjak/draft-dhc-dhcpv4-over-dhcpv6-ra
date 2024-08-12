@@ -221,10 +221,10 @@ apply to the DHCP client shall be applied to the 4o6RA instead.
 
 Being the 4o6 mechanism implemented in the Relay Agent, special care
 needs to be done at the nework node implementing the Relay Agent itself
-when delaing with DHCP termination.
+when dealing with DHCP termination.
 In order the 4o6 mechanism to work properly, it shall not be possible
 for DHCP traffic generated from the DHCP client to reach any DHCP server
-but using the 4o6RA.
+except by using the 4o6RA.
 As a result, all the DHCP messages generated from the client MUST be
 received only by the 4o6 Relay Agent. The rule applies both to the
 configuration of the node implementing the 4o6RA and the L2 network
@@ -237,7 +237,7 @@ infomation as the DHCPv6 Relay Agent has the knowledge of the interface where th
 encapsulated DHCP request comes from.
 
 Moving 4o6 in the intermediate node rather than at the client breaks the topology
-propagatin as 4o6 doesn't forward the interface information in the encapsulated message.
+propagation as 4o6 doesn't forward the interface information in the encapsulated message.
 
 ~~~aasvg
 
@@ -259,12 +259,12 @@ edge of the IPv6 network hides the L2 network from the DHCPv6 Relay agent.
 
 In order to preserve the topology information, it is recommended that the
 implementation of 4o6RA is combined with the implementation of LDRA {{RFC6221}}
-and that the implementor provides a mechanism for LDRA to get interface information
+and that the implementation has a mechanism for LDRA to get interface information
 so that that they can be properly used for Interface-ID option as specified in
 section 5.3.2 of {{RFC6221}}.
-The mechanisms for transporting the interface information, their format and whether
-the interface information contains indication that a 4o6 RA agent is involved
-are out of the scope of the present document.
+The internal mechanisms of an implementation for transporting the interface information,
+their format and whether the interface information contains indication that a 4o6 RA
+agent is involved are out of the scope of the present document.
 
 ~~~aasvg
 
@@ -304,11 +304,11 @@ The DHCPv6 server shall be compliant with 4o6 according to {{RFC7341}}.
 
 ## Considerations about L2 terminations at 4o6 {#l2_terminations}
 
-Deployng 4o6RA at the network edge requires care in the network
+Deploying 4o6RA at the network edge requires care in the network
 design as well as in the desing of the 4o6RA parser.
 
 The network configuration shall guarantee that no DHCP server
-are reacheable from the DHCP client and that at least one 4o6RA
+are reachable from the DHCP client and that at least one 4o6RA
 can be reached.
 
 
@@ -322,7 +322,7 @@ security consideration of {{RFC7341}} still apply.
 The legacy IPv4 client is not aware of this mechanism, however, even
 when 4o6 DHCP is used, the client does not have any control about the
 information provided by the Relay agent. As such this change does not
-provide any additional secruity concerns.
+raise any additional secruity concerns.
 
 
 # IANA Considerations
