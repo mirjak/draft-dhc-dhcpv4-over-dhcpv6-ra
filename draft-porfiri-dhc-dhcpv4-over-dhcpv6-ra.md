@@ -46,6 +46,7 @@ normative:
    RFC6221:
    RFC6925:
    RFC7341:
+   RFC7969:
    RFC8415:
 
 informative:
@@ -61,7 +62,7 @@ Users require IPv4 configuration even if the uplink to their service
 provider supports IPv6 only.
 A mechanism exists for obtaining IPv4 configuration information dynamically
 in IPv6 networks by carrying DHCPv4 messages over DHCPv6 transport.
-This document describes how that mechanism is to be deployes in
+This document describes how that mechanism is to be deployed in
 Relay Agents.
 
 --- middle
@@ -232,6 +233,14 @@ where DHCP client and 4o6RA are connected to.
 
 ## Topology considerations {#topology_considerations}
 
+The DHCPv4 {{RFC2131}} and DHCPv6 {{RFC3315}} protocol specifications
+describe how addresses can be allocated to clients based on network
+topology information provided by the DHCP relay infrastructure.
+Address allocation decisions are integral to the allocation of
+addresses and prefixes in DHCP. The argument is described in details
+in {{RFC7969}}, here we want to guarantee that 4o6RA doesn't
+break any legacy capability when related to the use of topology.
+
 The scenario depicted in {{architecture_overview_fig1}} preserves the topology
 information as the DHCPv6 Relay Agent has the knowledge of the interface where the
 encapsulated DHCP request comes from.
@@ -293,7 +302,7 @@ Deployment of 4o6RA depends on the network architecture and the scope
 of the node where the functionality is implemented.
 
 In a simple case, where the same node hosts 4o6RA and the DHCP4o6 server,
-it may be just enough deploying 4o6RA itself, bu in the general case
+it may be just enough deploying 4o6RA itself, but in the general case
 and in order to preserve the network topology information, it is
 recommended the 4o6RA to be deployed in combination with a LDRA
 as shown in {{architecture_overview_fig4}}.
@@ -305,7 +314,7 @@ The DHCPv6 server shall be compliant with 4o6 according to {{RFC7341}}.
 ## Considerations about L2 terminations at 4o6 {#l2_terminations}
 
 Deploying 4o6RA at the network edge requires care in the network
-design as well as in the desing of the 4o6RA parser.
+design as well as in the 4o6RA DHCP parser.
 
 The network configuration shall guarantee that no DHCP server
 are reachable from the DHCP client and that at least one 4o6RA
@@ -316,7 +325,7 @@ can be reached.
 
 This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
 connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
-does not change anything else in the 4o6 DHCP speacification and therefore the
+does not change anything else in the 4o6 DHCP specification and therefore the
 security consideration of {{RFC7341}} still apply.
 
 The legacy IPv4 client is not aware of this mechanism, however, even
@@ -346,10 +355,10 @@ This section describes a case where topology knowledge is needed for
 properly configuring the node. The case comes from a change of topology
 by inserting a L2 switched network between the clients and the server.
 One of the clients is responsible for the configuration of the other
-clients based on their topology. Updating of SW on the clients
+clients based on their topology. Updating of the software on the clients
 is not possible.
 
-### Topology Based Configuration of RU
+### Topology Based Configuration of Radio Unit (RU)
 
 In Radio Access Networks (RANs) the Fronthaul is the network segment
 that connects Radio Units, the distributed radio elements in a mobile network,
@@ -387,7 +396,7 @@ to one Baseband Unit by means of a Layer 2 switched network.
 The Baseband Unit is the central processing unit that handles baseband information.
 A Baseband Unit is often placed rather centrally, while the Radio Units need to
 be distributed to be co-located with or near the antennas.
-Traffic between Radio Units and Bandband Units is both IP-based and Layer-2-based
+Traffic between Radio Units and Baseband Units is both IP-based and Layer-2-based
 and may pass a hierarchy of L2 switches.
 
 In order to properly address the Radio Unit, the Baseband Unit needs to associate
@@ -451,10 +460,10 @@ by the addition of DHCPv4 over DHCPv6 feature, thus providing the
 en- and decapsulation at the Relay Agent rather than at the client.
 
 The proposal is aimed at solving all cases where a SW update of the DHCP client
-is not possbile for any reason, still providing the same features as
+is not possible for any reason, still providing the same features as
 described in {{RFC7341}}.
 
-### Layer 2 Topogoy Discovery using 4o6 DHCP with legacy IPv4 clients {#l2discipv44o6leg}
+### Layer 2 Topology Discovery using 4o6 DHCP with legacy IPv4 clients {#l2discipv44o6leg}
 
 This section provides an example of how the topology discovery use case
 proposed in {{usecase}} can be solved by having the DHCPv4 over DHCPv6 feature
