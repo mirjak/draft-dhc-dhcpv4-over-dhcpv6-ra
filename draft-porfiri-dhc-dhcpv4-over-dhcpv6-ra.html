@@ -15,7 +15,7 @@ Users require IPv4 configuration even if the uplink to their service
 provider supports IPv6 only.
 A mechanism exists for obtaining IPv4 configuration information dynamically
 in IPv6 networks by carrying DHCPv4 messages over DHCPv6 transport.
-This document describes how that mechanism is to be deployes in
+This document describes how that mechanism is to be deployed in
 Relay Agents. 
     " name="description">
 <meta content="xml2rfc 3.22.0" name="generator">
@@ -1037,7 +1037,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Porfiri, et al.</td>
-<td class="center">Expires 13 February 2025</td>
+<td class="center">Expires 14 February 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1050,12 +1050,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-08-12" class="published">12 August 2024</time>
+<time datetime="2024-08-13" class="published">13 August 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-02-13">13 February 2025</time></dd>
+<dd class="expires"><time datetime="2025-02-14">14 February 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1085,7 +1085,7 @@ Users require IPv4 configuration even if the uplink to their service
 provider supports IPv6 only.
 A mechanism exists for obtaining IPv4 configuration information dynamically
 in IPv6 networks by carrying DHCPv4 messages over DHCPv6 transport.
-This document describes how that mechanism is to be deployes in
+This document describes how that mechanism is to be deployed in
 Relay Agents.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
@@ -1117,7 +1117,7 @@ Relay Agents.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 13 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 February 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1202,7 +1202,7 @@ Relay Agents.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                 <p id="section-toc.1-1.9.2.1.1"><a href="#appendix-B.1" class="auto internal xref">B.1</a>.  <a href="#name-example-use-case-switched-f" class="internal xref">Example Use Case: Switched Fronthaul</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1.2.1">
-                    <p id="section-toc.1-1.9.2.1.2.1.1"><a href="#appendix-B.1.1" class="auto internal xref">B.1.1</a>.  <a href="#name-topology-based-configuratio" class="internal xref">Topology Based Configuration of RU</a></p>
+                    <p id="section-toc.1-1.9.2.1.2.1.1"><a href="#appendix-B.1.1" class="auto internal xref">B.1.1</a>.  <a href="#name-topology-based-configuratio" class="internal xref">Topology Based Configuration of Radio Unit (RU)</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1.2.2">
                     <p id="section-toc.1-1.9.2.1.2.2.1"><a href="#appendix-B.1.2" class="auto internal xref">B.1.2</a>.  <a href="#name-existing-dhcp-based-solutio" class="internal xref">Existing DHCP-based Solutions for Topology Discovery</a></p>
@@ -1213,7 +1213,7 @@ Relay Agents.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
                 <p id="section-toc.1-1.9.2.2.1"><a href="#appendix-B.2" class="auto internal xref">B.2</a>.  <a href="#name-dhcpv4-over-dhcpv6-in-the-r" class="internal xref">DHCPv4 over DHCPv6 in the Relay Agent</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2.2.1">
-                    <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#appendix-B.2.1" class="auto internal xref">B.2.1</a>.  <a href="#name-layer-2-topogoy-discovery-u" class="internal xref">Layer 2 Topogoy Discovery using 4o6 DHCP with legacy IPv4 clients</a></p>
+                    <p id="section-toc.1-1.9.2.2.2.1.1"><a href="#appendix-B.2.1" class="auto internal xref">B.2.1</a>.  <a href="#name-layer-2-topology-discovery-" class="internal xref">Layer 2 Topology Discovery using 4o6 DHCP with legacy IPv4 clients</a></p>
 </li>
                 </ul>
 </li>
@@ -1496,10 +1496,10 @@ apply to the DHCP client shall be applied to the 4o6RA instead.<a href="#section
         </h3>
 <p id="section-4.1-1">Being the 4o6 mechanism implemented in the Relay Agent, special care
 needs to be done at the nework node implementing the Relay Agent itself
-when delaing with DHCP termination.
+when dealing with DHCP termination.
 In order the 4o6 mechanism to work properly, it shall not be possible
 for DHCP traffic generated from the DHCP client to reach any DHCP server
-but using the 4o6RA.
+except by using the 4o6RA.
 As a result, all the DHCP messages generated from the client <span class="bcp14">MUST</span> be
 received only by the 4o6 Relay Agent. The rule applies both to the
 configuration of the node implementing the 4o6RA and the L2 network
@@ -1511,15 +1511,22 @@ where DHCP client and 4o6RA are connected to.<a href="#section-4.1-1" class="pil
         <h3 id="name-topology-considerations">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-topology-considerations" class="section-name selfRef">Topology considerations</a>
         </h3>
-<p id="section-4.2-1">The scenario depicted in <a href="#architecture_overview_fig1" class="auto internal xref">Figure 1</a> preserves the topology
-infomation as the DHCPv6 Relay Agent has the knowledge of the interface where the
-encapsulated DHCP request comes from.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2-2">Moving 4o6 in the intermediate node rather than at the client breaks the topology
-propagatin as 4o6 doesn't forward the interface information in the encapsulated message.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">The DHCPv4 <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span> and DHCPv6 <span>[<a href="#RFC3315" class="cite xref">RFC3315</a>]</span> protocol specifications
+describe how addresses can be allocated to clients based on network
+topology information provided by the DHCP relay infrastructure.
+Address allocation decisions are integral to the allocation of
+addresses and prefixes in DHCP. The argument is described in details
+in <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>, here we want to guarantee that 4o6RA doesn't
+break any legacy capability when related to the use of topology.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">The scenario depicted in <a href="#architecture_overview_fig1" class="auto internal xref">Figure 1</a> preserves the topology
+information as the DHCPv6 Relay Agent has the knowledge of the interface where the
+encapsulated DHCP request comes from.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">Moving 4o6 in the intermediate node rather than at the client breaks the topology
+propagation as 4o6 doesn't forward the interface information in the encapsulated message.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
 <span id="name-topology-broken-path"></span><div id="architecture_overview_fig3">
 <figure id="figure-3">
-          <div id="section-4.2-3.1">
-            <div class="alignCenter art-svg artwork" id="section-4.2-3.1.1">
+          <div id="section-4.2-4.1">
+            <div class="alignCenter art-svg artwork" id="section-4.2-4.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="208" width="528" viewBox="0 0 528 208" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 8,64 L 8,128" fill="none" stroke="black"></path>
                 <path d="M 80,48 L 80,64" fill="none" stroke="black"></path>
@@ -1577,27 +1584,27 @@ propagatin as 4o6 doesn't forward the interface information in the encapsulated 
                   <text x="36" y="116">on</text>
                   <text x="64" y="116">CPE</text>
                 </g>
-              </svg><a href="#section-4.2-3.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-4.2-4.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
 <a href="#name-topology-broken-path" class="selfRef">Topology broken path</a>
           </figcaption></figure>
 </div>
-<p id="section-4.2-4">As shown in <a href="#architecture_overview_fig3" class="auto internal xref">Figure 3</a>, the introduction of 4o6 at the
-edge of the IPv6 network hides the L2 network from the DHCPv6 Relay agent.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
-<p id="section-4.2-5">In order to preserve the topology information, it is recommended that the
+<p id="section-4.2-5">As shown in <a href="#architecture_overview_fig3" class="auto internal xref">Figure 3</a>, the introduction of 4o6 at the
+edge of the IPv6 network hides the L2 network from the DHCPv6 Relay agent.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+<p id="section-4.2-6">In order to preserve the topology information, it is recommended that the
 implementation of 4o6RA is combined with the implementation of LDRA <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
-and that the implementor provides a mechanism for LDRA to get interface information
+and that the implementation has a mechanism for LDRA to get interface information
 so that that they can be properly used for Interface-ID option as specified in
 section 5.3.2 of <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.
-The mechanisms for transporting the interface information, their format and whether
-the interface information contains indication that a 4o6 RA agent is involved
-are out of the scope of the present document.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+The internal mechanisms of an implementation for transporting the interface information,
+their format and whether the interface information contains indication that a 4o6 RA
+agent is involved are out of the scope of the present document.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
 <span id="name-topology-path-preserved-wit"></span><div id="architecture_overview_fig4">
 <figure id="figure-4">
-          <div id="section-4.2-6.1">
-            <div class="alignCenter art-svg artwork" id="section-4.2-6.1.1">
+          <div id="section-4.2-7.1">
+            <div class="alignCenter art-svg artwork" id="section-4.2-7.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="240" width="544" viewBox="0 0 544 240" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 8,64 L 8,128" fill="none" stroke="black"></path>
                 <path d="M 80,48 L 80,64" fill="none" stroke="black"></path>
@@ -1663,16 +1670,16 @@ are out of the scope of the present document.<a href="#section-4.2-5" class="pil
                   <text x="288" y="148">interface</text>
                   <text x="284" y="164">info</text>
                 </g>
-              </svg><a href="#section-4.2-6.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-4.2-7.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
 <a href="#name-topology-path-preserved-wit" class="selfRef">Topology path preserved with LDRA</a>
           </figcaption></figure>
 </div>
-<p id="section-4.2-7">The recommended architecture is shown in <a href="#architecture_overview_fig4" class="auto internal xref">Figure 4</a> where the whole
+<p id="section-4.2-8">The recommended architecture is shown in <a href="#architecture_overview_fig4" class="auto internal xref">Figure 4</a> where the whole
 Relay Agent is built up with cooperating 4o6 and LDRA, and interface information is
-propagated from 4o6 to LDRA with implementation specific mechanism.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
+propagated from 4o6 to LDRA with implementation specific mechanism.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="considerations-about-4o6ra-deployment">
@@ -1683,7 +1690,7 @@ propagated from 4o6 to LDRA with implementation specific mechanism.<a href="#sec
 <p id="section-4.3-1">Deployment of 4o6RA depends on the network architecture and the scope
 of the node where the functionality is implemented.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
 <p id="section-4.3-2">In a simple case, where the same node hosts 4o6RA and the DHCP4o6 server,
-it may be just enough deploying 4o6RA itself, bu in the general case
+it may be just enough deploying 4o6RA itself, but in the general case
 and in order to preserve the network topology information, it is
 recommended the 4o6RA to be deployed in combination with a LDRA
 as shown in <a href="#architecture_overview_fig4" class="auto internal xref">Figure 4</a>.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
@@ -1702,10 +1709,10 @@ as shown in <a href="#architecture_overview_fig4" class="auto internal xref">Fig
         <h3 id="name-considerations-about-l2-ter">
 <a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-considerations-about-l2-ter" class="section-name selfRef">Considerations about L2 terminations at 4o6</a>
         </h3>
-<p id="section-4.5-1">Deployng 4o6RA at the network edge requires care in the network
-design as well as in the desing of the 4o6RA parser.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.5-1">Deploying 4o6RA at the network edge requires care in the network
+design as well as in the 4o6RA DHCP parser.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
 <p id="section-4.5-2">The network configuration shall guarantee that no DHCP server
-are reacheable from the DHCP client and that at least one 4o6RA
+are reachable from the DHCP client and that at least one 4o6RA
 can be reached.<a href="#section-4.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1718,12 +1725,12 @@ can be reached.<a href="#section-4.5-2" class="pilcrow">¶</a></p>
       </h2>
 <p id="section-5-1">This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
 connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
-does not change anything else in the 4o6 DHCP speacification and therefore the
+does not change anything else in the 4o6 DHCP specification and therefore the
 security consideration of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> still apply.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">The legacy IPv4 client is not aware of this mechanism, however, even
 when 4o6 DHCP is used, the client does not have any control about the
 information provided by the Relay agent. As such this change does not
-provide any additional secruity concerns.<a href="#section-5-2" class="pilcrow">¶</a></p>
+raise any additional secruity concerns.<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
@@ -1768,6 +1775,10 @@ provide any additional secruity concerns.<a href="#section-5-2" class="pilcrow">
 <dt id="RFC7341">[RFC7341]</dt>
         <dd>
 <span class="refAuthor">Sun, Q.</span>, <span class="refAuthor">Cui, Y.</span>, <span class="refAuthor">Siodelski, M.</span>, <span class="refAuthor">Krishnan, S.</span>, and <span class="refAuthor">I. Farrer</span>, <span class="refTitle">"DHCPv4-over-DHCPv6 (DHCP 4o6) Transport"</span>, <span class="seriesInfo">RFC 7341</span>, <span class="seriesInfo">DOI 10.17487/RFC7341</span>, <time datetime="2014-08" class="refDate">August 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7341">https://www.rfc-editor.org/rfc/rfc7341</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC7969">[RFC7969]</dt>
+        <dd>
+<span class="refAuthor">Lemon, T.</span> and <span class="refAuthor">T. Mrugalski</span>, <span class="refTitle">"Customizing DHCP Configuration on the Basis of Network Topology"</span>, <span class="seriesInfo">RFC 7969</span>, <span class="seriesInfo">DOI 10.17487/RFC7969</span>, <time datetime="2016-10" class="refDate">October 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7969">https://www.rfc-editor.org/rfc/rfc7969</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
         <dd>
@@ -1830,12 +1841,12 @@ this problem space with Sarah Gannon, Ines Ramadza and Siddharth Sharma.<a href=
 properly configuring the node. The case comes from a change of topology
 by inserting a L2 switched network between the clients and the server.
 One of the clients is responsible for the configuration of the other
-clients based on their topology. Updating of SW on the clients
+clients based on their topology. Updating of the software on the clients
 is not possible.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
-<div id="topology-based-configuration-of-ru">
+<div id="topology-based-configuration-of-radio-unit-ru">
 <section id="appendix-B.1.1">
           <h4 id="name-topology-based-configuratio">
-<a href="#appendix-B.1.1" class="section-number selfRef">B.1.1. </a><a href="#name-topology-based-configuratio" class="section-name selfRef">Topology Based Configuration of RU</a>
+<a href="#appendix-B.1.1" class="section-number selfRef">B.1.1. </a><a href="#name-topology-based-configuratio" class="section-name selfRef">Topology Based Configuration of Radio Unit (RU)</a>
           </h4>
 <p id="appendix-B.1.1-1">In Radio Access Networks (RANs) the Fronthaul is the network segment
 that connects Radio Units, the distributed radio elements in a mobile network,
@@ -1941,7 +1952,7 @@ to one Baseband Unit by means of a Layer 2 switched network.
 The Baseband Unit is the central processing unit that handles baseband information.
 A Baseband Unit is often placed rather centrally, while the Radio Units need to
 be distributed to be co-located with or near the antennas.
-Traffic between Radio Units and Bandband Units is both IP-based and Layer-2-based
+Traffic between Radio Units and Baseband Units is both IP-based and Layer-2-based
 and may pass a hierarchy of L2 switches.<a href="#appendix-B.1.1-3" class="pilcrow">¶</a></p>
 <p id="appendix-B.1.1-4">In order to properly address the Radio Unit, the Baseband Unit needs to associate
 the Radio Unit's MAC address to the L2 switch and respective port
@@ -2061,12 +2072,12 @@ where en- and decapsulation are accomplished at the client.<a href="#appendix-B.
 by the addition of DHCPv4 over DHCPv6 feature, thus providing the
 en- and decapsulation at the Relay Agent rather than at the client.<a href="#appendix-B.2-3" class="pilcrow">¶</a></p>
 <p id="appendix-B.2-4">The proposal is aimed at solving all cases where a SW update of the DHCP client
-is not possbile for any reason, still providing the same features as
+is not possible for any reason, still providing the same features as
 described in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#appendix-B.2-4" class="pilcrow">¶</a></p>
 <div id="l2discipv44o6leg">
 <section id="appendix-B.2.1">
-          <h4 id="name-layer-2-topogoy-discovery-u">
-<a href="#appendix-B.2.1" class="section-number selfRef">B.2.1. </a><a href="#name-layer-2-topogoy-discovery-u" class="section-name selfRef">Layer 2 Topogoy Discovery using 4o6 DHCP with legacy IPv4 clients</a>
+          <h4 id="name-layer-2-topology-discovery-">
+<a href="#appendix-B.2.1" class="section-number selfRef">B.2.1. </a><a href="#name-layer-2-topology-discovery-" class="section-name selfRef">Layer 2 Topology Discovery using 4o6 DHCP with legacy IPv4 clients</a>
           </h4>
 <p id="appendix-B.2.1-1">This section provides an example of how the topology discovery use case
 proposed in <a href="#usecase" class="auto internal xref">Appendix B.1</a> can be solved by having the DHCPv4 over DHCPv6 feature
