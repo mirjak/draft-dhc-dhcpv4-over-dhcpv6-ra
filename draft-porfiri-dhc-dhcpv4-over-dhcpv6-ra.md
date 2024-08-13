@@ -218,18 +218,21 @@ whereas the DHCP Client does not require any change.
 All prerequisites and configuration that in section 5 of {{RFC7341}}
 apply to the DHCP client shall be applied to the 4o6RA instead.
 
-## DHCP scope limitation {#dhcpv4_scope}
+## Considerations on the network design {#network_design}
 
-Being the 4o6 mechanism implemented in the Relay Agent, special care
-needs to be done at the nework node implementing the Relay Agent itself
-when dealing with DHCP termination.
-In order the 4o6 mechanism to work properly, it shall not be possible
-for DHCP traffic generated from the DHCP client to reach any DHCP server
-except by using the 4o6RA.
-As a result, all the DHCP messages generated from the client MUST be
-received only by the 4o6 Relay Agent. The rule applies both to the
-configuration of the node implementing the 4o6RA and the L2 network
-where DHCP client and 4o6RA are connected to.
+The 4o6RA mechanism described in the current document puts some
+requirements on the network design when comparing with the
+4o6 solution described at {{RFC7341}}.
+In order to make 4o6RA behave properly, the L2 network connecting
+CPEs shall not allow DHCP traffic to reach any DHCP server.
+Furthermore, at least one 4o6RA shall be reacheable in that
+L2 network so that the reacheability of a DHCP server is granted
+by means of 4o6RA.
+
+## Considerations about L2 terminations at 4o6RA {#l2_terminations}
+
+The 4o6RA mechanism implements a parser of DHCP messages, it shall
+be able taking care of all types of DHCP requests and replies.
 
 ## Topology considerations {#topology_considerations}
 
@@ -310,16 +313,6 @@ as shown in {{architecture_overview_fig4}}.
 ## Considerations about DHCPv6 server {#dhcpv6_server}
 
 The DHCPv6 server shall be compliant with 4o6 according to {{RFC7341}}.
-
-## Considerations about L2 terminations at 4o6 {#l2_terminations}
-
-Deploying 4o6RA at the network edge requires care in the network
-design as well as in the 4o6RA DHCP parser.
-
-The network configuration shall guarantee that no DHCP server
-are reachable from the DHCP client and that at least one 4o6RA
-can be reached.
-
 
 # Security Considerations {#seccons}
 
