@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-11T01:25:47.675018+00:00",
+  "timestamp": "2024-08-13T01:21:29.603128+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -49,6 +49,87 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOLMlkXc6SsXeS",
+      "title": "Question about S4.2",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/1",
+      "state": "OPEN",
+      "author": "jariarkko",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 4.2 starts with:\r\n\r\n           4.2.  Topology considerations\t\r\n \t\t\r\n \t   The scenario depicted in Figure 1 preserves the topology infomation\t\r\n \t   as the DHCPv6 Relay Agent has the knowledge of the interface where\t\r\n \t   the encapsulated DHCP request comes from.\r\n\r\nThis is I think however the first time topology is mentioned in the draft. Perhaps an introductory sentence about why this matters and what we mean by topology is in order, before getting to the details of what is preserved or not?\r\n",
+      "createdAt": "2024-08-12T14:04:50Z",
+      "updatedAt": "2024-08-12T14:04:50Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOLMlkXc6SsX66",
+      "title": "Additional typos",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/2",
+      "state": "OPEN",
+      "author": "jariarkko",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 4.2:\r\n\r\n \t   The scenario depicted in Figure 1 preserves the topology infomation\t\r\n \t   as the DHCPv6 Relay Agent has the knowledge of the interface where\t\r\n \t   the encapsulated DHCP request comes from.\r\n\r\ns/infomation/information/\r\n",
+      "createdAt": "2024-08-12T14:05:32Z",
+      "updatedAt": "2024-08-12T14:05:32Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOLMlkXc6SsYXH",
+      "title": "Typos",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/3",
+      "state": "OPEN",
+      "author": "jariarkko",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Some typos I noticed or small text changes I think might be useful:\r\n\r\n224c224\r\n< when delaing with DHCP termination.\r\n---\r\n> when dealing with DHCP termination.\r\n227c227\r\n< but using the 4o6RA.\r\n---\r\n> except by using the 4o6RA.\r\n240c240\r\n< propagatin as 4o6 doesn't forward the interface information in the encapsulated message.\r\n---\r\n> propagation as 4o6 doesn't forward the interface information in the encapsulated message.\r\n262c262\r\n< and that the implementor provides a mechanism for LDRA to get interface information\r\n---\r\n> and that the implementation has a mechanism for LDRA to get interface information\r\n265c265\r\n< The mechanisms for transporting the interface information, their format and whether\r\n---\r\n> The internal mechanisms of an implementation for transporting the interface information, their format and whether\r\n307c307\r\n< Deployng 4o6RA at the network edge requires care in the network\r\n---\r\n> Deploying 4o6RA at the network edge requires care in the network\r\n311c311\r\n< are reacheable from the DHCP client and that at least one 4o6RA\r\n---\r\n> are reachable from the DHCP client and that at least one 4o6RA\r\n325c325\r\n< provide any additional secruity concerns.\r\n---\r\n> raise any additional security concerns.",
+      "createdAt": "2024-08-12T14:06:14Z",
+      "updatedAt": "2024-08-12T14:06:14Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOLMlkXc6Ssqvu",
+      "title": "Even more typos",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/4",
+      "state": "OPEN",
+      "author": "jariarkko",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\r\nThis document describes how that mechanism is to be deployes in\r\n\r\n 0: deplores\r\n 1: deployed\r\n 2: deploys\r\n\r\n> needs to be done at the nework node implementing the Relay Agent itself\r\n\r\n 0: network\r\n\r\nIn a simple case, where the same node hosts 4o6RA and the DHCP4o6 server,\r\nit may be just enough deploying 4o6RA itself, bu in the general case\r\n\r\n 7: but\r\n\r\nDeploying 4o6RA at the network edge requires care in the network\r\ndesign as well as in the desing of the 4o6RA parser.\r\n\r\n 0: design\r\n\r\nconnected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document\r\ndoes not change anything else in the 4o6 DHCP speacification and therefore the\r\n\r\n 0: specification\r\n\r\nOne of the clients is responsible for the configuration of the other\r\nclients based on their topology. Updating of SW on the clients\r\n\r\n  maybe just \"software\"\r\n\r\n### Topology Based Configuration of RU\r\n\r\n  first occurrence of \"RU\"\r\n\r\nTraffic between Radio Units and Bandband Units is both IP-based and Layer-2-based\r\n\r\n  Baseband\r\n\r\nThe proposal is aimed at solving all cases where a SW update of the DHCP client\r\nis not possbile for any reason, still providing the same features as\r\n\r\n 0: possible\r\n\r\n### Layer 2 Topogoy Discovery using 4o6 DHCP with legacy IPv4 clients {#l2discipv44o6leg}\r\n\r\n  Topology\r\n\r\n",
+      "createdAt": "2024-08-12T14:36:50Z",
+      "updatedAt": "2024-08-12T14:36:50Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOLMlkXc6SstAD",
+      "title": "4.1 and 4.5 questions",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/5",
+      "state": "OPEN",
+      "author": "jariarkko",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Context:\r\n\r\n\t4.1.  DHCP scope limitation\t\r\n \t\t\r\n \t   Being the 4o6 mechanism implemented in the Relay Agent, special care\t\r\n \t   needs to be done at the nework node implementing the Relay Agent\t\r\n \t   itself when delaing with DHCP termination.  In order the 4o6\t\r\n \t   mechanism to work properly, it shall not be possible for DHCP traffic\t\r\n \t   generated from the DHCP client to reach any DHCP server but using the\t\r\n \t   4o6RA.  As a result, all the DHCP messages generated from the client\t\r\n \t   MUST be received only by the 4o6 Relay Agent.  The rule applies both\t\r\n \t   to the configuration of the node implementing the 4o6RA and the L2\t\r\n \t   network where DHCP client and 4o6RA are connected to.\r\n\r\n4.5.  Considerations about L2 terminations at 4o6\t\r\n \t\t\r\n \t   Deployng 4o6RA at the network edge requires care in the network\t\r\n \t   design as well as in the desing of the 4o6RA parser.\t\r\n \t\t\r\n \t   The network configuration shall guarantee that no DHCP server are\t\r\n \t   reacheable from the DHCP client and that at least one 4o6RA can be\t\r\n \t   reached.\r\n\r\nComments:\r\n\r\n- Some duplication perhaps between 4.1 and 4.5\r\n- Perhaps more importantly, can we be clearer who the requirements are for? This is an operational requirement, e.g., don't turn this thing on unless your network is like this? Perhaps you could just say that this is a requirement for the whoever operates the network. And then the MUST in 4.1 is probably inappropriate because the 4o6 Relay Agent can't really ensure this. But maybe I'm missing something... in either case, clarity would help the reader.\r\n",
+      "createdAt": "2024-08-12T14:40:31Z",
+      "updatedAt": "2024-08-12T14:40:31Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
