@@ -81,7 +81,7 @@ The transport mechanism for carrying DHCPv4
 messages using the DHCPv6 protocol is described in {{RFC7341}}
 for the dynamic provisioning of IPv4 addresses and other DHCPv4
 specific configuration parameters across IPv6-only networks
-However, the deployment of {{RFC7341}} requires implementation in 
+However, the deployment of {{RFC7341}} requires implementation in
 all DHCP clients and at the DHCPv6 server, as shown in {{architecture_overview_fig1}}.
 In some cases, updating the clients may be not feasible due to
 a number of technical or business reasons.
@@ -102,7 +102,7 @@ a number of technical or business reasons.
 {: #architecture_overview_fig1 title="RFC7341 Architecture Overview" artwork-align="center"}
 
 The specification for DHCPv4 over DHCPv6 (4o6) {{RFC7341}} does only foresee the case
-where en- and decapsulation are accomplished at the client. Similarly, 
+where en- and decapsulation are accomplished at the client. Similarly,
 the specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
 or L3RA {{RFC8415}} do not foresee the possibility to handle legacy DHCP,
 other than implementing 4o6 in client.
@@ -218,13 +218,13 @@ shown in {{architecture_overview_fig2}}.
 
 Thi document specifes the encapsulation
 and decapsulation described in {{RFC7341}} to be performed in the Relay Agent
-whereas the DHCP Client does not require any change. 
+whereas the DHCP Client does not require any change.
 In this case it is up to the Relay Agent to provide the full
 4o6 DHCP set of functionality whereas the legacy client is not aware of being served
 via a 4o6 DHCP service.
 All prerequisites and configuration that in section 5 of {{RFC7341}}
 apply to the DHCP client shall be applied to the 4o6RA instead.
- 
+
 This extended 4o6 Relay Agent (4o6RA) exchanges DHCP messages
 between clients and servers using the message formats established in {{RFC8415}}.
 To maintain interoperability with existing DHCP relays and servers,
