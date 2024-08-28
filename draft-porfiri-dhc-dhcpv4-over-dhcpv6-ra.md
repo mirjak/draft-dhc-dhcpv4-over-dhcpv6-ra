@@ -442,12 +442,6 @@ This document has no IANA actions.
 
 --- back
 
-# Acknowledgments
-{:numbered="false"}
-
-The authors would also like to acknowledge interesting discussions in
-this problem space with Sarah Gannon, Ines Ramadza and Siddharth Sharma.
-
 # Example Use Case: Topology Discovery for IPv4-only Radio Unit in the RAN Switched Fronthaul {#usecase}
 
 In Radio Access Networks (RANs) the Fronthaul is the network segment
@@ -498,3 +492,9 @@ With the L2 switched network between the clients and the server,
 one of the clients is responsible for the configuration of the other
 clients based on their topology. Updating of the software on the clients
 is not possible often not possible and clients may be IPv4-only.
+
+# Acknowledgments
+{:numbered="false"}
+
+The authors would also like to acknowledge interesting discussions in
+this problem space with Sarah Gannon, Ines Ramadza and Siddharth Sharma.
