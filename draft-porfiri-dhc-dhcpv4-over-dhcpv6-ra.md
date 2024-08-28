@@ -409,7 +409,7 @@ Ane example of such scenario is depicted here:
 {: #l2_switched_4o6_leg title="Layer 2 architecture with 4o6 and legacy client" artwork-align="center"}
 
 If the DHCP 4o6 Server is built up with standalone DHCP and DHCPv6
-serers as shown in {{l2_switched_4o6_leg}}, each of them knows only part of the Topology.
+servers as shown in {{l2_switched_4o6_leg}}, each of them knows only part of the Topology.
 In such case a third agent willing to provide the configuration to CPE
 must be aware about the network
 and query both DHCP and DHCPv6 server in order to get the complete
