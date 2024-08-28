@@ -211,9 +211,7 @@ This extended 4o6 Relay Agent (4o6RA) exchanges DHCP messages
 between clients and servers using the message formats established in {{RFC8415}}.
 To maintain interoperability with existing DHCP relays and servers,
 the message format is unchanged from {{RFC8415}}. The 4o6RA implements
-the same message types as a normal DHCPv6 Relay Agent {{Section 6 of RFC7341}}. They are:
--  Relay-Forward Messages
--  Relay-Reply Messages
+the same message types as a normal DHCPv6 Relay Agent {{Section 6 of RFC7341}}.
 
 In this specification, the 4o6RA creates the DHCPV4-QUERY Message
 and encapsulates the DHCP request message received from the legacy DHCPv4 client.
@@ -232,19 +230,15 @@ will handle them as specified in Section 6 of {{RFC6221}}.
 ## DHCPv6 server {#dhcpv6_server}
 
 The DHCPv6 server must be compliant with 4o6 according to {{RFC7341}}.
-No additional requirements on DHCPv6 server are needey by this specification.
+No additional requirements on DHCPv6 server are needed by this specification.
 
 ## Reachability {#network_design}
 
-In order to make 4o6RA behave properly, the L2 network connecting
+The L2 network connecting
 CPEs shall not allow DHCP traffic to reach any DHCP server directly.
 Furthermore, at least one 4o6RA shall be reachable in that
 L2 network so that the reacheability of a DHCP server is granted
 by means of 4o6RA.
-
-## L2 terminations at 4o6RA {#l2_terminations}
-
-The 4o6RA must be able to process all types of DHCP requests and replies.
 
 ## Topology  {#topology_considerations}
 
@@ -294,28 +288,43 @@ agent is involved are out of the scope for this document.
 
            .-----------.     .---------------------------.
           | L2 Network  |   |          IPv6 Network       |
- +--------+-+         +-+---+---+      +---------+      +-+--------+
- |   DHCP   |         |  4o6    |      |  LDRA   |      | DHCP 4o6 |
- |  Client  +---------+  RA     +------+ RFC6221 +------+  Server  |
- |  on CPE  |         |         |      |         |      |          |
- +--------+-+         +-+---+-+-+      +---------+      +-+--------+
-          |             |   | | interface ^               |
-          |             |   | |   info    |               |
-          |             |   |  '---------'                |
+ +--------+-+         +-+---+--+---------+      +----------+
+ |   DHCP   |         |  4o6   |  LDRA   |      | DHCP 4o6 |
+ |  Client  +---------+  RA    + RFC6221 +------+  Server  |
+ |  on CPE  |         |        |         |      |          |
+ +--------+-+         +-+---+--+---------+      +----------+
+          |             |   |                             |
+          |             |   |                             |
+          |             |   |                             |
            '-----------'     '---------------------------'
 
 ~~~
 {: #architecture_overview_fig4 title="Topology path preserved with LDRA" artwork-align="center"}
 
-The recommended architecture is shown in {{architecture_overview_fig4}} where the whole
-Relay Agent is built up with cooperating 4o6 and LDRA, and interface information is
-propagated from 4o6 to LDRA with implementation specific mechanism.
+The assumed architecture is shown in {{architecture_overview_fig4}} where the whole
+Relay Agent is built up with cooperating 4o6 and LDRA, and internal interface to
+propagated topology information from 4o6 to LDRA.
 
 In a simple case, where the same node hosts 4o6RA and the DHCP4o6 server,
-it may be just enough deploying 4o6RA itself, but in the general case
-and in order to preserve the network topology information, it is
-recommended the 4o6RA to be deployed in combination with a LDRA
-as shown in {{architecture_overview_fig4}}.
+it may be just enough deploying 4o6RA itself, 
+as shown in {{architecture_overview_fig5}}.
+
+~~~aasvg
+
+           .-----------.
+          | L2 Network  |
+ +--------+-+         +-+------+----------+
+ |   DHCP   |         |  4o6   | DHCP 4o6 |
+ |  Client  +---------+  RA    +  Server  |
+ |  on CPE  |         |        |          |
+ +--------+-+         +-+------+----------+
+          |             |
+          |             |
+          |             |
+           '-----------' 
+
+~~~
+{: #architecture_overview_fig5 title="Topology path preserved 4o6 RA in DHCP server" artwork-align="center"}
 
 # Topology Discovery with 4o6RA
 
