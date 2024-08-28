@@ -225,7 +225,7 @@ requirements on the network design when comparing with the
 4o6 solution described at {{RFC7341}}.
 In order to make 4o6RA behave properly, the L2 network connecting
 CPEs shall not allow DHCP traffic to reach any DHCP server.
-Furthermore, at least one 4o6RA shall be reacheable in that
+Furthermore, at least one 4o6RA shall be reachable in that
 L2 network so that the reacheability of a DHCP server is granted
 by means of 4o6RA.
 
@@ -324,7 +324,7 @@ security consideration of {{RFC7341}} still apply.
 The legacy IPv4 client is not aware of this mechanism, however, even
 when 4o6 DHCP is used, the client does not have any control about the
 information provided by the Relay agent. As such this change does not
-raise any additional secruity concerns.
+raise any additional security concerns.
 
 
 # IANA Considerations
