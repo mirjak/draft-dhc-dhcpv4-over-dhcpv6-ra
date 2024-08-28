@@ -61,8 +61,8 @@ This document describes a general mechanism for networks
 with legacy IPv4-only clients to use services provided by
 DHCPv6 DHCPv4-over-DHCPv6 (DHCP 4o6) like for instance
 discovering information about network Topology.
-To address this scenario, this document specifies an amendment
-to RFC7341 that allows DHCP 4o6 to be deployed as a
+To address this scenario, this document specifies 
+a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
 Relay Agent (4o6RA) where 4o6 DHCP en- and decapsulation
 will be implemented even when this is not possible at the client.
 
@@ -101,9 +101,7 @@ a number of technical or business reasons.
 ~~~
 {: #architecture_overview_fig1 title="RFC7341 Architecture Overview" artwork-align="center"}
 
-The specification for DHCPv4 over DHCPv6 (4o6) {{RFC7341}} does only foresee the case
-where en- and decapsulation are accomplished at the client. Similarly,
-the specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
+Similarly, the specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
 or L3RA {{RFC8415}} do not foresee the possibility to handle legacy DHCP,
 other than implementing 4o6 in client.
 
