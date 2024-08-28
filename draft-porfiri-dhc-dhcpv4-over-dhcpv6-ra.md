@@ -61,7 +61,7 @@ This document describes a general mechanism for networks
 with legacy IPv4-only clients to use services provided by
 DHCPv6 DHCPv4-over-DHCPv6 (DHCP 4o6) like for instance
 discovering information about network Topology.
-To address this scenario, this document specifies 
+To address this scenario, this document specifies
 a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
 Relay Agent (4o6RA) where 4o6 DHCP en- and decapsulation
 will be implemented even when this is not possible at the client.
@@ -304,7 +304,7 @@ Relay Agent is built up with cooperating 4o6 and LDRA, and internal interface to
 propagated topology information from 4o6 to LDRA.
 
 In a simple case, where the same node hosts 4o6RA and the DHCP4o6 server,
-it may be just enough deploying 4o6RA itself, 
+it may be just enough deploying 4o6RA itself,
 as shown in {{architecture_overview_fig5}}.
 
 ~~~aasvg
@@ -319,7 +319,7 @@ as shown in {{architecture_overview_fig5}}.
           |             |
           |             |
           |             |
-           '-----------' 
+           '-----------'
 
 ~~~
 {: #architecture_overview_fig5 title="Topology path preserved 4o6 RA in DHCP server" artwork-align="center"}
