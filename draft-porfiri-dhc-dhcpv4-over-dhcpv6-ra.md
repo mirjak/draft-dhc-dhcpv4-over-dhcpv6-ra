@@ -198,7 +198,7 @@ shown in {{architecture_overview_fig2}}.
 ~~~
 {: #architecture_overview_fig2 title="Architecture Overview with legacy DHCP client" artwork-align="center"}
 
-Thi document specifes the encapsulation
+This document specifes the encapsulation
 and decapsulation described in {{RFC7341}} to be performed in the Relay Agent
 whereas the DHCP Client does not require any change.
 In this case it is up to the Relay Agent to provide the full
@@ -225,12 +225,10 @@ message and forward the encapsulated DHCPv4-response to the legacy DHCPv4 client
 Any Layer 2 Relay Agent receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
 will handle them as specified in Section 6 of {{RFC6221}}.
 
-# Deployment Considerations
-
-## DHCPv6 server {#dhcpv6_server}
-
 The DHCPv6 server must be compliant with 4o6 according to {{RFC7341}}.
 No additional requirements on DHCPv6 server are needed by this specification.
+
+# Deployment Considerations
 
 ## Reachability {#network_design}
 
@@ -240,7 +238,7 @@ Furthermore, at least one 4o6RA shall be reachable in that
 L2 network so that the reacheability of a DHCP server is granted
 by means of 4o6RA.
 
-## Topology  {#topology_considerations}
+## Topology Discovery {#topology_considerations}
 
 The DHCPv4 {{RFC2131}} and DHCPv6 {{RFC3315}} protocol specifications
 describe how addresses can be allocated to clients based on network
