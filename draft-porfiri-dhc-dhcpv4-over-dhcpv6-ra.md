@@ -196,8 +196,23 @@ of {{RFC7341}}. The mechanism is described in details in section
 ~~~
 {: #architecture_overview_fig1 title="RFC7341 Architecture Overview" artwork-align="center"}
 
+## DHCPv4 over DHCPv6 in the Relay Agent {#dhcpv4v6ra}
+
+The current specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
+or L3RA {{RFC8415}} doesn't foresee the possibility to handle legacy DHCP,
+on the other hand this can be solved at the client as described in {{RFC7341}}
+when possible.
+
+The specification for DHCPv4 over DHCPv6 {{RFC7341}} does only foresee the case
+where en- and decapsulation are accomplished at the client.
+
+This document proposes to extend the features of all DHCPv6 Relay Agents
+by the addition of DHCPv4 over DHCPv6 feature, thus providing the
+en- and decapsulation at the Relay Agent rather than at the client.
+
 The current document applies when the CPE cannot be upgraded, so that
-4o6 cannot be implemented as strictly described in {{RFC7341}}.
+4o6 cannot be implemented as strictly described in {{RFC7341}},
+still providing the same features as {{RFC7341}}.
 The Architecture for the resulting case is shown in {{architecture_overview_fig2}}.
 
 ~~~aasvg
@@ -489,23 +504,6 @@ the Radio Unit's MAC address to the L2 switch and respective port
 where the Radio Unit is connected. To realize this device configuration
 in the Switched Fronthaul network, DHCPv6 can be used to discover the network Topology.
 
-## DHCPv4 over DHCPv6 in the Relay Agent {#dhcpv4v6ra}
-
-The current specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
-or L3RA {{RFC8415}} doesn't foresee the possibility to handle legacy DHCP,
-on the other hand this can be solved at the client as described in {{l2discipv4}}
-when possible.
-
-The specification for DHCPv4 over DHCPv6 {{RFC7341}} does only foresee the case
-where en- and decapsulation are accomplished at the client.
-
-This document proposes to extend the features of all DHCPv6 Relay Agents
-by the addition of DHCPv4 over DHCPv6 feature, thus providing the
-en- and decapsulation at the Relay Agent rather than at the client.
-
-The proposal is aimed at solving all cases where a SW update of the DHCP client
-is not possible for any reason, still providing the same features as
-described in {{RFC7341}}.
 
 ### Layer 2 Topology Discovery using 4o6 DHCP with legacy IPv4 clients {#l2discipv44o6leg}
 
