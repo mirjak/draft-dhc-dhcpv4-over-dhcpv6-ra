@@ -14,8 +14,8 @@
 with legacy IPv4-only clients to use services provided by
 DHCPv6 DHCPv4-over-DHCPv6 (DHCP 4o6) like for instance
 discovering information about network Topology.
-To address this scenario, this document specifies an amendment
-to RFC7341 that allows DHCP 4o6 to be deployed as a
+To address this scenario, this document specifies
+a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
 Relay Agent (4o6RA) where 4o6 DHCP en- and decapsulation
 will be implemented even when this is not possible at the client. 
     " name="description">
@@ -1085,8 +1085,8 @@ svg :is([fill="white"], [fill^="#fff"]) {
 with legacy IPv4-only clients to use services provided by
 DHCPv6 DHCPv4-over-DHCPv6 (DHCP 4o6) like for instance
 discovering information about network Topology.
-To address this scenario, this document specifies an amendment
-to RFC7341 that allows DHCP 4o6 to be deployed as a
+To address this scenario, this document specifies
+a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
 Relay Agent (4o6RA) where 4o6 DHCP en- and decapsulation
 will be implemented even when this is not possible at the client.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
@@ -1155,70 +1155,44 @@ will be implemented even when this is not possible at the client.<a href="#secti
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-applicability" class="internal xref">Applicability</a></p>
+            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-architecture-overview" class="internal xref">Architecture overview</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-architecture-overview" class="internal xref">Architecture overview</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-deployment-considerations" class="internal xref">Deployment Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-reachability" class="internal xref">Reachability</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-topology-discovery" class="internal xref">Topology Discovery</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-deployment-considerations" class="internal xref">Deployment Considerations</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-dhcpv6-server" class="internal xref">DHCPv6 server</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-reachability" class="internal xref">Reachability</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.3">
-                <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="auto internal xref">5.3</a>.  <a href="#name-l2-terminations-at-4o6ra" class="internal xref">L2 terminations at 4o6RA</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
-                <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="auto internal xref">5.4</a>.  <a href="#name-topology" class="internal xref">Topology</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-topology-discovery-with-4o6" class="internal xref">Topology Discovery with 4o6RA</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
-                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="auto internal xref">6.1</a>.  <a href="#name-ipv6-clients-using-dhcpv6" class="internal xref">IPv6 Clients using DHCPv6</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
-                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="auto internal xref">6.2</a>.  <a href="#name-clients-with-dual-connectiv" class="internal xref">Clients with Dual Connectivity and 4o6 DHCP Support</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.3">
-                <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="auto internal xref">6.3</a>.  <a href="#name-ipv4-only-clients-using-4o6" class="internal xref">IPv4-only Clients using 4o6RA</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
-                <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-other-configuration-alterna" class="internal xref">Other configuration alternatives</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-references" class="internal xref">References</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-references" class="internal xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
-                <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
-                <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-example-use-case-topology-d" class="internal xref">Example Use Case: Topology Discovery for IPv4-only Radio Unit in the RAN Switched Fronthaul</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-example-use-case-topology-d" class="internal xref">Example Use Case: Topology Discovery for IPv4-only Radio Unit in the RAN Switched Fronthaul</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1306,9 +1280,7 @@ a number of technical or business reasons.<a href="#section-1-2" class="pilcrow"
 <a href="#name-rfc7341-architecture-overvi" class="selfRef">RFC7341 Architecture Overview</a>
         </figcaption></figure>
 </div>
-<p id="section-1-4">The specification for DHCPv4 over DHCPv6 (4o6) <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> does only foresee the case
-where en- and decapsulation are accomplished at the client. Similarly,
-the specifications for DHCPv6 Relay Agents such as LDRA <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
+<p id="section-1-4">Similarly, the specifications for DHCPv6 Relay Agents such as LDRA <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
 or L3RA <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span> do not foresee the possibility to handle legacy DHCP,
 other than implementing 4o6 in client.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">This document specifies an <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>-based solution that can be implemented in intermediate
@@ -1383,51 +1355,32 @@ described in BCP 14 <span>[<a href="#RFC2119" class="cite xref">RFC2119</a>]</s
 appear in all capitals, as shown here.<a href="#section-2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="applicability">
-<section id="section-3">
-      <h2 id="name-applicability">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-applicability" class="section-name selfRef">Applicability</a>
-      </h2>
-<p id="section-3-1">The mechanism described in this document is intended as a special-purpose mechanism that
-can be implemented in networks with nodes that must obtain IPv4 configuration
-information using DHCPv4 but where native DHCPv4
-is not available. This mechanism may be enabled using an administrative
-control interface, automatically, or by other means that are beyond
-the scope of this document.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">Although the purpose of this document is to address the problem of
-communication between the DHCPv4 client and the DHCPv4 server, the
-mechanism that it describes does not restrict the transported
-messages types to DHCPv4 only.  As the DHCPv4 message is a special
-type of BOOTP message, BOOTP messages <span>[<a href="#RFC0951" class="cite xref">RFC0951</a>]</span> <span class="bcp14">MAY</span> also be
-transported using the same mechanism.<a href="#section-3-2" class="pilcrow">¶</a></p>
-</section>
-</div>
 <div id="architecture-overview">
-<section id="section-4">
+<section id="section-3">
       <h2 id="name-architecture-overview">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-architecture-overview" class="section-name selfRef">Architecture overview</a>
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-architecture-overview" class="section-name selfRef">Architecture overview</a>
       </h2>
-<p id="section-4-1">This document assume an architecture, where a
+<p id="section-3-1">This document assume an architecture, where a
 DHCP client's uplink network supports IPv6 only and the Service Provider's
 network supports IPv6 and limited IPv4 services.  In this scenario,
 the client can only use the IPv6 network to access IPv4 services, so
 IPv4 services must be configured using IPv6 as the underlying network
-protocol.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">DHCP clients may be running on CPE devices, end hosts, or any other
+protocol.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">DHCP clients may be running on CPE devices, end hosts, or any other
 device that supports the DHCP-client function.  This document uses
 the CPE as an example for describing the mechanism.  This does not
 preclude any end host, or other device requiring IPv4 configuration,
-from implementing DHCPv4 over DHCPv6 in the future.<a href="#section-4-2" class="pilcrow">¶</a></p>
-<p id="section-4-3">The current document applies when the CPE cannot be upgraded, so that
-4o6 cannot be implemented as specified in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span><a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4">To address such a network setup, this document proposes to extend the features of all DHCPv6 Relay Agents
+from implementing DHCPv4 over DHCPv6 in the future.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">The current document applies when the CPE cannot be upgraded, so that
+4o6 cannot be implemented as specified in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span><a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">To address such a network setup, this document proposes to extend the features of all DHCPv6 Relay Agents
 by the addition of DHCPv4 over DHCPv6 feature, thus providing the
 en- and decapsulation at the Relay Agent rather than at the client, as
-shown in <a href="#architecture_overview_fig2" class="auto internal xref">Figure 2</a>.<a href="#section-4-4" class="pilcrow">¶</a></p>
+shown in <a href="#architecture_overview_fig2" class="auto internal xref">Figure 2</a>.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <span id="name-architecture-overview-with-"></span><div id="architecture_overview_fig2">
 <figure id="figure-2">
-        <div id="section-4-5.1">
-          <div class="alignCenter art-svg artwork" id="section-4-5.1.1">
+        <div id="section-3-5.1">
+          <div class="alignCenter art-svg artwork" id="section-3-5.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="208" width="480" viewBox="0 0 480 208" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
               <path d="M 8,64 L 8,128" fill="none" stroke="black"></path>
               <path d="M 80,48 L 80,64" fill="none" stroke="black"></path>
@@ -1481,94 +1434,77 @@ shown in <a href="#architecture_overview_fig2" class="auto internal xref">Figure
                 <text x="220" y="116">with</text>
                 <text x="264" y="116">4o6RA</text>
               </g>
-            </svg><a href="#section-4-5.1.1" class="pilcrow">¶</a>
+            </svg><a href="#section-3-5.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
 <a href="#name-architecture-overview-with-" class="selfRef">Architecture Overview with legacy DHCP client</a>
         </figcaption></figure>
 </div>
-<p id="section-4-6">Thi document specifes the encapsulation
+<p id="section-3-6">This document specifes the encapsulation
 and decapsulation described in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> to be performed in the Relay Agent
 whereas the DHCP Client does not require any change.
 In this case it is up to the Relay Agent to provide the full
 4o6 DHCP set of functionality whereas the legacy client is not aware of being served
 via a 4o6 DHCP service.
 All prerequisites and configuration that in section 5 of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>
-apply to the DHCP client shall be applied to the 4o6RA instead.<a href="#section-4-6" class="pilcrow">¶</a></p>
-<p id="section-4-7">This extended 4o6 Relay Agent (4o6RA) exchanges DHCP messages
+apply to the DHCP client shall be applied to the 4o6RA instead.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">This extended 4o6 Relay Agent (4o6RA) exchanges DHCP messages
 between clients and servers using the message formats established in <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span>.
 To maintain interoperability with existing DHCP relays and servers,
 the message format is unchanged from <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span>. The 4o6RA implements
-the same message types as a normal DHCPv6 Relay Agent <span><a href="https://rfc-editor.org/rfc/rfc7341#section-6" class="relref">Section 6</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>. They are:
--  Relay-Forward Messages
--  Relay-Reply Messages<a href="#section-4-7" class="pilcrow">¶</a></p>
-<p id="section-4-8">In this specification, the 4o6RA creates the DHCPV4-QUERY Message
-and encapsulates the DHCP request message received from the legacy DHCPv4 client.<a href="#section-4-8" class="pilcrow">¶</a></p>
-<p id="section-4-9">When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
+the same message types as a normal DHCPv6 Relay Agent <span><a href="https://rfc-editor.org/rfc/rfc7341#section-6" class="relref">Section 6</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-3-7" class="pilcrow">¶</a></p>
+<p id="section-3-8">In this specification, the 4o6RA creates the DHCPV4-QUERY Message
+and encapsulates the DHCP request message received from the legacy DHCPv4 client.<a href="#section-3-8" class="pilcrow">¶</a></p>
+<p id="section-3-9">When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
 it looks for the DHCPv4 Message option within this message.
 If this option is not found, the DHCPv4-response message <span class="bcp14">MUST</span> be discarded.
 If the DHCPv4 Message option is present, the 4o6RA <span class="bcp14">MUST</span> extract the DHCPv4
-message and forward the encapsulated DHCPv4-response to the legacy DHCPv4 client.<a href="#section-4-9" class="pilcrow">¶</a></p>
-<p id="section-4-10">Any Layer 2 Relay Agent receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
-will handle them as specified in Section 6 of <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-4-10" class="pilcrow">¶</a></p>
+message and forward the encapsulated DHCPv4-response to the legacy DHCPv4 client.<a href="#section-3-9" class="pilcrow">¶</a></p>
+<p id="section-3-10">Any Layer 2 Relay Agent receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
+will handle them as specified in Section 6 of <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-3-10" class="pilcrow">¶</a></p>
+<p id="section-3-11">The DHCPv6 server must be compliant with 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.
+No additional requirements on DHCPv6 server are needed by this specification.<a href="#section-3-11" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="deployment-considerations">
-<section id="section-5">
+<section id="section-4">
       <h2 id="name-deployment-considerations">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-deployment-considerations" class="section-name selfRef">Deployment Considerations</a>
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-deployment-considerations" class="section-name selfRef">Deployment Considerations</a>
       </h2>
-<div id="dhcpv6_server">
-<section id="section-5.1">
-        <h3 id="name-dhcpv6-server">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-dhcpv6-server" class="section-name selfRef">DHCPv6 server</a>
-        </h3>
-<p id="section-5.1-1">The DHCPv6 server must be compliant with 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.
-No additional requirements on DHCPv6 server are needey by this specification.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
 <div id="network_design">
-<section id="section-5.2">
+<section id="section-4.1">
         <h3 id="name-reachability">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-reachability" class="section-name selfRef">Reachability</a>
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-reachability" class="section-name selfRef">Reachability</a>
         </h3>
-<p id="section-5.2-1">In order to make 4o6RA behave properly, the L2 network connecting
+<p id="section-4.1-1">The L2 network connecting
 CPEs shall not allow DHCP traffic to reach any DHCP server directly.
 Furthermore, at least one 4o6RA shall be reachable in that
 L2 network so that the reacheability of a DHCP server is granted
-by means of 4o6RA.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="l2_terminations">
-<section id="section-5.3">
-        <h3 id="name-l2-terminations-at-4o6ra">
-<a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-l2-terminations-at-4o6ra" class="section-name selfRef">L2 terminations at 4o6RA</a>
-        </h3>
-<p id="section-5.3-1">The 4o6RA must be able to process all types of DHCP requests and replies.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+by means of 4o6RA.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="topology_considerations">
-<section id="section-5.4">
-        <h3 id="name-topology">
-<a href="#section-5.4" class="section-number selfRef">5.4. </a><a href="#name-topology" class="section-name selfRef">Topology</a>
+<section id="section-4.2">
+        <h3 id="name-topology-discovery">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-topology-discovery" class="section-name selfRef">Topology Discovery</a>
         </h3>
-<p id="section-5.4-1">The DHCPv4 <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span> and DHCPv6 <span>[<a href="#RFC3315" class="cite xref">RFC3315</a>]</span> protocol specifications
+<p id="section-4.2-1">The DHCPv4 <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span> and DHCPv6 <span>[<a href="#RFC3315" class="cite xref">RFC3315</a>]</span> protocol specifications
 describe how addresses can be allocated to clients based on network
 topology information provided by the DHCP relay infrastructure.
 Address allocation decisions are integral to the allocation of
 addresses and prefixes in DHCP. The argument is described in details
 in <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>, here we want to guarantee that 4o6RA doesn't
-break any legacy capability when related to the use of topology.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
-<p id="section-5.4-2">The scenario depicted in <a href="#architecture_overview_fig1" class="auto internal xref">Figure 1</a> preserves the topology
+break any legacy capability when related to the use of topology.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">The scenario depicted in <a href="#architecture_overview_fig1" class="auto internal xref">Figure 1</a> preserves the topology
 information as the DHCPv6 Relay Agent has the knowledge of the interface where the
-encapsulated DHCP request comes from.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
-<p id="section-5.4-3">Moving 4o6 in the intermediate node rather than at the client breaks the topology
-propagation as 4o6 doesn't forward the interface information in the encapsulated message.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
+encapsulated DHCP request comes from.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-3">Moving 4o6 in the intermediate node rather than at the client breaks the topology
+propagation as 4o6 doesn't forward the interface information in the encapsulated message.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
 <span id="name-topology-broken-path"></span><div id="architecture_overview_fig3">
 <figure id="figure-3">
-          <div id="section-5.4-4.1">
-            <div class="alignCenter art-svg artwork" id="section-5.4-4.1.1">
+          <div id="section-4.2-4.1">
+            <div class="alignCenter art-svg artwork" id="section-4.2-4.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="208" width="528" viewBox="0 0 528 208" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 8,64 L 8,128" fill="none" stroke="black"></path>
                 <path d="M 80,48 L 80,64" fill="none" stroke="black"></path>
@@ -1626,28 +1562,28 @@ propagation as 4o6 doesn't forward the interface information in the encapsulated
                   <text x="36" y="116">on</text>
                   <text x="64" y="116">CPE</text>
                 </g>
-              </svg><a href="#section-5.4-4.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-4.2-4.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
 <a href="#name-topology-broken-path" class="selfRef">Topology broken path</a>
           </figcaption></figure>
 </div>
-<p id="section-5.4-5">As shown in <a href="#architecture_overview_fig3" class="auto internal xref">Figure 3</a>, the introduction of 4o6 at the
-edge of the IPv6 network hides the L2 network from the DHCPv6 Relay agent.<a href="#section-5.4-5" class="pilcrow">¶</a></p>
-<p id="section-5.4-6">In order to preserve the topology information, it is recommended that the
+<p id="section-4.2-5">As shown in <a href="#architecture_overview_fig3" class="auto internal xref">Figure 3</a>, the introduction of 4o6 at the
+edge of the IPv6 network hides the L2 network from the DHCPv6 Relay agent.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+<p id="section-4.2-6">In order to preserve the topology information, it is recommended that the
 implementation of 4o6RA is combined with the implementation of LDRA <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
 and that the implementation has a mechanism for LDRA to get interface information
 so that that they can be properly used for Interface-ID option as specified in
 section 5.3.2 of <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.
 The internal mechanisms of an implementation for transporting the interface information,
 their format and whether the interface information contains indication that a 4o6 RA
-agent is involved are out of the scope for this document.<a href="#section-5.4-6" class="pilcrow">¶</a></p>
+agent is involved are out of the scope for this document.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
 <span id="name-topology-path-preserved-wit"></span><div id="architecture_overview_fig4">
 <figure id="figure-4">
-          <div id="section-5.4-7.1">
-            <div class="alignCenter art-svg artwork" id="section-5.4-7.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="240" width="544" viewBox="0 0 544 240" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+          <div id="section-4.2-7.1">
+            <div class="alignCenter art-svg artwork" id="section-4.2-7.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="240" width="480" viewBox="0 0 480 240" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 8,64 L 8,128" fill="none" stroke="black"></path>
                 <path d="M 80,48 L 80,64" fill="none" stroke="black"></path>
                 <path d="M 80,128 L 80,176" fill="none" stroke="black"></path>
@@ -1657,42 +1593,32 @@ agent is involved are out of the scope for this document.<a href="#section-5.4-6
                 <path d="M 192,128 L 192,176" fill="none" stroke="black"></path>
                 <path d="M 224,48 L 224,64" fill="none" stroke="black"></path>
                 <path d="M 224,128 L 224,176" fill="none" stroke="black"></path>
-                <path d="M 240,128 L 240,160" fill="none" stroke="black"></path>
-                <path d="M 256,64 L 256,128" fill="none" stroke="black"></path>
-                <path d="M 312,64 L 312,128" fill="none" stroke="black"></path>
-                <path d="M 336,136 L 336,160" fill="none" stroke="black"></path>
-                <path d="M 392,64 L 392,128" fill="none" stroke="black"></path>
-                <path d="M 448,64 L 448,128" fill="none" stroke="black"></path>
-                <path d="M 464,48 L 464,64" fill="none" stroke="black"></path>
-                <path d="M 464,128 L 464,176" fill="none" stroke="black"></path>
-                <path d="M 536,64 L 536,128" fill="none" stroke="black"></path>
+                <path d="M 248,64 L 248,128" fill="none" stroke="black"></path>
+                <path d="M 328,64 L 328,128" fill="none" stroke="black"></path>
+                <path d="M 384,64 L 384,128" fill="none" stroke="black"></path>
+                <path d="M 464,48 L 464,56" fill="none" stroke="black"></path>
+                <path d="M 464,136 L 464,176" fill="none" stroke="black"></path>
+                <path d="M 472,64 L 472,128" fill="none" stroke="black"></path>
                 <path d="M 96,32 L 176,32" fill="none" stroke="black"></path>
                 <path d="M 240,32 L 448,32" fill="none" stroke="black"></path>
                 <path d="M 8,64 L 96,64" fill="none" stroke="black"></path>
-                <path d="M 176,64 L 256,64" fill="none" stroke="black"></path>
-                <path d="M 312,64 L 392,64" fill="none" stroke="black"></path>
-                <path d="M 448,64 L 536,64" fill="none" stroke="black"></path>
+                <path d="M 176,64 L 328,64" fill="none" stroke="black"></path>
+                <path d="M 384,64 L 472,64" fill="none" stroke="black"></path>
                 <path d="M 96,96 L 176,96" fill="none" stroke="black"></path>
-                <path d="M 256,96 L 312,96" fill="none" stroke="black"></path>
-                <path d="M 392,96 L 448,96" fill="none" stroke="black"></path>
+                <path d="M 328,96 L 384,96" fill="none" stroke="black"></path>
                 <path d="M 8,128 L 96,128" fill="none" stroke="black"></path>
-                <path d="M 176,128 L 256,128" fill="none" stroke="black"></path>
-                <path d="M 312,128 L 392,128" fill="none" stroke="black"></path>
-                <path d="M 448,128 L 536,128" fill="none" stroke="black"></path>
-                <path d="M 256,176 L 320,176" fill="none" stroke="black"></path>
+                <path d="M 176,128 L 328,128" fill="none" stroke="black"></path>
+                <path d="M 384,128 L 472,128" fill="none" stroke="black"></path>
                 <path d="M 96,192 L 176,192" fill="none" stroke="black"></path>
                 <path d="M 240,192 L 448,192" fill="none" stroke="black"></path>
                 <path d="M 96,32 C 87.16936,32 80,39.16936 80,48" fill="none" stroke="black"></path>
                 <path d="M 176,32 C 184.83064,32 192,39.16936 192,48" fill="none" stroke="black"></path>
                 <path d="M 240,32 C 231.16936,32 224,39.16936 224,48" fill="none" stroke="black"></path>
                 <path d="M 448,32 C 456.83064,32 464,39.16936 464,48" fill="none" stroke="black"></path>
-                <path d="M 256,176 C 247.16936,176 240,168.83064 240,160" fill="none" stroke="black"></path>
-                <path d="M 320,176 C 328.83064,176 336,168.83064 336,160" fill="none" stroke="black"></path>
                 <path d="M 96,192 C 87.16936,192 80,184.83064 80,176" fill="none" stroke="black"></path>
                 <path d="M 176,192 C 184.83064,192 192,184.83064 192,176" fill="none" stroke="black"></path>
                 <path d="M 240,192 C 231.16936,192 224,184.83064 224,176" fill="none" stroke="black"></path>
                 <path d="M 448,192 C 456.83064,192 464,184.83064 464,176" fill="none" stroke="black"></path>
-                <polygon class="arrowhead" points="344,136 332,130.4 332,141.6" fill="black" transform="rotate(270,336,136)"></polygon>
                 <g class="text">
                   <text x="100" y="52">L2</text>
                   <text x="144" y="52">Network</text>
@@ -1700,271 +1626,110 @@ agent is involved are out of the scope for this document.<a href="#section-5.4-6
                   <text x="376" y="52">Network</text>
                   <text x="52" y="84">DHCP</text>
                   <text x="208" y="84">4o6</text>
-                  <text x="348" y="84">LDRA</text>
-                  <text x="476" y="84">DHCP</text>
-                  <text x="512" y="84">4o6</text>
+                  <text x="284" y="84">LDRA</text>
+                  <text x="412" y="84">DHCP</text>
+                  <text x="448" y="84">4o6</text>
                   <text x="52" y="100">Client</text>
                   <text x="204" y="100">RA</text>
-                  <text x="352" y="100">RFC6221</text>
-                  <text x="492" y="100">Server</text>
+                  <text x="288" y="100">RFC6221</text>
+                  <text x="428" y="100">Server</text>
                   <text x="36" y="116">on</text>
                   <text x="64" y="116">CPE</text>
-                  <text x="288" y="148">interface</text>
-                  <text x="284" y="164">info</text>
                 </g>
-              </svg><a href="#section-5.4-7.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-4.2-7.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
 <a href="#name-topology-path-preserved-wit" class="selfRef">Topology path preserved with LDRA</a>
           </figcaption></figure>
 </div>
-<p id="section-5.4-8">The recommended architecture is shown in <a href="#architecture_overview_fig4" class="auto internal xref">Figure 4</a> where the whole
-Relay Agent is built up with cooperating 4o6 and LDRA, and interface information is
-propagated from 4o6 to LDRA with implementation specific mechanism.<a href="#section-5.4-8" class="pilcrow">¶</a></p>
-<p id="section-5.4-9">In a simple case, where the same node hosts 4o6RA and the DHCP4o6 server,
-it may be just enough deploying 4o6RA itself, but in the general case
-and in order to preserve the network topology information, it is
-recommended the 4o6RA to be deployed in combination with a LDRA
-as shown in <a href="#architecture_overview_fig4" class="auto internal xref">Figure 4</a>.<a href="#section-5.4-9" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
-<div id="topology-discovery-with-4o6ra">
-<section id="section-6">
-      <h2 id="name-topology-discovery-with-4o6">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-topology-discovery-with-4o6" class="section-name selfRef">Topology Discovery with 4o6RA</a>
-      </h2>
-<p id="section-6-1">The reason why Topology is important is well described in <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>,
-among the motivation there's the possibility to provide a dedicated
-configuration based on where and how the CPE is connected to the
-network. The <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span> also describes how topology information is made available
-at the DHCP Server in IPv4 and IPv6 networks.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">Besides the cases where topology is used directly at the DHCP Server,
-we also consider cases where the Topology is used by a third agent that
-queries the DHCP Server later than in the DHCP configuration phase.
-In this case, the agent receives the IP address information of the CPE
-and then queries the DHCP server using that IP address for obtaining
-the topology information.<a href="#section-6-2" class="pilcrow">¶</a></p>
-<div id="l2discipv6">
-<section id="section-6.1">
-        <h3 id="name-ipv6-clients-using-dhcpv6">
-<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-ipv6-clients-using-dhcpv6" class="section-name selfRef">IPv6 Clients using DHCPv6</a>
-        </h3>
-<p id="section-6.1-1">If the network is fully IPv6 enabled, DHCPv6 <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span> can be used for Topology Discovery.
-This solution uses DHCPv6 Relay Agent support in the server, whilst Lightweight DHCPv6
-Relay Agents (LDRA) <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span> are implemented in the L2 switches to inform DHCPv6 server
-about the L2 Topology.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="l2discipv4">
-<section id="section-6.2">
-        <h3 id="name-clients-with-dual-connectiv">
-<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-clients-with-dual-connectiv" class="section-name selfRef">Clients with Dual Connectivity and 4o6 DHCP Support</a>
-        </h3>
-<p id="section-6.2-1">If CPE needs an IPv4 address, it is connected to both IPv4 and IPv6 and supports
-DHCPv4-over-DHCPv6 <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, DHCPv6 <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span> with a DHCPv4-over-DHCPv6 compliant DHCP server
-can be used for Topology Discovery whereas DHCP is used still for IP address assignment.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.2-2">An example network with 4o6 compliant clients can be sketched as follows:<a href="#section-6.2-2" class="pilcrow">¶</a></p>
-<span id="name-layer-2-topology-discover-w"></span><div id="l2_switched_4o6">
+<p id="section-4.2-8">The assumed architecture is shown in <a href="#architecture_overview_fig4" class="auto internal xref">Figure 4</a> where the whole
+Relay Agent is built up with cooperating 4o6 and LDRA, and internal interface to
+propagated topology information from 4o6 to LDRA.<a href="#section-4.2-8" class="pilcrow">¶</a></p>
+<p id="section-4.2-9">In a simple case, where the same node hosts 4o6RA and the DHCP4o6 server,
+it may be just enough deploying 4o6RA itself,
+as shown in <a href="#architecture_overview_fig5" class="auto internal xref">Figure 5</a>.<a href="#section-4.2-9" class="pilcrow">¶</a></p>
+<span id="name-topology-path-preserved-4o6"></span><div id="architecture_overview_fig5">
 <figure id="figure-5">
-          <div id="section-6.2-3.1">
-            <div class="alignCenter art-svg artwork" id="section-6.2-3.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="224" width="544" viewBox="0 0 544 224" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
-                <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
-                <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
-                <path d="M 88,32 L 88,80" fill="none" stroke="black"></path>
-                <path d="M 88,112 L 88,160" fill="none" stroke="black"></path>
-                <path d="M 152,48 L 152,144" fill="none" stroke="black"></path>
-                <path d="M 168,48 L 168,80" fill="none" stroke="black"></path>
-                <path d="M 224,48 L 224,144" fill="none" stroke="black"></path>
-                <path d="M 272,48 L 272,160" fill="none" stroke="black"></path>
-                <path d="M 296,64 L 296,144" fill="none" stroke="black"></path>
-                <path d="M 336,64 L 336,96" fill="none" stroke="black"></path>
-                <path d="M 392,64 L 392,144" fill="none" stroke="black"></path>
-                <path d="M 432,48 L 432,160" fill="none" stroke="black"></path>
-                <path d="M 456,48 L 456,128" fill="none" stroke="black"></path>
-                <path d="M 536,48 L 536,128" fill="none" stroke="black"></path>
-                <path d="M 8,32 L 88,32" fill="none" stroke="black"></path>
-                <path d="M 152,48 L 224,48" fill="none" stroke="black"></path>
-                <path d="M 456,48 L 536,48" fill="none" stroke="black"></path>
-                <path d="M 88,64 L 144,64" fill="none" stroke="black"></path>
-                <path d="M 296,64 L 392,64" fill="none" stroke="black"></path>
-                <path d="M 8,80 L 88,80" fill="none" stroke="black"></path>
-                <path d="M 168,80 L 224,80" fill="none" stroke="black"></path>
-                <path d="M 432,80 L 448,80" fill="none" stroke="black"></path>
-                <path d="M 272,96 L 288,96" fill="none" stroke="black"></path>
-                <path d="M 336,96 L 392,96" fill="none" stroke="black"></path>
-                <path d="M 8,112 L 88,112" fill="none" stroke="black"></path>
-                <path d="M 88,128 L 144,128" fill="none" stroke="black"></path>
-                <path d="M 224,128 L 264,128" fill="none" stroke="black"></path>
-                <path d="M 392,128 L 424,128" fill="none" stroke="black"></path>
-                <path d="M 456,128 L 536,128" fill="none" stroke="black"></path>
-                <path d="M 152,144 L 224,144" fill="none" stroke="black"></path>
-                <path d="M 296,144 L 392,144" fill="none" stroke="black"></path>
-                <path d="M 8,160 L 88,160" fill="none" stroke="black"></path>
+          <div id="section-4.2-10.1">
+            <div class="alignCenter art-svg artwork" id="section-4.2-10.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="240" width="344" viewBox="0 0 344 240" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,64 L 8,128" fill="none" stroke="black"></path>
+                <path d="M 80,48 L 80,64" fill="none" stroke="black"></path>
+                <path d="M 80,128 L 80,176" fill="none" stroke="black"></path>
+                <path d="M 96,64 L 96,128" fill="none" stroke="black"></path>
+                <path d="M 176,64 L 176,128" fill="none" stroke="black"></path>
+                <path d="M 192,48 L 192,64" fill="none" stroke="black"></path>
+                <path d="M 192,128 L 192,176" fill="none" stroke="black"></path>
+                <path d="M 248,64 L 248,128" fill="none" stroke="black"></path>
+                <path d="M 336,64 L 336,128" fill="none" stroke="black"></path>
+                <path d="M 96,32 L 176,32" fill="none" stroke="black"></path>
+                <path d="M 8,64 L 96,64" fill="none" stroke="black"></path>
+                <path d="M 176,64 L 336,64" fill="none" stroke="black"></path>
+                <path d="M 96,96 L 176,96" fill="none" stroke="black"></path>
+                <path d="M 8,128 L 96,128" fill="none" stroke="black"></path>
+                <path d="M 176,128 L 336,128" fill="none" stroke="black"></path>
+                <path d="M 96,192 L 176,192" fill="none" stroke="black"></path>
+                <path d="M 96,32 C 87.16936,32 80,39.16936 80,48" fill="none" stroke="black"></path>
+                <path d="M 176,32 C 184.83064,32 192,39.16936 192,48" fill="none" stroke="black"></path>
+                <path d="M 96,192 C 87.16936,192 80,184.83064 80,176" fill="none" stroke="black"></path>
+                <path d="M 176,192 C 184.83064,192 192,184.83064 192,176" fill="none" stroke="black"></path>
                 <g class="text">
-                  <text x="48" y="52">4o6</text>
-                  <text x="132" y="52">P1</text>
-                  <text x="48" y="68">CPE</text>
-                  <text x="196" y="68">LDRA</text>
-                  <text x="488" y="68">4o6</text>
-                  <text x="364" y="84">L3RA</text>
-                  <text x="492" y="84">DHCP</text>
-                  <text x="180" y="100">L2</text>
-                  <text x="492" y="100">Server</text>
-                  <text x="132" y="116">P2</text>
-                  <text x="188" y="116">switch</text>
-                  <text x="48" y="132">4o6</text>
-                  <text x="348" y="132">Router</text>
-                  <text x="48" y="148">CPE</text>
+                  <text x="100" y="52">L2</text>
+                  <text x="144" y="52">Network</text>
+                  <text x="52" y="84">DHCP</text>
+                  <text x="208" y="84">4o6</text>
+                  <text x="276" y="84">DHCP</text>
+                  <text x="312" y="84">4o6</text>
+                  <text x="52" y="100">Client</text>
+                  <text x="204" y="100">RA</text>
+                  <text x="292" y="100">Server</text>
+                  <text x="36" y="116">on</text>
+                  <text x="64" y="116">CPE</text>
                 </g>
-              </svg><a href="#section-6.2-3.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-4.2-10.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
-<a href="#name-layer-2-topology-discover-w" class="selfRef">Layer 2 Topology discover with 4o6</a>
+<a href="#name-topology-path-preserved-4o6" class="selfRef">Topology path preserved 4o6 RA in DHCP server</a>
           </figcaption></figure>
 </div>
-<p id="section-6.2-4">In <a href="#l2_switched_4o6" class="auto internal xref">Figure 5</a> the client supports <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> by implementing the 4o6 encapsulation
-whereas the intermediate nodes implement LDRA <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span> or L3RA <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span> and finally
-the DHCP server is 4o6 DHCP capable <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-6.2-4" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="ipv4-only-clients-using-4o6ra">
-<section id="section-6.3">
-        <h3 id="name-ipv4-only-clients-using-4o6">
-<a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-ipv4-only-clients-using-4o6" class="section-name selfRef">IPv4-only Clients using 4o6RA</a>
-        </h3>
-<p id="section-6.3-1">If the CPE is IPv4 and is connected to a DHCP Server via the 4o6RA
-as shown in <a href="#architecture_overview_fig4" class="auto internal xref">Figure 4</a>, the DHCP 4o6 Server
-takes the aggregate information of the Topology for both IPv4
-and IPv6 segments of the network.<a href="#section-6.3-1" class="pilcrow">¶</a></p>
-<p id="section-6.3-2">Ane example of such scenario is depicted here:<a href="#section-6.3-2" class="pilcrow">¶</a></p>
-<span id="name-layer-2-architecture-with-4"></span><div id="l2_switched_4o6_leg">
-<figure id="figure-6">
-          <div id="section-6.3-3.1">
-            <div class="alignCenter art-svg artwork" id="section-6.3-3.1.1">
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="240" width="544" viewBox="0 0 544 240" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
-                <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
-                <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
-                <path d="M 88,32 L 88,80" fill="none" stroke="black"></path>
-                <path d="M 88,112 L 88,160" fill="none" stroke="black"></path>
-                <path d="M 152,48 L 152,160" fill="none" stroke="black"></path>
-                <path d="M 168,48 L 168,80" fill="none" stroke="black"></path>
-                <path d="M 208,128 L 208,160" fill="none" stroke="black"></path>
-                <path d="M 224,48 L 224,160" fill="none" stroke="black"></path>
-                <path d="M 272,48 L 272,160" fill="none" stroke="black"></path>
-                <path d="M 296,64 L 296,144" fill="none" stroke="black"></path>
-                <path d="M 336,64 L 336,96" fill="none" stroke="black"></path>
-                <path d="M 392,64 L 392,144" fill="none" stroke="black"></path>
-                <path d="M 432,48 L 432,208" fill="none" stroke="black"></path>
-                <path d="M 456,48 L 456,112" fill="none" stroke="black"></path>
-                <path d="M 456,144 L 456,208" fill="none" stroke="black"></path>
-                <path d="M 536,48 L 536,112" fill="none" stroke="black"></path>
-                <path d="M 536,144 L 536,208" fill="none" stroke="black"></path>
-                <path d="M 8,32 L 88,32" fill="none" stroke="black"></path>
-                <path d="M 152,48 L 224,48" fill="none" stroke="black"></path>
-                <path d="M 456,48 L 536,48" fill="none" stroke="black"></path>
-                <path d="M 88,64 L 144,64" fill="none" stroke="black"></path>
-                <path d="M 296,64 L 392,64" fill="none" stroke="black"></path>
-                <path d="M 8,80 L 88,80" fill="none" stroke="black"></path>
-                <path d="M 168,80 L 224,80" fill="none" stroke="black"></path>
-                <path d="M 432,80 L 448,80" fill="none" stroke="black"></path>
-                <path d="M 272,96 L 288,96" fill="none" stroke="black"></path>
-                <path d="M 336,96 L 392,96" fill="none" stroke="black"></path>
-                <path d="M 8,112 L 88,112" fill="none" stroke="black"></path>
-                <path d="M 456,112 L 536,112" fill="none" stroke="black"></path>
-                <path d="M 152,128 L 208,128" fill="none" stroke="black"></path>
-                <path d="M 224,128 L 264,128" fill="none" stroke="black"></path>
-                <path d="M 392,128 L 424,128" fill="none" stroke="black"></path>
-                <path d="M 88,144 L 152,144" fill="none" stroke="black"></path>
-                <path d="M 296,144 L 392,144" fill="none" stroke="black"></path>
-                <path d="M 456,144 L 536,144" fill="none" stroke="black"></path>
-                <path d="M 8,160 L 88,160" fill="none" stroke="black"></path>
-                <path d="M 152,160 L 224,160" fill="none" stroke="black"></path>
-                <path d="M 432,176 L 448,176" fill="none" stroke="black"></path>
-                <path d="M 456,208 L 536,208" fill="none" stroke="black"></path>
-                <g class="text">
-                  <text x="48" y="52">4o6</text>
-                  <text x="132" y="52">P1</text>
-                  <text x="48" y="68">CPE</text>
-                  <text x="196" y="68">LDRA</text>
-                  <text x="488" y="68">4o6</text>
-                  <text x="364" y="84">L3RA</text>
-                  <text x="492" y="84">DHCP</text>
-                  <text x="180" y="100">L2</text>
-                  <text x="492" y="100">Server</text>
-                  <text x="188" y="116">switch</text>
-                  <text x="44" y="132">Legacy</text>
-                  <text x="132" y="132">P2</text>
-                  <text x="348" y="132">Router</text>
-                  <text x="48" y="148">CPE</text>
-                  <text x="176" y="148">4o6</text>
-                  <text x="492" y="164">Legacy</text>
-                  <text x="492" y="180">DHCP</text>
-                  <text x="492" y="196">Server</text>
-                </g>
-              </svg><a href="#section-6.3-3.1.1" class="pilcrow">¶</a>
-</div>
-</div>
-<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
-<a href="#name-layer-2-architecture-with-4" class="selfRef">Layer 2 architecture with 4o6 and legacy client</a>
-          </figcaption></figure>
-</div>
-<p id="section-6.3-4">If the DHCP 4o6 Server is built up with standalone DHCP and DHCPv6
-servers as shown in <a href="#l2_switched_4o6_leg" class="auto internal xref">Figure 6</a>, each of them knows only part of the Topology.
-In such case a third agent willing to provide the configuration to CPE
-must be aware about the network
-and query both DHCP and DHCPv6 server in order to get the complete
-topology for configuration.<a href="#section-6.3-4" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="other-configuration-alternatives">
-<section id="section-6.4">
-        <h3 id="name-other-configuration-alterna">
-<a href="#section-6.4" class="section-number selfRef">6.4. </a><a href="#name-other-configuration-alterna" class="section-name selfRef">Other configuration alternatives</a>
-        </h3>
-<p id="section-6.4-1">A third agent may also use other mechanism than DHCP for Topology
-Discovery such as LLDP, such mechanism requires implementation at
-the CPE and is not considered in this document.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="seccons">
-<section id="section-7">
+<section id="section-5">
       <h2 id="name-security-considerations">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-7-1">This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
+<p id="section-5-1">This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
 connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
 does not change anything else in the 4o6 DHCP specification and therefore the
-security consideration of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> still apply.<a href="#section-7-1" class="pilcrow">¶</a></p>
-<p id="section-7-2">The legacy IPv4 client is not aware of this mechanism, however, even
+security consideration of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> still apply.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">The legacy IPv4 client is not aware of this mechanism, however, even
 when 4o6 DHCP is used, the client does not have any control about the
 information provided by the Relay agent. As such this change does not
-raise any additional security concerns.<a href="#section-7-2" class="pilcrow">¶</a></p>
+raise any additional security concerns.<a href="#section-5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-8">
+<section id="section-6">
       <h2 id="name-iana-considerations">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-8-1">This document has no IANA actions.<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">This document has no IANA actions.<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
-<section id="section-9">
+<section id="section-7">
       <h2 id="name-references">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-9.1">
+<section id="section-7.1">
         <h3 id="name-normative-references">
-<a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
@@ -2007,9 +1772,9 @@ raise any additional security concerns.<a href="#section-7-2" class="pilcrow">¶
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-9.2">
+<section id="section-7.2">
         <h3 id="name-informative-references">
-<a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="RFC0951">[RFC0951]</dt>
@@ -2046,7 +1811,7 @@ between the Radio Units themselves and the physical ports where they are connect
 The Radio Units are the client hosts in the switched Fronthaul network and
 need to be configured based on their Topology.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <span id="name-layer-2-switched-fronthaul-"></span><div id="l2_switched_fh">
-<figure id="figure-7">
+<figure id="figure-6">
         <div id="appendix-A-2.1">
           <div class="alignCenter art-svg artwork" id="appendix-A-2.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="352" width="544" viewBox="0 0 544 352" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
@@ -2133,11 +1898,11 @@ need to be configured based on their Topology.<a href="#appendix-A-1" class="pil
             </svg><a href="#appendix-A-2.1.1" class="pilcrow">¶</a>
 </div>
 </div>
-<figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
 <a href="#name-layer-2-switched-fronthaul-" class="selfRef">Layer 2 Switched Fronthaul Example</a>
         </figcaption></figure>
 </div>
-<p id="appendix-A-3"><a href="#l2_switched_fh" class="auto internal xref">Figure 7</a> shows multiple Radio Units that are connected
+<p id="appendix-A-3"><a href="#l2_switched_fh" class="auto internal xref">Figure 6</a> shows multiple Radio Units that are connected
 to one Baseband Unit by means of a Layer 2 switched network.
 The Baseband Unit is the central processing unit that handles baseband information.
 A Baseband Unit is often placed rather centrally, while the Radio Units need to
