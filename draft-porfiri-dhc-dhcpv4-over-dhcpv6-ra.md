@@ -160,22 +160,6 @@ The following terms and acronyms are used in this document:
 
 {::boilerplate bcp14-tagged}
 
-# Applicability {#applicability}
-
-The mechanism described in this document is intended as a special-purpose mechanism that
-can be implemented in networks with nodes that must obtain IPv4 configuration
-information using DHCPv4 but where native DHCPv4
-is not available. This mechanism may be enabled using an administrative
-control interface, automatically, or by other means that are beyond
-the scope of this document.
-
-Although the purpose of this document is to address the problem of
-communication between the DHCPv4 client and the DHCPv4 server, the
-mechanism that it describes does not restrict the transported
-messages types to DHCPv4 only.  As the DHCPv4 message is a special
-type of BOOTP message, BOOTP messages {{RFC0951}} MAY also be
-transported using the same mechanism.
-
 # Architecture overview
 
 This document assume an architecture, where a
