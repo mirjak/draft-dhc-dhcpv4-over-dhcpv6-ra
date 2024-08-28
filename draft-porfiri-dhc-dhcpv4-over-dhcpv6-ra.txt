@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 14 February 2025                                          Cisco
+Expires: 1 March 2025                                              Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                          13 August 2024
+                                                          28 August 2024
 
 
               DHCPv4 over DHCPv6 with Relay Agent Support
@@ -50,7 +50,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 February 2025.
+   This Internet-Draft will expire on 1 March 2025.
 
 Copyright Notice
 
@@ -245,7 +245,7 @@ Table of Contents
    solution described at [RFC7341].  In order to make 4o6RA behave
    properly, the L2 network connecting CPEs shall not allow DHCP traffic
    to reach any DHCP server.  Furthermore, at least one 4o6RA shall be
-   reacheable in that L2 network so that the reacheability of a DHCP
+   reachable in that L2 network so that the reacheability of a DHCP
    server is granted by means of 4o6RA.
 
 4.2.  Considerations about L2 terminations at 4o6RA
@@ -341,7 +341,7 @@ Table of Contents
    The legacy IPv4 client is not aware of this mechanism, however, even
    when 4o6 DHCP is used, the client does not have any control about the
    information provided by the Relay agent.  As such this change does
-   not raise any additional secruity concerns.
+   not raise any additional security concerns.
 
 6.  IANA Considerations
 
