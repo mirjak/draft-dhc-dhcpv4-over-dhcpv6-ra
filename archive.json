@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-27T01:21:43.824016+00:00",
+  "timestamp": "2024-08-29T01:22:53.049814+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -71,15 +71,15 @@
       "id": "I_kwDOLMlkXc6SsX66",
       "title": "Additional typos",
       "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/2",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "jariarkko",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Section 4.2:\r\n\r\n \t   The scenario depicted in Figure 1 preserves the topology infomation\t\r\n \t   as the DHCPv6 Relay Agent has the knowledge of the interface where\t\r\n \t   the encapsulated DHCP request comes from.\r\n\r\ns/infomation/information/\r\n",
       "createdAt": "2024-08-12T14:05:32Z",
-      "updatedAt": "2024-08-12T14:05:32Z",
-      "closedAt": null,
+      "updatedAt": "2024-08-28T10:31:20Z",
+      "closedAt": "2024-08-28T10:31:20Z",
       "comments": []
     },
     {
@@ -87,15 +87,15 @@
       "id": "I_kwDOLMlkXc6SsYXH",
       "title": "Typos",
       "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/3",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "jariarkko",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Some typos I noticed or small text changes I think might be useful:\r\n\r\n224c224\r\n< when delaing with DHCP termination.\r\n---\r\n> when dealing with DHCP termination.\r\n227c227\r\n< but using the 4o6RA.\r\n---\r\n> except by using the 4o6RA.\r\n240c240\r\n< propagatin as 4o6 doesn't forward the interface information in the encapsulated message.\r\n---\r\n> propagation as 4o6 doesn't forward the interface information in the encapsulated message.\r\n262c262\r\n< and that the implementor provides a mechanism for LDRA to get interface information\r\n---\r\n> and that the implementation has a mechanism for LDRA to get interface information\r\n265c265\r\n< The mechanisms for transporting the interface information, their format and whether\r\n---\r\n> The internal mechanisms of an implementation for transporting the interface information, their format and whether\r\n307c307\r\n< Deployng 4o6RA at the network edge requires care in the network\r\n---\r\n> Deploying 4o6RA at the network edge requires care in the network\r\n311c311\r\n< are reacheable from the DHCP client and that at least one 4o6RA\r\n---\r\n> are reachable from the DHCP client and that at least one 4o6RA\r\n325c325\r\n< provide any additional secruity concerns.\r\n---\r\n> raise any additional security concerns.",
       "createdAt": "2024-08-12T14:06:14Z",
-      "updatedAt": "2024-08-12T14:06:14Z",
-      "closedAt": null,
+      "updatedAt": "2024-08-28T10:34:46Z",
+      "closedAt": "2024-08-28T10:34:46Z",
       "comments": []
     },
     {
@@ -103,15 +103,15 @@
       "id": "I_kwDOLMlkXc6Ssqvu",
       "title": "Even more typos",
       "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "jariarkko",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "\r\nThis document describes how that mechanism is to be deployes in\r\n\r\n 0: deplores\r\n 1: deployed\r\n 2: deploys\r\n\r\n> needs to be done at the nework node implementing the Relay Agent itself\r\n\r\n 0: network\r\n\r\nIn a simple case, where the same node hosts 4o6RA and the DHCP4o6 server,\r\nit may be just enough deploying 4o6RA itself, bu in the general case\r\n\r\n 7: but\r\n\r\nDeploying 4o6RA at the network edge requires care in the network\r\ndesign as well as in the desing of the 4o6RA parser.\r\n\r\n 0: design\r\n\r\nconnected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document\r\ndoes not change anything else in the 4o6 DHCP speacification and therefore the\r\n\r\n 0: specification\r\n\r\nOne of the clients is responsible for the configuration of the other\r\nclients based on their topology. Updating of SW on the clients\r\n\r\n  maybe just \"software\"\r\n\r\n### Topology Based Configuration of RU\r\n\r\n  first occurrence of \"RU\"\r\n\r\nTraffic between Radio Units and Bandband Units is both IP-based and Layer-2-based\r\n\r\n  Baseband\r\n\r\nThe proposal is aimed at solving all cases where a SW update of the DHCP client\r\nis not possbile for any reason, still providing the same features as\r\n\r\n 0: possible\r\n\r\n### Layer 2 Topogoy Discovery using 4o6 DHCP with legacy IPv4 clients {#l2discipv44o6leg}\r\n\r\n  Topology\r\n\r\n",
       "createdAt": "2024-08-12T14:36:50Z",
-      "updatedAt": "2024-08-12T14:36:50Z",
-      "closedAt": null,
+      "updatedAt": "2024-08-28T10:31:32Z",
+      "closedAt": "2024-08-28T10:31:32Z",
       "comments": []
     },
     {
@@ -131,5 +131,34 @@
       "comments": []
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 6,
+      "id": "PR_kwDOLMlkXc55uUl9",
+      "title": "restructure",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/6",
+      "state": "MERGED",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-28T15:01:14Z",
+      "updatedAt": "2024-08-28T15:48:18Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "29e7a0bb42b911bdde95222456d6b027298950b2",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "mirjak-patch-1",
+      "headRefOid": "bcf6e72b20b0dea53c17f9902a0a47d2860db583",
+      "closedAt": "2024-08-28T15:48:18Z",
+      "mergedAt": "2024-08-28T15:48:18Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "57788806906c2ae633ced0723d144900381de57b"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
