@@ -230,14 +230,6 @@ No additional requirements on DHCPv6 server are needed by this specification.
 
 # Deployment Considerations
 
-## Reachability {#network_design}
-
-The L2 network connecting
-CPEs shall not allow DHCP traffic to reach any DHCP server directly.
-Furthermore, at least one 4o6RA shall be reachable in that
-L2 network so that the reacheability of a DHCP server is granted
-by means of 4o6RA.
-
 ## Topology Discovery {#topology_considerations}
 
 The DHCPv4 {{RFC2131}} and DHCPv6 {{RFC3315}} protocol specifications
@@ -292,8 +284,6 @@ agent is involved are out of the scope for this document.
  |  on CPE  |         |        |         |      |          |
  +--------+-+         +-+---+--+---------+      +----------+
           |             |   |                             |
-          |             |   |                             |
-          |             |   |                             |
            '-----------'     '---------------------------'
 
 ~~~
@@ -317,8 +307,6 @@ as shown in {{architecture_overview_fig5}}.
  |  on CPE  |         |        |          |
  +--------+-+         +-+------+----------+
           |             |
-          |             |
-          |             |
            '-----------'
 
 ~~~
@@ -330,6 +318,11 @@ This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
 connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
 does not change anything else in the 4o6 DHCP specification and therefore the
 security consideration of {{RFC7341}} still apply.
+
+The mechanism described differs from {{RFC7341}} as the DHCP client
+actually sends and receveis DHCP messages, whereas in {{RFC7341}} it
+only sends DHCPv6 messages. This opens for the possibility that
+DHCP messages will reach a DHCP server without using the 4o6RA.
 
 The legacy IPv4 client is not aware of this mechanism, however, even
 when 4o6 DHCP is used, the client does not have any control about the
