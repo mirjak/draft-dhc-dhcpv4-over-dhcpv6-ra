@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 1 March 2025                                              Cisco
+Expires: 3 March 2025                                              Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                          28 August 2024
+                                                          30 August 2024
 
 
               DHCPv4 over DHCPv6 with Relay Agent Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 March 2025.
+   This Internet-Draft will expire on 3 March 2025.
 
 Copyright Notice
 
@@ -73,8 +73,7 @@ Table of Contents
    2.  Conventions and Definitions
    3.  Architecture overview
    4.  Deployment Considerations
-     4.1.  Reachability
-     4.2.  Topology Discovery
+     4.1.  Topology Discovery
    5.  Security Considerations
    6.  IANA Considerations
    7.  References
@@ -245,14 +244,7 @@ Table of Contents
 
 4.  Deployment Considerations
 
-4.1.  Reachability
-
-   The L2 network connecting CPEs shall not allow DHCP traffic to reach
-   any DHCP server directly.  Furthermore, at least one 4o6RA shall be
-   reachable in that L2 network so that the reacheability of a DHCP
-   server is granted by means of 4o6RA.
-
-4.2.  Topology Discovery
+4.1.  Topology Discovery
 
    The DHCPv4 [RFC2131] and DHCPv6 [RFC3315] protocol specifications
    describe how addresses can be allocated to clients based on network
@@ -303,8 +295,6 @@ Table of Contents
         |  on CPE  |         |        |         |      |          |
         +--------+-+         +-+---+--+---------+      +----------+
                  |             |   |                             |
-                 |             |   |                             |
-                 |             |   |                             |
                   '-----------'     '---------------------------'
 
                 Figure 4: Topology path preserved with LDRA
@@ -325,8 +315,6 @@ Table of Contents
                  |  on CPE  |         |        |          |
                  +--------+-+         +-+------+----------+
                           |             |
-                          |             |
-                          |             |
                            '-----------'
 
           Figure 5: Topology path preserved 4o6 RA in DHCP server
@@ -338,6 +326,11 @@ Table of Contents
    and decapsulation.  This document does not change anything else in
    the 4o6 DHCP specification and therefore the security consideration
    of [RFC7341] still apply.
+
+   The mechanism described differs from [RFC7341] as the DHCP client
+   actually sends and receveis DHCP messages, whereas in [RFC7341] it
+   only sends DHCPv6 messages.  This opens for the possibility that DHCP
+   messages will reach a DHCP server without using the 4o6RA.
 
    The legacy IPv4 client is not aware of this mechanism, however, even
    when 4o6 DHCP is used, the client does not have any control about the
