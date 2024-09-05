@@ -107,7 +107,7 @@ The following terms and acronyms are used in this document:
 * Lightweight DHCPv6 Relay Agent (or LDRA):
    This is an extension of the original DHCPv6 Relay Agent mechanism,
    to support also Layer 2 devices performing a Relay Agent function {{RFC6221}}.
-  
+ 
 * DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
    The 4o6 Relay Agent (as specified in this document)
    is the part of an RA implementing 4o6.
