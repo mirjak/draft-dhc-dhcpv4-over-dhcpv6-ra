@@ -117,7 +117,7 @@ The following terms and acronyms are used in this document:
 # DHCPv4 over DHCPv6 Relay Agent (4o6RA)
 
 This document assume an network, where IPv4-only clients are connected
-to an uplink network that supports IPv6 only and limited IPv4 services. 
+to an uplink network that supports IPv6 only and limited IPv4 services.
 
 To address such a network setup, this document proposes to extend
 DHCPv6 Relay Agents with  DHCPv4 over DHCPv6, as
