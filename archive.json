@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-05T01:23:53.412079+00:00",
+  "timestamp": "2024-09-08T01:36:33.576022+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -159,6 +159,147 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOLMlkXc56jSSn",
+      "title": "Full edit pass",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/7",
+      "state": "MERGED",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Some editorial changes, nits and clarifications, but I also removed a bit of text that was copied from RFC7341 again (this is just not needed) and re-added some minor parts from the previous draft version. I also re-added a deployment consideration section as the client not being aware is a mayor difference to RFC7341 and needs some care in deployment. This is a bit redundant with some part of the sec considerations now but I think that is fine as this point is important.\r\n\r\nIn general, I think this proposed change makes the draft shorter and more to the point.",
+      "createdAt": "2024-09-05T16:33:40Z",
+      "updatedAt": "2024-09-06T07:29:33Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "c0016eab5c0564ce6dca27f80716aaf53ca0b148",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "mirjak-patch-2",
+      "headRefOid": "734faf390c9a78dacde2004a5dd94d76925375d9",
+      "closedAt": "2024-09-06T07:29:33Z",
+      "mergedAt": "2024-09-06T07:29:33Z",
+      "mergedBy": "teiclap",
+      "mergeCommit": {
+        "oid": "d5a7cca3ccfbeaeba34243036eb1ee6e2b00f4b4"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLMlkXc6IHL91",
+          "commit": {
+            "abbreviatedOid": "ea65718"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-05T16:37:06Z",
+          "updatedAt": "2024-09-05T16:37:06Z",
+          "comments": [
+            {
+              "originalPosition": 128,
+              "body": "```suggestion\r\n \r\n```",
+              "createdAt": "2024-09-05T16:37:06Z",
+              "updatedAt": "2024-09-05T16:37:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6IHMBu",
+          "commit": {
+            "abbreviatedOid": "ea65718"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-05T16:37:13Z",
+          "updatedAt": "2024-09-05T16:37:13Z",
+          "comments": [
+            {
+              "originalPosition": 151,
+              "body": "```suggestion\r\nto an uplink network that supports IPv6 only and limited IPv4 services.\r\n```",
+              "createdAt": "2024-09-05T16:37:13Z",
+              "updatedAt": "2024-09-05T16:37:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6IHRkL",
+          "commit": {
+            "abbreviatedOid": "eed7940"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-05T16:49:03Z",
+          "updatedAt": "2024-09-05T16:49:03Z",
+          "comments": [
+            {
+              "originalPosition": 128,
+              "body": "```suggestion\r\n\r\n```",
+              "createdAt": "2024-09-05T16:49:03Z",
+              "updatedAt": "2024-09-05T16:49:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6IMp98",
+          "commit": {
+            "abbreviatedOid": "734faf3"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-06T06:33:52Z",
+          "updatedAt": "2024-09-06T06:33:52Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6IMrXW",
+          "commit": {
+            "abbreviatedOid": "734faf3"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-06T06:35:54Z",
+          "updatedAt": "2024-09-06T06:35:54Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6IMrvN",
+          "commit": {
+            "abbreviatedOid": "734faf3"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-06T06:36:28Z",
+          "updatedAt": "2024-09-06T06:36:28Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6IMsJV",
+          "commit": {
+            "abbreviatedOid": "734faf3"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-06T06:37:04Z",
+          "updatedAt": "2024-09-06T06:37:04Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
