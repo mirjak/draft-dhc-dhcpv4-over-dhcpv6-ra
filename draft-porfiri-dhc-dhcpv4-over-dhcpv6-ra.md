@@ -38,7 +38,7 @@ author:
     ins: M. Kühlewind
     name: Mirja Kühlewind
     organization: Ericsson
-    email: mirja.kuhlewind@ericsson.com
+    email: mirja.kuehlewind@ericsson.com
 
 normative:
    RFC3046:
