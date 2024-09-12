@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 10 March 2025                                             Cisco
+Expires: 16 March 2025                                             Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                        6 September 2024
+                                                       12 September 2024
 
 
               DHCPv4 over DHCPv6 with Relay Agent Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 March 2025.
+   This Internet-Draft will expire on 16 March 2025.
 
 Copyright Notice
 
@@ -450,4 +450,4 @@ Authors' Addresses
 
    Mirja Kühlewind
    Ericsson
-   Email: mirja.kuhlewind@ericsson.com
+   Email: mirja.kuehlewind@ericsson.com
