@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 16 March 2025                                             Cisco
+Expires: 13 April 2025                                             Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                       12 September 2024
+                                                         10 October 2024
 
 
               DHCPv4 over DHCPv6 with Relay Agent Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 March 2025.
+   This Internet-Draft will expire on 13 April 2025.
 
 Copyright Notice
 
@@ -276,7 +276,7 @@ Table of Contents
    As the client is not aware of the 4o6RA, the network deployment needs
    to ensure that all DHCPv4 broad- and unicast messages from the client
    are routed over the 4o6RA.  This can e.g. be achieved by placing the
-   4o6RA in a cetral position that can observe all traffic from the
+   4o6RA in a central position that can observe all traffic from the
    clients or use of address translation with the 4o6RA address for
    unicast messages.
 
