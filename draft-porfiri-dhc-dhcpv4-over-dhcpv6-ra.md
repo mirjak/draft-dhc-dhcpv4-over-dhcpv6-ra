@@ -262,7 +262,7 @@ it might be enough to only use 4o6RA, as shown in {{fig_4o6RAserver}}.
 
 As the client is not aware of the 4o6RA, the network deployment needs to ensure that
 all DHCPv4 broad- and unicast messages from the client are routed over the 4o6RA.
-This can e.g. be achieved by placing the 4o6RA in a cetral position that can observe all traffic
+This can e.g. be achieved by placing the 4o6RA in a central position that can observe all traffic
 from the clients or use of address translation with the 4o6RA address for unicast
 messages.
 
