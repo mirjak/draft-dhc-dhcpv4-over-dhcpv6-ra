@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>DHCPv4 over DHCPv6 with Relay Agent Support</title>
+<title>DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support</title>
 <meta content="Claudio Porfiri" name="author">
 <meta content="Suresh Krishnan" name="author">
 <meta content="Jari Arkko" name="author">
@@ -16,21 +16,21 @@ DHCPv6 using DHCPv4-over-DHCPv6 (DHCP 4o6) in a Relay Agent.
 RFC7341 specifies use of DHCPv4-over-DHCPv6 in the client only.
 This document specifies
 a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
-Relay Agent (4o6RA) that implements the 4o6 DHCP en- and decapsulation
-if this is not possible at the client. 
+Relay Agent (4o6RA) that implements the 4o6 DHCP encapsulation
+and decapsulation in contexts where it is not possible at the client. 
     " name="description">
-<meta content="xml2rfc 3.23.0" name="generator">
+<meta content="xml2rfc 3.24.0" name="generator">
 <meta content="dhcp" name="keyword">
 <meta content="draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.23.0
-    Python 3.12.3
+  xml2rfc 3.24.0
+    Python 3.12.7
     ConfigArgParse 1.7
-    google-i18n-address 3.1.0
+    google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.4
-    lxml 4.9.4
-    platformdirs 4.2.2
+    lxml 5.3.0
+    platformdirs 4.3.6
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.32.3
@@ -171,31 +171,6 @@ if this is not possible at the client.
 }
 
 @font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
   font-family: 'Oxygen Mono';
   font-style: normal;
   font-weight: 400;
@@ -212,6 +187,77 @@ if this is not possible at the client.
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   color-scheme: light dark;
   --background-color: #fff;
@@ -224,6 +270,7 @@ if this is not possible at the client.
   --pilcrow-strong: #bbb;
   --small-font-size: 14.5px;
   --font-mono: 'Oxygen Mono', monospace;
+  --font-title: "Sofia Sans Semi Condensed", sans-serif;
   scrollbar-color: #bbb #eee;
 }
 body {
@@ -242,8 +289,8 @@ body {
 
 /* headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Cabin Condensed", sans-serif;
-  font-weight: 600;
+  font-family: var(--font-title);
+  font-weight: 680;
   margin: 0.8em 0 0.3em;
   font-size-adjust: 0.5;
   color: var(--title-color);
@@ -651,6 +698,12 @@ sub, sup {
   padding: 0.75em 0 2em 0;
   margin-bottom: 1em;
 }
+@media screen {
+  #toc nav {
+    font-family: var(--font-title);
+    font-weight: 360;
+  }
+}
 #toc nav ul {
   margin: 0 0.5em 0 0;
   padding: 0;
@@ -1034,11 +1087,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">DCHP 4o6 Relay Agent</td>
-<td class="right">September 2024</td>
+<td class="right">November 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Porfiri, et al.</td>
-<td class="center">Expires 16 March 2025</td>
+<td class="center">Expires 17 May 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1051,12 +1104,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-09-12" class="published">12 September 2024</time>
+<time datetime="2024-11-13" class="published">13 November 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-03-16">16 March 2025</time></dd>
+<dd class="expires"><time datetime="2025-05-17">17 May 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1078,7 +1131,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">DHCPv4 over DHCPv6 with Relay Agent Support</h1>
+<h1 id="title">DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document describes a mechanism for networks
@@ -1087,8 +1140,8 @@ DHCPv6 using DHCPv4-over-DHCPv6 (DHCP 4o6) in a Relay Agent.
 RFC7341 specifies use of DHCPv4-over-DHCPv6 in the client only.
 This document specifies
 a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
-Relay Agent (4o6RA) that implements the 4o6 DHCP en- and decapsulation
-if this is not possible at the client.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+Relay Agent (4o6RA) that implements the 4o6 DHCP encapsulation
+and decapsulation in contexts where it is not possible at the client.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1119,7 +1172,7 @@ if this is not possible at the client.<a href="#section-abstract-1" class="pilcr
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 16 March 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 May 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1150,15 +1203,25 @@ if this is not possible at the client.<a href="#section-abstract-1" class="pilcr
 <nav class="toc"><ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-applicability-scope" class="internal xref">Applicability Scope</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-conventions-and-definitions" class="internal xref">Conventions and Definitions</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1" class="keepWithNext"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-dhcpv4-over-dhcpv6-relay-ag" class="internal xref">DHCPv4 over DHCPv6 Relay Agent (4o6RA)</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-dhcpv4-over-dhcpv6-relay-ag" class="internal xref">DHCPv4 over DHCPv6 Relay Agent (4o6RA)</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-intermediate-relays" class="internal xref">Intermediate relays</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-using-4o6ra-for-topology-di" class="internal xref">Using 4o6RA for Topology Discovery</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-sample-case-using-4o6ra-for" class="internal xref">Sample Case: Using 4o6RA for Topology Discovery</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-deployment-considerations" class="internal xref">Deployment Considerations</a></p>
@@ -1198,22 +1261,31 @@ if this is not possible at the client.<a href="#section-abstract-1" class="pilcr
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1"><span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> describes a transport mechanism for carrying DHCPv4
-messages using the DHCPv6 protocol for the dynamic provisioning
+<p id="section-1-1"><span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> describes a transport mechanism for carrying DHCPv4 <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span>
+messages using DHCPv6 <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span> for the dynamic provisioning
 of IPv4 addresses and other DHCPv4 specific configuration parameters
-across IPv6-only networks. The deployment of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> requires implementation in
-all DHCP clients and at the DHCPv6 server.<a href="#section-1-1" class="pilcrow">¶</a></p>
-<p id="section-1-2">However, if the client only supports IPv4 and cannot easily be replaced or updated
-due to a number of technical or business reasons, this approach does not work.<a href="#section-1-2" class="pilcrow">¶</a></p>
+across IPv6-only networks. The deployment of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> requires support in
+DHCP clients and at the DHCPv6 server.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">However, if a client is embedded in a host that only supports IPv4 and cannot
+easily be replaced or updated due to a number of technical or business reasons,
+this approach does not work.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">Similarly, the specifications for DHCPv6 Relay Agents such as LDRA <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
-or L3RA <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span> do not foresee the possibility to handle legacy DHCP,
-other than implementing 4o6 in client.<a href="#section-1-3" class="pilcrow">¶</a></p>
+or L3RA <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span> do not foresee the possibility to handle legacy DHCPv4,
+other than implementing DHCP 4o6 in the client.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">This document specifies an <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>-based solution that can be
-implemented in intermediate nodes such as L2 switches or routers,
+implemented in intermediate nodes such as switches or routers,
 without putting any requirements on clients. No new protocols or extensions are needed,
 instead this document specifies an amendment to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> that allows
-a Relay Agent to perform the 4o6 DHCP en- and decapsultion instead of
+a Relay Agent to perform the DHCP 4o6 encapsulation and decapsultion instead of
 the client.<a href="#section-1-4" class="pilcrow">¶</a></p>
+<div id="applicability">
+<section id="section-1.1">
+        <h3 id="name-applicability-scope">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-applicability-scope" class="section-name selfRef">Applicability Scope</a>
+        </h3>
+<p id="section-1.1-1">T.B.D.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="conventions-and-definitions">
@@ -1224,25 +1296,33 @@ the client.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-2-1">The following terms and acronyms are used in this document:<a href="#section-2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-2-2.1">
-          <p id="section-2-2.1.1">DHCPv4 over DHCPv6 (or 4o6):
- The architecture, the procedures and the protocols described in the
- DHCPv4-over-DHCPv6 document <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.1.1">DHCP:
+ In this document when not otherwise specified it referres to DHCPv4 and/or DHCPv6<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-2-2.2">
-          <p id="section-2-2.2.1">DHCP Relay Agent (or RA):
- This is a concept in all of the protocols, BOOTP <span>[<a href="#RFC0951" class="cite xref">RFC0951</a>]</span> <span>[<a href="#RFC1542" class="cite xref">RFC1542</a>]</span>, DHCPv4
- <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span> <span>[<a href="#RFC2132" class="cite xref">RFC2132</a>]</span>, and DHCPv6 <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span>, although the details differ
- between the protocols.<a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.2.1">DHCPv4:
+ DHCP as defined in <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span><a href="#section-2-2.2.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-2-2.3">
-          <p id="section-2-2.3.1">Lightweight DHCPv6 Relay Agent (or LDRA):
- This is an extension of the original DHCPv6 Relay Agent mechanism,
- to support also Layer 2 devices performing a Relay Agent function <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-2-2.3.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.3.1">DHCPv4 over DHCPv6 (or 4o6):
+ The architecture, the procedures and the protocols described in the
+ DHCPv4-over-DHCPv6 document <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-2-2.3.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-2-2.4">
-          <p id="section-2-2.4.1">DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
- The 4o6 Relay Agent (as specified in this document)
- is the part of an RA implementing 4o6.<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
+          <p id="section-2-2.4.1">DHCP Relay Agent:
+ This is a concept in all of the protocols, BOOTP <span>[<a href="#RFC0951" class="cite xref">RFC0951</a>]</span> <span>[<a href="#RFC1542" class="cite xref">RFC1542</a>]</span>, DHCPv4
+ <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span> <span>[<a href="#RFC2132" class="cite xref">RFC2132</a>]</span>, and DHCPv6 <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span>, although the details differ
+ between the protocols.<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-2-2.5">
+          <p id="section-2-2.5.1">Lightweight DHCPv6 Relay Agent (or LDRA):
+ This is an extension of the original DHCPv6 Relay Agent,
+ to support also Layer 2 devices performing a Relay Agent function <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-2-2.5.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-2-2.6">
+          <p id="section-2-2.6.1">DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
+ Refers to a Relay Agent that implements the 4o6
+ specified in this document.<a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-2-3">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
@@ -1256,12 +1336,12 @@ appear in all capitals, as shown here.<a href="#section-2-3" class="pilcrow">¶<
       <h2 id="name-dhcpv4-over-dhcpv6-relay-ag">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-dhcpv4-over-dhcpv6-relay-ag" class="section-name selfRef">DHCPv4 over DHCPv6 Relay Agent (4o6RA)</a>
       </h2>
-<p id="section-3-1">This document assume an network, where IPv4-only clients are connected
-to an uplink network that supports IPv6 only and limited IPv4 services.<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">To address such a network setup, this document proposes to extend
-DHCPv6 Relay Agents with  DHCPv4 over DHCPv6, as
+<p id="section-3-1">This document assumes a network, where IPv4-only hosts are connected
+to a network that supports IPv6 and limited IPv4 services.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">To address such a network setup, this document extends
+DHCPv6 Relay Agents with  DHCPv4-over-DHCPv6, as
 shown in <a href="#fig_4o6RA" class="auto internal xref">Figure 1</a>.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<span id="name-architecture-overview-with-"></span><div id="fig_4o6RA">
+<span id="name-architecture-example-with-l"></span><div id="fig_4o6RA">
 <figure id="figure-1">
         <div id="section-3-3.1">
           <div class="alignCenter art-svg artwork" id="section-3-3.1.1">
@@ -1320,56 +1400,65 @@ shown in <a href="#fig_4o6RA" class="auto internal xref">Figure 1</a>.<a href="#
 </div>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-architecture-overview-with-" class="selfRef">Architecture Overview with legacy DHCP client</a>
+<a href="#name-architecture-example-with-l" class="selfRef">Architecture Example with Legacy DHCP Client</a>
         </figcaption></figure>
 </div>
 <p id="section-3-4">This document specifies the encapsulation
 and decapsulation described in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> to be performed in the Relay Agent
-whereas the DHCP Client does not require any change.
-In this case it is up to the Relay Agent to provide the full
-4o6 DHCP set of functionality whereas the legacy client is not aware of being served
-via a 4o6 DHCP service.
-All prerequisites and configuration that to the DHCP client in <span><a href="https://rfc-editor.org/rfc/rfc7341#section-5" class="relref">Section 5</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>
-apply shall be applied to the 4o6RA instead.<a href="#section-3-4" class="pilcrow">¶</a></p>
-<p id="section-3-5">To maintain interoperability with existing DHCP relays and servers,
+whereas the DHCPv4 client does not require any change.
+In this case it is up to the Relay Agent to provide the full DHCP
+4o6 support whereas a legacy client is not aware of being served
+via a DHCP 4o6 service.
+All prerequisites and configuration that apply to the DHCP client in
+<span><a href="https://rfc-editor.org/rfc/rfc7341#section-5" class="relref">Section 5</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> shall be applied to the 4o6RA instead.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-5">T.B.D. Search for what can't be applied<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">To maintain interoperability with existing DHCPv6 relays and servers,
 the message format is unchanged from <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span>. The 4o6RA implements
-the same message types as a normal DHCPv6 Relay Agent <span><a href="https://rfc-editor.org/rfc/rfc7341#section-6" class="relref">Section 6</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-3-5" class="pilcrow">¶</a></p>
-<p id="section-3-6">In this specification, the 4o6RA creates the DHCPV4-QUERY Message
-and encapsulates the DHCP request message received from the legacy DHCPv4 client.<a href="#section-3-6" class="pilcrow">¶</a></p>
-<p id="section-3-7">When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
+the same message types as a normal DHCPv6 Relay Agent <span><a href="https://rfc-editor.org/rfc/rfc7341#section-6" class="relref">Section 6</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-7">In this specification, the 4o6RA creates the DHCPV4-QUERY Message
+and encapsulates the DHCP request message received from the legacy DHCPv4 client.<a href="#section-3-7" class="pilcrow">¶</a></p>
+<p id="section-3-8">When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
 it looks for the DHCPv4 Message option within this message.
 If this option is not found, the DHCPv4-response message <span class="bcp14">MUST</span> be discarded.
 If the DHCPv4 Message option is present, the 4o6RA <span class="bcp14">MUST</span> extract the DHCPv4
-message and forward the encapsulated DHCPv4-response to the legacy DHCPv4 client.<a href="#section-3-7" class="pilcrow">¶</a></p>
-<p id="section-3-8">Any Layer 2 Relay Agent receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
-will handle them as specified in <span><a href="https://rfc-editor.org/rfc/rfc6221#section-6" class="relref">Section 6</a> of [<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-3-8" class="pilcrow">¶</a></p>
-<p id="section-3-9">The DHCPv6 server must be compliant with 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.
-No additional requirements on DHCPv6 server are set by this specification.<a href="#section-3-9" class="pilcrow">¶</a></p>
+message and forward the encapsulated DHCPv4-response to the requesting DHCPv4 client.<a href="#section-3-8" class="pilcrow">¶</a></p>
+<p id="section-3-9">Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
+are expected to handle them as specified in <span><a href="https://rfc-editor.org/rfc/rfc6221#section-6" class="relref">Section 6</a> of [<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-3-9" class="pilcrow">¶</a></p>
+<p id="section-3-10">DHCPv6 servers must be compliant with 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.
+No additional requirements on DHCPv6 servers are set by this specification.<a href="#section-3-10" class="pilcrow">¶</a></p>
+<div id="intermediate-relays">
+<section id="section-3.1">
+        <h3 id="name-intermediate-relays">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-intermediate-relays" class="section-name selfRef">Intermediate relays</a>
+        </h3>
+<p id="section-3.1-1">T.B.D. (Section 10 of rfc7341)<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="topology_considerations">
 <section id="section-4">
-      <h2 id="name-using-4o6ra-for-topology-di">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-using-4o6ra-for-topology-di" class="section-name selfRef">Using 4o6RA for Topology Discovery</a>
+      <h2 id="name-sample-case-using-4o6ra-for">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-sample-case-using-4o6ra-for" class="section-name selfRef">Sample Case: Using 4o6RA for Topology Discovery</a>
       </h2>
-<p id="section-4-1">In some networks the configuration of a client host may depend on the
-topology.  However, when a new client host gets connected to the
+<p id="section-4-1">In some networks the configuration of a host may depend on the
+topology.  However, when the new host attaches to a
 network, it may be unaware of the topology and respectively how it
 has to be configured.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">The DHCPv4 <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span> and DHCPv6 <span>[<a href="#RFC3315" class="cite xref">RFC3315</a>]</span> protocol specifications
+<p id="section-4-2">DHCPv4 <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span> and DHCPv6 <span>[<a href="#RFC3315" class="cite xref">RFC3315</a>]</span> specifications
 describe how addresses can be allocated to clients based on network
-topology information provided by the DHCP relay infrastructure.<a href="#section-4-2" class="pilcrow">¶</a></p>
-<p id="section-4-3">In IPv6 networks, Topology discover can be realized using DHCPv6
-Relay Agents <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span> that insert relay agent options in DHCPv6
-message exchanges in order to identify the client-facing interfaces,
-e.g. using the Serial Number or other hardcoded information.  Then, a
-reference host that is responsible for providing configuration to the
-client host can obtain topology information from the DHCP server.<a href="#section-4-3" class="pilcrow">¶</a></p>
-<p id="section-4-4">Address allocation decisions are integral to the allocation of
+topology information provided by a DHCP relay, typically.<a href="#section-4-2" class="pilcrow">¶</a></p>
+<p id="section-4-3">In IPv6 networks, topology discover can be realized using DHCPv6
+Relay Agents <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span> which insert relay agent options in DHCPv6
+message exchanges to identify the client-facing interfaces,
+(e.g., using the Serial Number or other hardcoded information).
+Then, topology information for the given IP address can be obtained
+from the DHCPv6 server and used, for configuration or other purposes.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">Address/prefix allocation decisions are integral to the allocation of
 addresses and prefixes in DHCP. The argument is described in details
 in <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>, here we want to guarantee that 4o6RA does not
 break any legacy capability when related to the use of topology.<a href="#section-4-4" class="pilcrow">¶</a></p>
-<p id="section-4-5">In the scenario described in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> the DHCPv6 Relay Agent knows
+<p id="section-4-5">In the scenario described in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.<a href="#section-4-5" class="pilcrow">¶</a></p>
 <p id="section-4-6">Moving 4o6 in the intermediate node rather than at the client breaks the topology
 propagation as 4o6RA-only does not provide any interface information in the encapsulated message.<a href="#section-4-6" class="pilcrow">¶</a></p>
@@ -1428,9 +1517,11 @@ propagation as 4o6RA-only does not provide any interface information in the enca
                 <text x="460" y="84">DHCP</text>
                 <text x="496" y="84">4o6</text>
                 <text x="52" y="100">Client</text>
-                <text x="204" y="100">RA</text>
-                <text x="332" y="100">RA</text>
+                <text x="216" y="100">Relay</text>
+                <text x="328" y="100">Relay</text>
                 <text x="476" y="100">Server</text>
+                <text x="216" y="116">Agent</text>
+                <text x="328" y="116">Agent</text>
               </g>
             </svg><a href="#section-4-7.1.1" class="pilcrow">¶</a>
 </div>
@@ -1500,9 +1591,10 @@ is involved are out of the scope for this document.<a href="#section-4-9" class=
                 <text x="412" y="84">DHCP</text>
                 <text x="448" y="84">4o6</text>
                 <text x="52" y="100">Client</text>
-                <text x="204" y="100">RA</text>
+                <text x="216" y="100">Relay</text>
                 <text x="288" y="100">RFC6221</text>
                 <text x="428" y="100">Server</text>
+                <text x="216" y="116">Agent</text>
               </g>
             </svg><a href="#section-4-10.1.1" class="pilcrow">¶</a>
 </div>
@@ -1512,9 +1604,9 @@ is involved are out of the scope for this document.<a href="#section-4-9" class=
         </figcaption></figure>
 </div>
 <p id="section-4-11">The assumed architecture is shown in <a href="#fig_4o6LDRA" class="auto internal xref">Figure 3</a> where the whole
-RA is built up with cooperating 4o6RA and LDRA, and an internal interface to
-propagated topology information from 4o6RA to LDRA.<a href="#section-4-11" class="pilcrow">¶</a></p>
-<p id="section-4-12">In a simple case, where the same node hosts teh 4o6RA and the DHCP4o6 server,
+Relay Agent is built up with cooperating 4o6RA and LDRA, and an internal interface to
+propagate topology information from 4o6RA to LDRA.<a href="#section-4-11" class="pilcrow">¶</a></p>
+<p id="section-4-12">In a simple case, where the same node hosts the 4o6RA and the DHCP4o6 server,
 it might be enough to only use 4o6RA, as shown in <a href="#fig_4o6RAserver" class="auto internal xref">Figure 4</a>.<a href="#section-4-12" class="pilcrow">¶</a></p>
 <span id="name-topology-path-preserved-4o6"></span><div id="fig_4o6RAserver">
 <figure id="figure-4">
@@ -1549,16 +1641,17 @@ it might be enough to only use 4o6RA, as shown in <a href="#fig_4o6RAserver" cla
                 <text x="276" y="84">DHCP</text>
                 <text x="312" y="84">4o6</text>
                 <text x="52" y="100">Client</text>
-                <text x="204" y="100">RA</text>
+                <text x="216" y="100">Relay</text>
                 <text x="292" y="100">Server</text>
                 <text x="36" y="116">on</text>
                 <text x="64" y="116">CPE</text>
+                <text x="216" y="116">Agent</text>
               </g>
             </svg><a href="#section-4-13.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
-<a href="#name-topology-path-preserved-4o6" class="selfRef">Topology path preserved 4o6 RA in DHCP server</a>
+<a href="#name-topology-path-preserved-4o6" class="selfRef">Topology path preserved 4o6 Relay Agent in DHCP server</a>
         </figcaption></figure>
 </div>
 </section>
@@ -1568,9 +1661,9 @@ it might be enough to only use 4o6RA, as shown in <a href="#fig_4o6RAserver" cla
       <h2 id="name-deployment-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-deployment-considerations" class="section-name selfRef">Deployment Considerations</a>
       </h2>
-<p id="section-5-1">As the client is not aware of the 4o6RA, the network deployment needs to ensure that
-all DHCPv4 broad- and unicast messages from the client are routed over the 4o6RA.
-This can e.g. be achieved by placing the 4o6RA in a cetral position that can observe all traffic
+<p id="section-5-1">As clients are not aware of the presence of 4o6RA, the network deployment needs to ensure that
+all DHCPv4 broadcast and unicast messages from clients are steered to a 4o6RA.
+This can, e.g., be achieved by placing the 4o6RA in a central position that can observe all traffic
 from the clients or use of address translation with the 4o6RA address for unicast
 messages.<a href="#section-5-1" class="pilcrow">¶</a></p>
 </section>
@@ -1580,19 +1673,19 @@ messages.<a href="#section-5-1" class="pilcrow">¶</a></p>
       <h2 id="name-security-considerations">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-6-1">This documents applies 4o6 DHCP in a scenario where legacy IPv4 clients are
+<p id="section-6-1">This documents specifies the applicability of 4o6 DHCP in a scenario where legacy IPv4 clients are
 connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
 does not change anything else in the 4o6 DHCP specification and therefore the
 security consideration of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> still apply.<a href="#section-6-1" class="pilcrow">¶</a></p>
-<p id="section-6-2">The mechanism described differs from <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> as the DHCP client
-actually sends and receveis DHCP messages, whereas in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> it
+<p id="section-6-2">This mechanism differs from <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> as the DHCP client
+sends and receives DHCPv4 messages, whereas in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> it
 only sends DHCPv6 messages. This makes it possible that
-DHCP messages could reach a DHCP server without using the 4o6RA.
-While this can cause errornous states in both the client and DHCP server
-and potentially even lead to misconfigrations that impact reachability,
-this is not seen as a security concern rather than a deloyment error.<a href="#section-6-2" class="pilcrow">¶</a></p>
-<p id="section-6-3">More generally, the legacy IPv4 client is not aware of this mechanism, however, even
-when 4o6 DHCP is used, the client does not have any control about the
+DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
+While this can cause erroneous state in both clients and servers
+and potentially even lead to misconfigurations that impact reachability,
+this is not seen as a security concern rather than a deployment error.<a href="#section-6-2" class="pilcrow">¶</a></p>
+<p id="section-6-3">More generally, legacy IPv4 clients are not aware of this mechanism, however, even
+when DHCP 4o6 is used, the client does not have any control about the
 information provided by the Relay agent. As such this change does not
 raise any additional security concerns.<a href="#section-6-3" class="pilcrow">¶</a></p>
 </section>
@@ -1846,7 +1939,7 @@ this problem space with Sarah Gannon, Ines Ramadza and Siddharth Sharma.<a href=
 <div dir="auto" class="left"><span class="org">Ericsson</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:mirja.kuhlewind@ericsson.com" class="email">mirja.kuhlewind@ericsson.com</a>
+<a href="mailto:mirja.kuehlewind@ericsson.com" class="email">mirja.kuehlewind@ericsson.com</a>
 </div>
 </address>
 </section>
