@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 17 May 2025                                               Cisco
+Expires: 18 May 2025                                               Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                        13 November 2024
+                                                        14 November 2024
 
 
          DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 May 2025.
+   This Internet-Draft will expire on 18 May 2025.
 
 Copyright Notice
 
@@ -74,13 +74,13 @@ Table of Contents
    2.  Conventions and Definitions
    3.  DHCPv4 over DHCPv6 Relay Agent (4o6RA)
      3.1.  Intermediate relays
-   4.  Sample Case: Using 4o6RA for Topology Discovery
-   5.  Deployment Considerations
-   6.  Security Considerations
-   7.  IANA Considerations
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
+     3.2.  4o6RA and Topology Discovery
+   4.  Deployment Considerations
+   5.  Security Considerations
+   6.  IANA Considerations
+   7.  References
+     7.1.  Normative References
+     7.2.  Informative References
    Appendix A.  Example Use Case: Topology Discovery for IPv4-only
            Radio Unit in the RAN Switched Fronthaul
    Acknowledgments
@@ -112,7 +112,12 @@ Table of Contents
 
 1.1.  Applicability Scope
 
-   T.B.D.
+   The mechanisms described in this document apply to the configuration
+   phase of the host, specifically when a DHCP server for IPv4 [RFC2131]
+   is not reacheable directly from the host, the host needs to receive
+   an IPv4 address and there's a DHCPv6 server than can provide IPv4
+   addresses by means of the mechanisms described in [RFC7341] and the
+   host doesn't implement a DHCP client conform to [RFC7341] itself.
 
 2.  Conventions and Definitions
 
@@ -170,9 +175,14 @@ Table of Contents
    Relay Agent to provide the full DHCP 4o6 support whereas a legacy
    client is not aware of being served via a DHCP 4o6 service.  All
    prerequisites and configuration that apply to the DHCP client in
-   Section 5 of [RFC7341] shall be applied to the 4o6RA instead.
+   Section 5 of [RFC7341] shall be applied to 4o6RA instead.
 
-   T.B.D.  Search for what can't be applied
+   [RFC7341] specifies that before applying for an IPv4 address via a
+   DHCPv4-query message, the client must identify a suitable network
+   interface for the address.  In the case described in this document
+   where the client functionality described in [RFC7341] is replaced by
+   4o6RA, it's 4o6RA that shall also identify a suitable interface, that
+   can be a network interface or another Relay Agent.
 
    To maintain interoperability with existing DHCPv6 relays and servers,
    the message format is unchanged from [RFC8415].  The 4o6RA implements
@@ -200,9 +210,10 @@ Table of Contents
 
 3.1.  Intermediate relays
 
-   T.B.D.  (Section 10 of rfc7341)
+   Intermediate relays shall behave according to section 10 of
+   [RFC7341].
 
-4.  Sample Case: Using 4o6RA for Topology Discovery
+3.2.  4o6RA and Topology Discovery
 
    In some networks the configuration of a host may depend on the
    topology.  However, when the new host attaches to a network, it may
@@ -213,20 +224,29 @@ Table of Contents
    addresses can be allocated to clients based on network topology
    information provided by a DHCP relay, typically.
 
-   In IPv6 networks, topology discover can be realized using DHCPv6
-   Relay Agents [RFC6221] which insert relay agent options in DHCPv6
-   message exchanges to identify the client-facing interfaces, (e.g.,
-   using the Serial Number or other hardcoded information).  Then,
-   topology information for the given IP address can be obtained from
-   the DHCPv6 server and used, for configuration or other purposes.
-
    Address/prefix allocation decisions are integral to the allocation of
    addresses and prefixes in DHCP.  The argument is described in details
    in [RFC7969], here we want to guarantee that 4o6RA does not break any
    legacy capability when related to the use of topology.
 
-   In the scenario described in [RFC7341], the DHCPv6 Relay Agent knows
-   the interface where the encapsulated DHCP request is received.
+   The topology discovery as described in [RFC7969] differs between IPv4
+   and IPv6 as in IPv4 it's only the first Relay Agent that can set the
+   giaddr field (section 3.1 of [RFC7969]) thus in a generic network
+   involving more than one Relay Agent only part of the topology is
+   transported via DHCPv4.
+
+   When in IPv6 context and using DHCPv6, all Relay Agents can fill
+   link-address and Interface-ID options, that allows transporting to
+   the DHCPv6 server the information about the complete path between the
+   DHCPv6 client and the DHCPv6 server.  When in a L2 network, Lightway
+   DHCPv6 Relay Agents [RFC6221] can be used.  Then, topology
+   information for the given IP address can be obtained from the DHCPv6
+   server and used, for configuration or other purposes.
+
+   The adoption of [RFC7341] at the client permits to use the DHCPv6
+   mechanisms for topology discovery even in case of DHCPv4, because of
+   the DHCPv6 encapsulation and because the DHCPv6 Relay Agent knows the
+   interface where the encapsulated DHCP request is received.
 
    Moving 4o6 in the intermediate node rather than at the client breaks
    the topology propagation as 4o6RA-only does not provide any interface
@@ -287,7 +307,7 @@ Table of Contents
 
       Figure 4: Topology path preserved 4o6 Relay Agent in DHCP server
 
-5.  Deployment Considerations
+4.  Deployment Considerations
 
    As clients are not aware of the presence of 4o6RA, the network
    deployment needs to ensure that all DHCPv4 broadcast and unicast
@@ -296,7 +316,7 @@ Table of Contents
    all traffic from the clients or use of address translation with the
    4o6RA address for unicast messages.
 
-6.  Security Considerations
+5.  Security Considerations
 
    This documents specifies the applicability of 4o6 DHCP in a scenario
    where legacy IPv4 clients are connected to 4o6 DHCP Relay Agent that
@@ -310,29 +330,27 @@ Table of Contents
    DHCPv4 server without using the 4o6RA.  While this can cause
    erroneous state in both clients and servers and potentially even lead
    to misconfigurations that impact reachability, this is not seen as a
-   security concern rather than a deployment error.
+   security concern rather than a deployment error and even though it
+   may be used for attacks from within the network, it's not new and
+   it's not being introduced because of this specification.
 
    More generally, legacy IPv4 clients are not aware of this mechanism,
    however, even when DHCP 4o6 is used, the client does not have any
    control about the information provided by the Relay agent.  As such
    this change does not raise any additional security concerns.
 
-7.  IANA Considerations
+6.  IANA Considerations
 
    This document has no IANA actions.
 
-8.  References
+7.  References
 
-8.1.  Normative References
+7.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
-
-   [RFC3046]  Patrick, M., "DHCP Relay Agent Information Option",
-              RFC 3046, DOI 10.17487/RFC3046, January 2001,
-              <https://www.rfc-editor.org/rfc/rfc3046>.
 
    [RFC3315]  Droms, R., Ed., Bound, J., Volz, B., Lemon, T., Perkins,
               C., and M. Carney, "Dynamic Host Configuration Protocol
@@ -343,11 +361,6 @@ Table of Contents
               Kavanagh, "Lightweight DHCPv6 Relay Agent", RFC 6221,
               DOI 10.17487/RFC6221, May 2011,
               <https://www.rfc-editor.org/rfc/rfc6221>.
-
-   [RFC6925]  Joshi, B., Desetti, R., and M. Stapp, "The DHCPv4 Relay
-              Agent Identifier Sub-Option", RFC 6925,
-              DOI 10.17487/RFC6925, April 2013,
-              <https://www.rfc-editor.org/rfc/rfc6925>.
 
    [RFC7341]  Sun, Q., Cui, Y., Siodelski, M., Krishnan, S., and I.
               Farrer, "DHCPv4-over-DHCPv6 (DHCP 4o6) Transport",
@@ -369,7 +382,7 @@ Table of Contents
               RFC 8415, DOI 10.17487/RFC8415, November 2018,
               <https://www.rfc-editor.org/rfc/rfc8415>.
 
-8.2.  Informative References
+7.2.  Informative References
 
    [RFC0951]  Croft, W. and J. Gilmore, "Bootstrap Protocol", RFC 951,
               DOI 10.17487/RFC0951, September 1985,
