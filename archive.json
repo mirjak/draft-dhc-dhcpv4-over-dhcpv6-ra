@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-12T01:26:16.224568+00:00",
+  "timestamp": "2024-11-14T01:35:30.581370+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -144,7 +144,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-08-28T15:01:14Z",
-      "updatedAt": "2024-08-28T15:48:18Z",
+      "updatedAt": "2024-11-13T11:25:17Z",
       "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
       "baseRefName": "main",
       "baseRefOid": "29e7a0bb42b911bdde95222456d6b027298950b2",
@@ -172,7 +172,7 @@
       "labels": [],
       "body": "Some editorial changes, nits and clarifications, but I also removed a bit of text that was copied from RFC7341 again (this is just not needed) and re-added some minor parts from the previous draft version. I also re-added a deployment consideration section as the client not being aware is a mayor difference to RFC7341 and needs some care in deployment. This is a bit redundant with some part of the sec considerations now but I think that is fine as this point is important.\r\n\r\nIn general, I think this proposed change makes the draft shorter and more to the point.",
       "createdAt": "2024-09-05T16:33:40Z",
-      "updatedAt": "2024-09-06T07:29:33Z",
+      "updatedAt": "2024-11-13T11:25:17Z",
       "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
       "baseRefName": "main",
       "baseRefOid": "c0016eab5c0564ce6dca27f80716aaf53ca0b148",
