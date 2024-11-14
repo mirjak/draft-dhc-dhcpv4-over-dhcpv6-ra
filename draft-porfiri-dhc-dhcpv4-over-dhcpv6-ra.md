@@ -93,7 +93,12 @@ the client.
 
 ## Applicability Scope {#applicability}
 
-T.B.D.
+The mechanisms described in this document apply to the configuration phase
+of the host, specifically when a DHCP server for IPv4 {{RFC2131}} is not
+reacheable directly from the host, the host needs to receive an IPv4 address
+and there's a DHCPv6 server than can provide IPv4 addresses by means of
+the mechanisms described in {{RFC7341}} and the host doesn't implement
+a DHCP client conform to {{RFC7341}} itself.
 
 # Conventions and Definitions
 
@@ -155,9 +160,14 @@ In this case it is up to the Relay Agent to provide the full DHCP
 4o6 support whereas a legacy client is not aware of being served
 via a DHCP 4o6 service.
 All prerequisites and configuration that apply to the DHCP client in
-{{Section 5 of RFC7341}} shall be applied to the 4o6RA instead.
+{{Section 5 of RFC7341}} shall be applied to 4o6RA instead.
 
-T.B.D. Search for what can't be applied
+{{RFC7341}} specifies that before applying for an IPv4 address via a
+DHCPv4-query message, the client must identify a suitable network interface
+for the address. In the case described in this document where the
+client functionality described in {{RFC7341}} is replaced by 4o6RA,
+it's 4o6RA that shall also identify a suitable interface, that can be
+a network interface or another Relay Agent.
 
 To maintain interoperability with existing DHCPv6 relays and servers,
 the message format is unchanged from {{RFC8415}}. The 4o6RA implements
@@ -180,9 +190,9 @@ No additional requirements on DHCPv6 servers are set by this specification.
 
 ## Intermediate relays
 
-T.B.D. (Section 10 of rfc7341)
+Intermediate relays shall behave according to section 10 of {{RFC7341}}.
 
-# Sample Case: Using 4o6RA for Topology Discovery {#topology_considerations}
+## 4o6RA and Topology Discovery {#topology_considerations}
 
 In some networks the configuration of a host may depend on the
 topology.  However, when the new host attaches to a
@@ -193,23 +203,34 @@ DHCPv4 {{RFC2131}} and DHCPv6 {{RFC3315}} specifications
 describe how addresses can be allocated to clients based on network
 topology information provided by a DHCP relay, typically.
 
-In IPv6 networks, topology discover can be realized using DHCPv6
-Relay Agents {{RFC6221}} which insert relay agent options in DHCPv6
-message exchanges to identify the client-facing interfaces,
-(e.g., using the Serial Number or other hardcoded information).
-Then, topology information for the given IP address can be obtained
-from the DHCPv6 server and used, for configuration or other purposes.
-
 Address/prefix allocation decisions are integral to the allocation of
 addresses and prefixes in DHCP. The argument is described in details
 in {{RFC7969}}, here we want to guarantee that 4o6RA does not
 break any legacy capability when related to the use of topology.
 
-In the scenario described in {{RFC7341}}, the DHCPv6 Relay Agent knows
+The topology discovery as described in {{RFC7969}} differs between
+IPv4 and IPv6 as in IPv4 it's only the first Relay Agent that can
+set the giaddr field (section 3.1 of {{RFC7969}}) thus in a generic
+network involving more than one Relay Agent only part of the topology
+is transported via DHCPv4.
+
+When in IPv6 context and using DHCPv6, all Relay Agents can fill
+link-address and Interface-ID options, that allows transporting
+to the DHCPv6 server the information about the complete path
+between the DHCPv6 client and the DHCPv6 server.
+When in a L2 network, Lightway DHCPv6 Relay Agents {{RFC6221}}
+can be used. Then, topology information for the given IP address
+can be obtained from the DHCPv6 server and used, for configuration
+or other purposes.
+
+The adoption of {{RFC7341}} at the client permits to use the DHCPv6
+mechanisms for topology discovery even in case of DHCPv4, because
+of the DHCPv6 encapsulation and because the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.
 
-Moving 4o6 in the intermediate node rather than at the client breaks the topology
-propagation as 4o6RA-only does not provide any interface information in the encapsulated message.
+Moving 4o6 in the intermediate node rather than at the client breaks
+the topology propagation as 4o6RA-only does not provide any interface
+information in the encapsulated message.
 
 ~~~aasvg
 
@@ -296,7 +317,9 @@ only sends DHCPv6 messages. This makes it possible that
 DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
 While this can cause erroneous state in both clients and servers
 and potentially even lead to misconfigurations that impact reachability,
-this is not seen as a security concern rather than a deployment error.
+this is not seen as a security concern rather than a deployment error
+and even though it may be used for attacks from within the network,
+it's not new and it's not being introduced because of this specification.
 
 More generally, legacy IPv4 clients are not aware of this mechanism, however, even
 when DHCP 4o6 is used, the client does not have any control about the
