@@ -41,10 +41,8 @@ author:
     email: mirja.kuehlewind@ericsson.com
 
 normative:
-   RFC3046:
    RFC3315:
    RFC6221:
-   RFC6925:
    RFC7341:
    RFC7969:
    RFC8415:
