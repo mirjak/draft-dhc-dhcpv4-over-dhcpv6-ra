@@ -1091,7 +1091,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Porfiri, et al.</td>
-<td class="center">Expires 18 May 2025</td>
+<td class="center">Expires 19 May 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1104,12 +1104,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-11-14" class="published">14 November 2024</time>
+<time datetime="2024-11-15" class="published">15 November 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-05-18">18 May 2025</time></dd>
+<dd class="expires"><time datetime="2025-05-19">19 May 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1172,7 +1172,7 @@ and decapsulation in contexts where it is not possible at the client.<a href="#s
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 May 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 May 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1794,17 +1794,27 @@ raise any additional security concerns.<a href="#section-5-3" class="pilcrow">¶
       <h2 id="name-example-use-case-topology-d">
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example-use-case-topology-d" class="section-name selfRef">Example Use Case: Topology Discovery for IPv4-only Radio Unit in the RAN Switched Fronthaul</a>
       </h2>
-<p id="appendix-A-1">In Radio Access Networks (RANs) the Fronthaul is the network segment
-that connects Radio Units, the distributed radio elements in a mobile network,
-to other network elements. The aggregation
-of Radio Unit devices (also known as Switched Fronthaul) hides the relationship
-between the Radio Units themselves and the physical ports where they are connected.
-The Radio Units are the client hosts in the switched Fronthaul network and
-need to be configured based on their Topology.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-1">The Radio Fronthaul Network (FH) is built up with Radio Units (RU) and
+Baseband Units (BB), each being an IP host.
+Each RU is unique as it's tied to a set of antennas, each antennas
+is serving a specific Cell and Sector.
+RU is configured by BB depending to wich Cell and Sectors it serves,
+that dependency is only specified by the cabling between RU and antennas.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">In the legacy, BB is direcly cabled to a set of RUs so that the
+BB can recognize the relationship between RU and Cell/Sectors
+by relating the cabling towards the RU and the information
+about cabling of RU and antennas.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">The introduction of a switched network between RUs and BBs has
+added a level of complexity that requires the BBs to have a deeper
+knowledge of the topology, involving all the cabling between
+the RUs and the switched network in order to properly configure the RUs.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">The switched network can be generic and the level of complexity can
+be related to the examples described in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>.
+An example of FH is depicted in <a href="#l2_switched_fh" class="auto internal xref">Figure 5</a>.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <span id="name-layer-2-switched-fronthaul-"></span><div id="l2_switched_fh">
 <figure id="figure-5">
-        <div id="appendix-A-2.1">
-          <div class="alignCenter art-svg artwork" id="appendix-A-2.1.1">
+        <div id="appendix-A-5.1">
+          <div class="alignCenter art-svg artwork" id="appendix-A-5.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="352" width="544" viewBox="0 0 544 352" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
               <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
               <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
@@ -1886,28 +1896,22 @@ need to be configured based on their Topology.<a href="#appendix-A-1" class="pil
                 <text x="40" y="292">RU4</text>
                 <text x="180" y="292">#2</text>
               </g>
-            </svg><a href="#appendix-A-2.1.1" class="pilcrow">¶</a>
+            </svg><a href="#appendix-A-5.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
 <a href="#name-layer-2-switched-fronthaul-" class="selfRef">Layer 2 Switched Fronthaul Example</a>
         </figcaption></figure>
 </div>
-<p id="appendix-A-3"><a href="#l2_switched_fh" class="auto internal xref">Figure 5</a> shows multiple Radio Units that are connected
-to one Baseband Unit by means of a Layer 2 switched network.
-The Baseband Unit is the central processing unit that handles baseband information.
-A Baseband Unit is often placed rather centrally, while the Radio Units need to
-be distributed to be co-located with or near the antennas.
-Traffic between Radio Units and Baseband Units is both IP-based and Layer-2-based
-and may pass a hierarchy of L2 switches.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">In order to properly address the Radio Unit, the Baseband Unit needs to associate
-the Radio Unit's MAC address to the L2 switch and respective port
-where the Radio Unit is connected. To realize this device configuration
-in the Switched Fronthaul network, DHCPv6 can be used to discover the network Topology.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
-<p id="appendix-A-5">With the L2 switched network between the clients and the server,
-one of the clients is responsible for the configuration of the other
-clients based on their topology. Updating of the software on the clients
-is not possible often not possible and clients may be IPv4-only.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+<p id="appendix-A-6">Among the various alternatives, DHCP topology knowledge can be used
+for solving the RU configuration problem when FH is IPv6. Such solution
+would use the topology discovery mechanisms described in section 3.2
+of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>. The same mechanisms applies when RU are IPv4 and
+implement 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<p id="appendix-A-7">In order to extend the solution described above also to the case where
+RU is IPv4 but it cannot support <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, it's possible to adopt
+the mechanisms described in this document by introducing 4o6RA at
+the switches.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="acknowledgments">
