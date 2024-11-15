@@ -334,13 +334,26 @@ This document has no IANA actions.
 
 # Example Use Case: Topology Discovery for IPv4-only Radio Unit in the RAN Switched Fronthaul {#usecase}
 
-In Radio Access Networks (RANs) the Fronthaul is the network segment
-that connects Radio Units, the distributed radio elements in a mobile network,
-to other network elements. The aggregation
-of Radio Unit devices (also known as Switched Fronthaul) hides the relationship
-between the Radio Units themselves and the physical ports where they are connected.
-The Radio Units are the client hosts in the switched Fronthaul network and
-need to be configured based on their Topology.
+The Radio Fronthaul Network (FH) is built up with Radio Units (RU) and
+Baseband Units (BB), each being an IP host.
+Each RU is unique as it's tied to a set of antennas, each antennas
+is serving a specific Cell and Sector.
+RU is configured by BB depending to wich Cell and Sectors it serves,
+that dependency is only specified by the cabling between RU and antennas.
+
+In the legacy, BB is direcly cabled to a set of RUs so that the
+BB can recognize the relationship between RU and Cell/Sectors
+by relating the cabling towards the RU and the information
+about cabling of RU and antennas.
+
+The introduction of a switched network between RUs and BBs has
+added a level of complexity that requires the BBs to have a deeper
+knowledge of the topology, involving all the cabling between
+the RUs and the switched network in order to properly configure the RUs.
+
+The switched network can be generic and the level of complexity can
+be related to the examples described in section 3 of {{RFC7969}}.
+An example of FH is depicted in {{l2_switched_fh}}.
 
 ~~~aasvg
      +--------+
@@ -365,23 +378,16 @@ need to be configured based on their Topology.
 ~~~
 {: #l2_switched_fh title="Layer 2 Switched Fronthaul Example" artwork-align="center"}
 
-{{l2_switched_fh}} shows multiple Radio Units that are connected
-to one Baseband Unit by means of a Layer 2 switched network.
-The Baseband Unit is the central processing unit that handles baseband information.
-A Baseband Unit is often placed rather centrally, while the Radio Units need to
-be distributed to be co-located with or near the antennas.
-Traffic between Radio Units and Baseband Units is both IP-based and Layer-2-based
-and may pass a hierarchy of L2 switches.
+Among the various alternatives, DHCP topology knowledge can be used
+for solving the RU configuration problem when FH is IPv6. Such solution
+would use the topology discovery mechanisms described in section 3.2
+of {{RFC7969}}. The same mechanisms applies when RU are IPv4 and
+implement 4o6 according to {{RFC7341}}.
 
-In order to properly address the Radio Unit, the Baseband Unit needs to associate
-the Radio Unit's MAC address to the L2 switch and respective port
-where the Radio Unit is connected. To realize this device configuration
-in the Switched Fronthaul network, DHCPv6 can be used to discover the network Topology.
-
-With the L2 switched network between the clients and the server,
-one of the clients is responsible for the configuration of the other
-clients based on their topology. Updating of the software on the clients
-is not possible often not possible and clients may be IPv4-only.
+In order to extend the solution described above also to the case where
+RU is IPv4 but it cannot support {{RFC7341}}, it's possible to adopt
+the mechanisms described in this document by introducing 4o6RA at
+the switches.
 
 # Acknowledgments
 {:numbered="false"}
