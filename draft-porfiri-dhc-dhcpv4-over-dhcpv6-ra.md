@@ -212,18 +212,18 @@ set the giaddr field (section 3.1 of {{RFC7969}}). Thus in a generic
 network involving more than one Relay Agent only part of the topology
 is transported via DHCPv4.
 
-When in IPv6 context and using DHCPv6, all Relay Agents can fill
-link-address and Interface-ID options, that allows transporting
-to the DHCPv6 server the information about the complete path
-between the DHCPv6 client and the DHCPv6 server.
+When in IPv6 context and using DHCPv6, all Relay Agents can send
+link-address and Interface-ID options, that provide
+information about the complete path
+between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.
 When in a L2 network, Lightway DHCPv6 Relay Agents {{RFC6221}}
 can be used. Then, topology information for the given IP address
-can be obtained from the DHCPv6 server and used, for configuration
+can be obtained from the DHCPv6 server and used for configuration
 or other purposes.
 
 The adoption of {{RFC7341}} at the client permits to use the DHCPv6
-mechanisms for topology discovery even in case of DHCPv4, because
-of the DHCPv6 encapsulation and because the DHCPv6 Relay Agent knows
+mechanisms for topology discovery even in case of DHCPv4.
+as using DHCPv6 encapsulation the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.
 
 Moving 4o6 in the intermediate node rather than at the client breaks
@@ -273,7 +273,7 @@ is involved are out of the scope for this document.
 {: #fig_4o6LDRA title="Topology path preserved with LDRA" artwork-align="center"}
 
 The assumed architecture is shown in {{fig_4o6LDRA}} where the whole
-Relay Agent is built up with cooperating 4o6RA and LDRA, and an internal interface to
+The Relay Agent is built up with cooperating 4o6RA and LDRA, and an internal interface to
 propagate topology information from 4o6RA to LDRA.
 
 In a simple case, where the same node hosts the 4o6RA and the DHCP4o6 server,
@@ -305,7 +305,7 @@ messages.
 # Security Considerations {#seccons}
 
 This documents specifies the applicability of 4o6 DHCP in a scenario where legacy IPv4 clients are
-connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
+connected to 4o6 DHCP Relay Agents that performs the encapsulation and decapsulation. This document
 does not change anything else in the 4o6 DHCP specification and therefore the
 security consideration of {{RFC7341}} still apply.
 
@@ -315,9 +315,9 @@ only sends DHCPv6 messages. This makes it possible that
 DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
 While this can cause erroneous state in both clients and servers
 and potentially even lead to misconfigurations that impact reachability,
-this is not seen as a security concern rather than a deployment error
-and even though it may be used for attacks from within the network,
-it's not new and it's not being introduced because of this specification.
+this is not seen as a security concern rather than a deployment error.
+Further, even though it may be used for attacks from within the network,
+this is not new and it is not introduced because of this specification.
 
 More generally, legacy IPv4 clients are not aware of this mechanism, however, even
 when DHCP 4o6 is used, the client does not have any control about the
@@ -336,24 +336,23 @@ This document has no IANA actions.
 
 The Radio Fronthaul Network (FH) is built up with Radio Units (RU) and
 Baseband Units (BB), each being an IP host.
-Each RU is unique as it's tied to a set of antennas, each antennas
+Each RU is unique as it is tied to a set of antennas, and each antenna
 is serving a specific Cell and Sector.
-RU is configured by BB depending to wich Cell and Sectors it serves,
-that dependency is only specified by the cabling between RU and antennas.
+Each RU is configured by the BB depending on the Cell and Sectors it serves.
+However, that dependency is only specified by the cabling between RU and antennas.
 
-In the legacy, BB is direcly cabled to a set of RUs so that the
-BB can recognize the relationship between RU and Cell/Sectors
-by relating the cabling towards the RU and the information
-about cabling of RU and antennas.
+If BB is directly cabled to a set of RUs, the
+BB can recognize the relationship between Russia and Cell/Sectors
+based on the cabling between the RUs and antennas.
 
 The introduction of a switched network between RUs and BBs has
 added a level of complexity that requires the BBs to have a deeper
-knowledge of the topology, involving all the cabling between
-the RUs and the switched network in order to properly configure the RUs.
+knowledge of the topology in order to properly configure the RUs,
+involving knowledge all the cabling in the switched network.
 
-The switched network can be generic and the level of complexity can
-be related to the examples described in section 3 of {{RFC7969}}.
-An example of FH is depicted in {{l2_switched_fh}}.
+Examples for switched networks are show in section 3 of {{RFC7969}}
+and demonstrate the different levels of complexity.
+An example of a FH is depicted in {{l2_switched_fh}}.
 
 ~~~aasvg
      +--------+
@@ -379,14 +378,14 @@ An example of FH is depicted in {{l2_switched_fh}}.
 {: #l2_switched_fh title="Layer 2 Switched Fronthaul Example" artwork-align="center"}
 
 Among the various alternatives, DHCP topology knowledge can be used
-for solving the RU configuration problem when FH is IPv6. Such solution
+for solving the RU configuration problem when the FH is IPv6. Such solution
 would use the topology discovery mechanisms described in section 3.2
-of {{RFC7969}}. The same mechanisms applies when RU are IPv4 and
+of {{RFC7969}}. The same mechanisms applies when RUs are connected via IPv4 and
 implement 4o6 according to {{RFC7341}}.
 
 In order to extend the solution described above also to the case where
-RU is IPv4 but it cannot support {{RFC7341}}, it's possible to adopt
-the mechanisms described in this document by introducing 4o6RA at
+RUs are using IPv4 but cannot support {{RFC7341}}, it is possible to adopt
+the mechanisms described in this document by introducing 4o6RA in
 the switches.
 
 # Acknowledgments
