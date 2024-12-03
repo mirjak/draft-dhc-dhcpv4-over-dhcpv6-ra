@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-01T01:57:20.138821+00:00",
+  "timestamp": "2024-12-03T01:44:41.057693+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -297,6 +297,46 @@
           "body": "",
           "createdAt": "2024-09-06T06:37:04Z",
           "updatedAt": "2024-09-06T06:37:04Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOLMlkXc6Dv3Kj",
+      "title": "Edits proposed by Med",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/8",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Thanks Med!",
+      "createdAt": "2024-12-02T13:25:10Z",
+      "updatedAt": "2024-12-02T13:28:02Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "277c210cc1e0598327122257597fdb8475341182",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "Med",
+      "headRefOid": "6ca601c0f5052c9de6d597b6bb23943f4174843f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLMlkXc6TYnZL",
+          "commit": {
+            "abbreviatedOid": "6ca601c"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-02T13:28:02Z",
+          "updatedAt": "2024-12-02T13:28:02Z",
           "comments": []
         }
       ]
