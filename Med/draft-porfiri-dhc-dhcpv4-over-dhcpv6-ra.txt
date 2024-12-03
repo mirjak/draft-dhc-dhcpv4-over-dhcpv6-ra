@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 19 May 2025                                               Cisco
+Expires: 6 June 2025                                               Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                        15 November 2024
+                                                         3 December 2024
 
 
          DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 May 2025.
+   This Internet-Draft will expire on 6 June 2025.
 
 Copyright Notice
 
@@ -181,8 +181,8 @@ Table of Contents
    DHCPv4-query message, the client must identify a suitable network
    interface for the address.  In the case described in this document
    where the client functionality described in [RFC7341] is replaced by
-   4o6RA, it's 4o6RA that shall also identify a suitable interface, that
-   can be a network interface or another Relay Agent.
+   4o6RA, it is 4o6RA that shall also identify a suitable interface,
+   that can be a network interface or another Relay Agent.
 
    To maintain interoperability with existing DHCPv6 relays and servers,
    the message format is unchanged from [RFC8415].  The 4o6RA implements
