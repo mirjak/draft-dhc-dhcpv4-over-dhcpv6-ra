@@ -207,7 +207,7 @@ in {{RFC7969}}, here we want to guarantee that 4o6RA does not
 break any legacy capability when related to the use of topology.
 
 The topology discovery as described in {{RFC7969}} differs between
-IPv4 and IPv6 as in IPv4 it's only the first Relay Agent that can
+IPv4 and IPv6 as in IPv4 it is only the first Relay Agent that can
 set the giaddr field (section 3.1 of {{RFC7969}}) thus in a generic
 network involving more than one Relay Agent only part of the topology
 is transported via DHCPv4.
