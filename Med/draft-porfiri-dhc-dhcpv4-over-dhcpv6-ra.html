@@ -1428,17 +1428,17 @@ IPv4 and IPv6 because for IPv4 it is only the first Relay Agent that can
 set the giaddr field (section 3.1 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>). Thus in a generic
 network involving more than one Relay Agent only part of the topology
 is transported via DHCPv4.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
-<p id="section-3.2-5">When in IPv6 context and using DHCPv6, all Relay Agents can fill
-link-address and Interface-ID options, that allows transporting
-to the DHCPv6 server the information about the complete path
-between the DHCPv6 client and the DHCPv6 server.
+<p id="section-3.2-5">When in IPv6 context and using DHCPv6, all Relay Agents can send
+link-address and Interface-ID options, that provide
+information about the complete path
+between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.
 When in a L2 network, Lightway DHCPv6 Relay Agents <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
 can be used. Then, topology information for the given IP address
-can be obtained from the DHCPv6 server and used, for configuration
+can be obtained from the DHCPv6 server and used for configuration
 or other purposes.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
 <p id="section-3.2-6">The adoption of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> at the client permits to use the DHCPv6
-mechanisms for topology discovery even in case of DHCPv4, because
-of the DHCPv6 encapsulation and because the DHCPv6 Relay Agent knows
+mechanisms for topology discovery even in case of DHCPv4.
+as using DHCPv6 encapsulation the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
 <p id="section-3.2-7">Moving 4o6 in the intermediate node rather than at the client breaks
 the topology propagation as 4o6RA-only does not provide any interface
@@ -1585,7 +1585,7 @@ is involved are out of the scope for this document.<a href="#section-3.2-10" cla
           </figcaption></figure>
 </div>
 <p id="section-3.2-12">The assumed architecture is shown in <a href="#fig_4o6LDRA" class="auto internal xref">Figure 3</a> where the whole
-Relay Agent is built up with cooperating 4o6RA and LDRA, and an internal interface to
+The Relay Agent is built up with cooperating 4o6RA and LDRA, and an internal interface to
 propagate topology information from 4o6RA to LDRA.<a href="#section-3.2-12" class="pilcrow">¶</a></p>
 <p id="section-3.2-13">In a simple case, where the same node hosts the 4o6RA and the DHCP4o6 server,
 it might be enough to only use 4o6RA, as shown in <a href="#fig_4o6RAserver" class="auto internal xref">Figure 4</a>.<a href="#section-3.2-13" class="pilcrow">¶</a></p>
@@ -1657,7 +1657,7 @@ messages.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-5-1">This documents specifies the applicability of 4o6 DHCP in a scenario where legacy IPv4 clients are
-connected to 4o6 DHCP Relay Agent that performs the en- and decapsulation. This document
+connected to 4o6 DHCP Relay Agents that performs the encapsulation and decapsulation. This document
 does not change anything else in the 4o6 DHCP specification and therefore the
 security consideration of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> still apply.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">This mechanism differs from <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> as the DHCP client
@@ -1666,9 +1666,9 @@ only sends DHCPv6 messages. This makes it possible that
 DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
 While this can cause erroneous state in both clients and servers
 and potentially even lead to misconfigurations that impact reachability,
-this is not seen as a security concern rather than a deployment error
-and even though it may be used for attacks from within the network,
-it's not new and it's not being introduced because of this specification.<a href="#section-5-2" class="pilcrow">¶</a></p>
+this is not seen as a security concern rather than a deployment error.
+Further, even though it may be used for attacks from within the network,
+this is not new and it is not introduced because of this specification.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">More generally, legacy IPv4 clients are not aware of this mechanism, however, even
 when DHCP 4o6 is used, the client does not have any control about the
 information provided by the Relay agent. As such this change does not
@@ -1759,21 +1759,20 @@ raise any additional security concerns.<a href="#section-5-3" class="pilcrow">¶
       </h2>
 <p id="appendix-A-1">The Radio Fronthaul Network (FH) is built up with Radio Units (RU) and
 Baseband Units (BB), each being an IP host.
-Each RU is unique as it's tied to a set of antennas, each antennas
+Each RU is unique as it is tied to a set of antennas, and each antenna
 is serving a specific Cell and Sector.
-RU is configured by BB depending to wich Cell and Sectors it serves,
-that dependency is only specified by the cabling between RU and antennas.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">In the legacy, BB is direcly cabled to a set of RUs so that the
-BB can recognize the relationship between RU and Cell/Sectors
-by relating the cabling towards the RU and the information
-about cabling of RU and antennas.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+Each RU is configured by the BB depending on the Cell and Sectors it serves.
+However, that dependency is only specified by the cabling between RU and antennas.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">If BB is directly cabled to a set of RUs, the
+BB can recognize the relationship between Russia and Cell/Sectors
+based on the cabling between the RUs and antennas.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
 <p id="appendix-A-3">The introduction of a switched network between RUs and BBs has
 added a level of complexity that requires the BBs to have a deeper
-knowledge of the topology, involving all the cabling between
-the RUs and the switched network in order to properly configure the RUs.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">The switched network can be generic and the level of complexity can
-be related to the examples described in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>.
-An example of FH is depicted in <a href="#l2_switched_fh" class="auto internal xref">Figure 5</a>.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+knowledge of the topology in order to properly configure the RUs,
+involving knowledge all the cabling in the switched network.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">Examples for switched networks are show in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>
+and demonstrate the different levels of complexity.
+An example of a FH is depicted in <a href="#l2_switched_fh" class="auto internal xref">Figure 5</a>.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <span id="name-layer-2-switched-fronthaul-"></span><div id="l2_switched_fh">
 <figure id="figure-5">
         <div id="appendix-A-5.1">
@@ -1867,13 +1866,13 @@ An example of FH is depicted in <a href="#l2_switched_fh" class="auto internal x
         </figcaption></figure>
 </div>
 <p id="appendix-A-6">Among the various alternatives, DHCP topology knowledge can be used
-for solving the RU configuration problem when FH is IPv6. Such solution
+for solving the RU configuration problem when the FH is IPv6. Such solution
 would use the topology discovery mechanisms described in section 3.2
-of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>. The same mechanisms applies when RU are IPv4 and
+of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>. The same mechanisms applies when RUs are connected via IPv4 and
 implement 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
 <p id="appendix-A-7">In order to extend the solution described above also to the case where
-RU is IPv4 but it cannot support <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, it's possible to adopt
-the mechanisms described in this document by introducing 4o6RA at
+RUs are using IPv4 but cannot support <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, it is possible to adopt
+the mechanisms described in this document by introducing 4o6RA in
 the switches.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
 </section>
 </div>
