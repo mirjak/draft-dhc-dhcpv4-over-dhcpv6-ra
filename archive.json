@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-03T01:44:41.057693+00:00",
+  "timestamp": "2024-12-05T01:44:57.184713+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -313,13 +313,13 @@
       "labels": [],
       "body": "Thanks Med!",
       "createdAt": "2024-12-02T13:25:10Z",
-      "updatedAt": "2024-12-02T13:28:02Z",
+      "updatedAt": "2024-12-04T09:49:08Z",
       "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
       "baseRefName": "main",
       "baseRefOid": "277c210cc1e0598327122257597fdb8475341182",
       "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
       "headRefName": "Med",
-      "headRefOid": "6ca601c0f5052c9de6d597b6bb23943f4174843f",
+      "headRefOid": "ce28a2c8d3bf5b774b30db673aef34136abab341",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -337,6 +337,477 @@
           "body": "",
           "createdAt": "2024-12-02T13:28:02Z",
           "updatedAt": "2024-12-02T13:28:02Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkOBr",
+          "commit": {
+            "abbreviatedOid": "6ca601c"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T13:52:58Z",
+          "updatedAt": "2024-12-03T13:52:58Z",
+          "comments": [
+            {
+              "originalPosition": 156,
+              "body": "```suggestion\r\nit is 4o6RA that shall also identify a suitable interface, that can be\r\n```",
+              "createdAt": "2024-12-03T13:52:58Z",
+              "updatedAt": "2024-12-03T13:52:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkPOc",
+          "commit": {
+            "abbreviatedOid": "98276b4"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-03T13:54:54Z",
+          "updatedAt": "2024-12-03T13:54:54Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkPWi",
+          "commit": {
+            "abbreviatedOid": "98276b4"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T13:55:06Z",
+          "updatedAt": "2024-12-03T13:55:06Z",
+          "comments": [
+            {
+              "originalPosition": 215,
+              "body": "```suggestion\r\nIPv4 and IPv6 as in IPv4 it is only the first Relay Agent that can\r\n```",
+              "createdAt": "2024-12-03T13:55:06Z",
+              "updatedAt": "2024-12-03T13:55:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkQGH",
+          "commit": {
+            "abbreviatedOid": "7477f7f"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T13:56:18Z",
+          "updatedAt": "2024-12-03T13:56:18Z",
+          "comments": [
+            {
+              "originalPosition": 215,
+              "body": "```suggestion\r\nIPv4 and IPv6 because for IPv4 it is only the first Relay Agent that can\r\n```",
+              "createdAt": "2024-12-03T13:56:18Z",
+              "updatedAt": "2024-12-03T13:56:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkQW_",
+          "commit": {
+            "abbreviatedOid": "166cf41"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T13:56:42Z",
+          "updatedAt": "2024-12-03T13:56:43Z",
+          "comments": [
+            {
+              "originalPosition": 216,
+              "body": "```suggestion\r\nset the giaddr field (section 3.1 of {{RFC7969}}). Thus in a generic\r\n```",
+              "createdAt": "2024-12-03T13:56:42Z",
+              "updatedAt": "2024-12-03T13:56:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkRGy",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-03T13:57:51Z",
+          "updatedAt": "2024-12-03T13:57:51Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkRaZ",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-03T13:58:17Z",
+          "updatedAt": "2024-12-03T13:58:17Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkRsc",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-03T13:58:43Z",
+          "updatedAt": "2024-12-03T13:58:43Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkTaj",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:01:09Z",
+          "updatedAt": "2024-12-03T14:01:09Z",
+          "comments": [
+            {
+              "originalPosition": 330,
+              "body": "```suggestion\r\nthis is not seen as a security concern rather than a deployment error.\r\nFurther, even though it may be used for attacks from within the network,\r\nthis is not new and it is not introduced because of this specification.\r\n```",
+              "createdAt": "2024-12-03T14:01:09Z",
+              "updatedAt": "2024-12-03T14:01:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkT0f",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:01:47Z",
+          "updatedAt": "2024-12-03T14:01:47Z",
+          "comments": [
+            {
+              "originalPosition": 350,
+              "body": "```suggestion\r\nEach RU is unique as it is tied to a set of antennas, and each antenna\r\n```",
+              "createdAt": "2024-12-03T14:01:47Z",
+              "updatedAt": "2024-12-03T14:01:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkUui",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:02:55Z",
+          "updatedAt": "2024-12-03T14:02:56Z",
+          "comments": [
+            {
+              "originalPosition": 353,
+              "body": "```suggestion\r\nEach RU is configured by the BB depending on the Cell and Sectors it serves.\r\nHowever, that dependency is only specified by the cabling between RU and antennas.\r\n```",
+              "createdAt": "2024-12-03T14:02:55Z",
+              "updatedAt": "2024-12-03T14:02:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkV_Z",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:04:51Z",
+          "updatedAt": "2024-12-03T14:04:51Z",
+          "comments": [
+            {
+              "originalPosition": 358,
+              "body": "```suggestion\r\nIf BB is directly cabled to a set of RUs, the\r\nBB can recognize the relationship between Russia and Cell/Sectors\r\nbased on the cabling between the RUs and antennas.\r\n```",
+              "createdAt": "2024-12-03T14:04:51Z",
+              "updatedAt": "2024-12-03T14:04:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkXCU",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:06:28Z",
+          "updatedAt": "2024-12-03T14:06:28Z",
+          "comments": [
+            {
+              "originalPosition": 363,
+              "body": "```suggestion\r\nThe introduction of a switched network between RUs and BBs has\r\nadded a level of complexity that requires the BBs to have a deeper\r\nknowledge of the topology in order to properly configure the RUs,\r\ninvolving knowledge all the cabling in the switched network.\r\n```",
+              "createdAt": "2024-12-03T14:06:28Z",
+              "updatedAt": "2024-12-03T14:06:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkXVA",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:06:55Z",
+          "updatedAt": "2024-12-03T14:06:55Z",
+          "comments": [
+            {
+              "originalPosition": 367,
+              "body": "```suggestion\r\nAn example of a FH is depicted in {{l2_switched_fh}}.\r\n```",
+              "createdAt": "2024-12-03T14:06:55Z",
+              "updatedAt": "2024-12-03T14:06:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkbHS",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:11:19Z",
+          "updatedAt": "2024-12-03T14:11:19Z",
+          "comments": [
+            {
+              "originalPosition": 366,
+              "body": "```suggestion\r\nExamples for switched networks are show in section 3 of {{RFC7969}}\r\nand demonstrate the different levels of complexity.\r\n```",
+              "createdAt": "2024-12-03T14:11:19Z",
+              "updatedAt": "2024-12-03T14:11:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6Tkbc0",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:11:38Z",
+          "updatedAt": "2024-12-03T14:11:39Z",
+          "comments": [
+            {
+              "originalPosition": 393,
+              "body": "```suggestion\r\nfor solving the RU configuration problem when the FH is IPv6. Such solution\r\n```",
+              "createdAt": "2024-12-03T14:11:38Z",
+              "updatedAt": "2024-12-03T14:11:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6Tkb66",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:12:03Z",
+          "updatedAt": "2024-12-03T14:12:04Z",
+          "comments": [
+            {
+              "originalPosition": 395,
+              "body": "```suggestion\r\nof {{RFC7969}}. The same mechanisms applies when RUs are connected via IPv4 and\r\n```",
+              "createdAt": "2024-12-03T14:12:03Z",
+              "updatedAt": "2024-12-03T14:12:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6Tkcaz",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:12:32Z",
+          "updatedAt": "2024-12-03T14:12:32Z",
+          "comments": [
+            {
+              "originalPosition": 399,
+              "body": "```suggestion\r\nRUs are using IPv4 but cannot support {{RFC7341}}, it is possible to adopt\r\n```",
+              "createdAt": "2024-12-03T14:12:32Z",
+              "updatedAt": "2024-12-03T14:12:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6Tkcl4",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:12:44Z",
+          "updatedAt": "2024-12-03T14:12:44Z",
+          "comments": [
+            {
+              "originalPosition": 400,
+              "body": "```suggestion\r\nthe mechanisms described in this document by introducing 4o6RA in\r\n```",
+              "createdAt": "2024-12-03T14:12:44Z",
+              "updatedAt": "2024-12-03T14:12:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkePJ",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:14:25Z",
+          "updatedAt": "2024-12-03T14:14:25Z",
+          "comments": [
+            {
+              "originalPosition": 227,
+              "body": "```suggestion\r\nWhen in IPv6 context and using DHCPv6, all Relay Agents can send\r\nlink-address and Interface-ID options, that provide\r\ninformation about the complete path\r\nbetween the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.\r\nWhen in a L2 network, Lightway DHCPv6 Relay Agents {{RFC6221}}\r\ncan be used. Then, topology information for the given IP address\r\ncan be obtained from the DHCPv6 server and used for configuration\r\nor other purposes.\r\n```",
+              "createdAt": "2024-12-03T14:14:25Z",
+              "updatedAt": "2024-12-03T14:14:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6Tke4w",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:15:09Z",
+          "updatedAt": "2024-12-03T14:15:09Z",
+          "comments": [
+            {
+              "originalPosition": 270,
+              "body": "```suggestion\r\nThe Relay Agent is built up with cooperating 4o6RA and LDRA, and an internal interface to\r\n```",
+              "createdAt": "2024-12-03T14:15:09Z",
+              "updatedAt": "2024-12-03T14:15:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TkgRf",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:17:06Z",
+          "updatedAt": "2024-12-03T14:17:07Z",
+          "comments": [
+            {
+              "originalPosition": 231,
+              "body": "```suggestion\r\nmechanisms for topology discovery even in case of DHCPv4.\r\nas using DHCPv6 encapsulation the DHCPv6 Relay Agent knows\r\n```",
+              "createdAt": "2024-12-03T14:17:06Z",
+              "updatedAt": "2024-12-03T14:17:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6Tkhax",
+          "commit": {
+            "abbreviatedOid": "05c8b9d"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T14:18:51Z",
+          "updatedAt": "2024-12-03T14:18:51Z",
+          "comments": [
+            {
+              "originalPosition": 309,
+              "body": "```suggestion\r\nconnected to 4o6 DHCP Relay Agents that performs the encapsulation and decapsulation. This document\r\n```",
+              "createdAt": "2024-12-03T14:18:51Z",
+              "updatedAt": "2024-12-03T14:19:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6Tkm5R",
+          "commit": {
+            "abbreviatedOid": "ce28a2c"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-03T14:26:45Z",
+          "updatedAt": "2024-12-03T14:26:45Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TlDTY",
+          "commit": {
+            "abbreviatedOid": "ce28a2c"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-03T15:01:25Z",
+          "updatedAt": "2024-12-03T15:01:25Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6TsZ5E",
+          "commit": {
+            "abbreviatedOid": "ce28a2c"
+          },
+          "author": "jariarkko",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Looks good to me.",
+          "createdAt": "2024-12-04T09:49:08Z",
+          "updatedAt": "2024-12-04T09:49:08Z",
           "comments": []
         }
       ]
