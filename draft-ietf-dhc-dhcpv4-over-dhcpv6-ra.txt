@@ -5,15 +5,15 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 8 June 2025                                               Cisco
+Expires: 23 June 2025                                              Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                         5 December 2024
+                                                        20 December 2024
 
 
          DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support
-             draft-porfiri-dhc-dhcpv4-over-dhcpv6-ra-latest
+              draft-ietf-dhc-dhcpv4-over-dhcpv6-ra-latest
 
 Abstract
 
@@ -30,7 +30,7 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    Status information for this document may be found at
-   https://datatracker.ietf.org/doc/draft-porfiri-dhc-dhcpv4-over-
+   https://datatracker.ietf.org/doc/draft-ietf-dhc-dhcpv4-over-
    dhcpv6-ra/.
 
    Source for this draft and an issue tracker can be found at
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 June 2025.
+   This Internet-Draft will expire on 23 June 2025.
 
 Copyright Notice
 
