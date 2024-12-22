@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-19T01:41:49.953817+00:00",
+  "timestamp": "2024-12-22T01:42:24.723474+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -55,15 +55,15 @@
       "id": "I_kwDOLMlkXc6SsXeS",
       "title": "Question about S4.2",
       "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/1",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "jariarkko",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Section 4.2 starts with:\r\n\r\n           4.2.  Topology considerations\t\r\n \t\t\r\n \t   The scenario depicted in Figure 1 preserves the topology infomation\t\r\n \t   as the DHCPv6 Relay Agent has the knowledge of the interface where\t\r\n \t   the encapsulated DHCP request comes from.\r\n\r\nThis is I think however the first time topology is mentioned in the draft. Perhaps an introductory sentence about why this matters and what we mean by topology is in order, before getting to the details of what is preserved or not?\r\n",
       "createdAt": "2024-08-12T14:04:50Z",
-      "updatedAt": "2024-08-12T14:04:50Z",
-      "closedAt": null,
+      "updatedAt": "2024-12-20T13:54:42Z",
+      "closedAt": "2024-12-20T13:54:42Z",
       "comments": []
     },
     {
