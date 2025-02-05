@@ -160,11 +160,8 @@ via a DHCP 4o6 service.
 All prerequisites and configuration that apply to the DHCP client in
 {{Section 5 of RFC7341}} shall be applied to 4o6RA instead.
 
-{{RFC7341}} specifies that before applying for an IPv4 address via a
-DHCPv4-query message, the client must identify a suitable network interface
-for the address. In the case described in this document where the
-client functionality described in {{RFC7341}} is replaced by 4o6RA,
-it is 4o6RA that shall also identify a suitable interface, that can be
+As 4o6RA takes the role of the client in respect to {{RFC7341}},
+it takes the responsibility for finding a suitable interface, that can be
 a network interface or another Relay Agent.
 
 To maintain interoperability with existing DHCPv6 relays and servers,
