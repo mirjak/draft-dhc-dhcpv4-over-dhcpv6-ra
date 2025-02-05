@@ -94,7 +94,7 @@ the client.
 The mechanisms described in this document apply to the configuration phase
 of the host, specifically when a DHCP server for IPv4 {{RFC2131}} is not
 reacheable directly from the host, the host needs to receive an IPv4 address
-and there's a DHCPv6 server than can provide IPv4 addresses by means of
+and there's a DHCPv6 server that can provide IPv4 addresses by means of
 the mechanisms described in {{RFC7341}} and the host doesn't implement
 a DHCP client conform to {{RFC7341}} itself.
 
@@ -103,7 +103,7 @@ a DHCP client conform to {{RFC7341}} itself.
 The following terms and acronyms are used in this document:
 
 * DHCP:
-   In this document when not otherwise specified it referres to DHCPv4 and/or DHCPv6
+   In this document when not otherwise specified, referes to DHCPv4 and/or DHCPv6
 
 * DHCPv4:
    DHCP as defined in {{RFC2131}}
@@ -207,7 +207,7 @@ in {{RFC7969}}, here we want to guarantee that 4o6RA does not
 break any legacy capability when related to the use of topology.
 
 The topology discovery as described in {{RFC7969}} differs between
-IPv4 and IPv6 because for IPv4 it is only the first Relay Agent that can
+IPv4 and IPv6 because for IPv4 only the first Relay Agent can
 set the giaddr field (section 3.1 of {{RFC7969}}). Thus in a generic
 network involving more than one Relay Agent only part of the topology
 is transported via DHCPv4.
@@ -272,8 +272,8 @@ is involved are out of the scope for this document.
 ~~~
 {: #fig_4o6LDRA title="Topology path preserved with LDRA" artwork-align="center"}
 
-The assumed architecture is shown in {{fig_4o6LDRA}} where the whole
-The Relay Agent is built up with cooperating 4o6RA and LDRA, and an internal interface to
+The assumed architecture is shown in {{fig_4o6LDRA}} where
+the Relay Agent is built up with cooperating 4o6RA and LDRA, and an internal interface to
 propagate topology information from 4o6RA to LDRA.
 
 In a simple case, where the same node hosts the 4o6RA and the DHCP4o6 server,
