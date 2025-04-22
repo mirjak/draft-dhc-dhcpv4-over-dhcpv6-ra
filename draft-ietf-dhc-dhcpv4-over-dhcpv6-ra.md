@@ -62,7 +62,8 @@ RFC7341 specifies use of DHCPv4-over-DHCPv6 in the client only.
 This document specifies
 a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
 Relay Agent (4o6RA) that implements the 4o6 DHCP encapsulation
-and decapsulation in contexts where it is not possible at the client.
+and decapsulation in contexts where 4o6 DHCP encapsulation
+and decapsulation cannot be implemented at the client.
 
 --- middle
 
@@ -157,8 +158,8 @@ whereas the DHCPv4 client does not require any change.
 In this case it is up to the Relay Agent to provide the full DHCP
 4o6 support whereas a legacy client is not aware of being served
 via a DHCP 4o6 service.
-All prerequisites and configuration that apply to the DHCP client in
-{{Section 5 of RFC7341}} shall be applied to 4o6RA instead.
+As the 4o6RA is acting as a DHCP 4o6 client, all prerequisites and configuration
+that apply to the DHCP client in {{Section 5 of RFC7341}} shall be applied to 4o6RA.
 
 As 4o6RA takes the role of the client in respect to {{RFC7341}},
 it also takes the responsibility for finding a suitable interface, that can be
@@ -173,12 +174,13 @@ and encapsulates the DHCP request message received from the legacy DHCPv4 client
 
 When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
 it looks for the DHCPv4 Message option within this message.
-If this option is not found, the DHCPv4-response message MUST be discarded.
+If this option is not found, or the DHCPv4-response message is not well-formed,
+it MUST be discarded.
 If the DHCPv4 Message option is present, the 4o6RA MUST extract the DHCPv4
 message and forward the encapsulated DHCPv4-response to the requesting DHCPv4 client.
 
 Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
-are expected to handle them as specified in {{Section 6 of RFC6221}}.
+MUST be handled as specified in {{Section 6 of RFC6221}}.
 
 DHCPv6 servers must be compliant with 4o6 according to {{RFC7341}}.
 No additional requirements on DHCPv6 servers are set by this specification.
@@ -245,7 +247,7 @@ information in the encapsulated message.
 As shown in {{fig_4o6RA_RA}}, the introduction of 4o6 at the
 edge of the IPv6 network hides the L2 network from the DHCPv6 RA.
 
-In order to preserve the topology information, it is recommended that the
+In order to preserve the topology information, it is RECOMMENDED that the
 implementation of 4o6RA is combined with the implementation of LDRA {{RFC6221}}
 and that the implementation has a mechanism for LDRA to get interface information
 that can be used for the Interface-ID option, as specified in
@@ -295,8 +297,8 @@ it might be enough to only use 4o6RA, as shown in {{fig_4o6RAserver}}.
 
 As clients are not aware of the presence of 4o6RA, the network deployment needs to ensure that
 all DHCPv4 broadcast and unicast messages from clients are steered to a 4o6RA.
-This can, e.g., be achieved by placing the 4o6RA in a central position that can observe all traffic
-from the clients or use of address translation with the 4o6RA address for unicast
+This can be achieved by placing the 4o6RA in a central position that can observe all traffic
+from the clients or use address translation with the 4o6RA address for unicast
 messages.
 
 # Security Considerations {#seccons}
@@ -306,9 +308,10 @@ connected to 4o6 DHCP Relay Agents that performs the encapsulation and decapsula
 does not change anything else in the 4o6 DHCP specification and therefore the
 security consideration of {{RFC7341}} still apply.
 
-This mechanism differs from {{RFC7341}} as the DHCP client
-sends and receives DHCPv4 messages, whereas in {{RFC7341}} it
-only sends DHCPv6 messages. This makes it possible that
+The mechanisms defined here differ from {{RFC7341}} as they allow the DHCP client
+to send and receive DHCPv4 messages, whereas in {{RFC7341}} the client
+only sends DHCPv6 messages. This makes it possible that in not properly configured
+networks where the client is located on the same L2 scope of a DHCPv4 server,
 DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
 While this can cause erroneous state in both clients and servers
 and potentially even lead to misconfigurations that impact reachability,
