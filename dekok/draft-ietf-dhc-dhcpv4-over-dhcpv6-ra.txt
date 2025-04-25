@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 24 October 2025                                           Cisco
+Expires: 27 October 2025                                           Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                           22 April 2025
+                                                           25 April 2025
 
 
          DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support
@@ -52,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 October 2025.
+   This Internet-Draft will expire on 27 October 2025.
 
 Copyright Notice
 
@@ -194,7 +194,7 @@ Table of Contents
 
    When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent, it
    looks for the DHCPv4 Message option within this message.  If this
-   option is not found, or the DHCPv4-response message is not well-
+   option is not found or the DHCPv4-response message is not well-
    formed, it MUST be discarded.  If the DHCPv4 Message option is
    present, the 4o6RA MUST extract the DHCPv4 message and forward the
    encapsulated DHCPv4-response to the requesting DHCPv4 client.
