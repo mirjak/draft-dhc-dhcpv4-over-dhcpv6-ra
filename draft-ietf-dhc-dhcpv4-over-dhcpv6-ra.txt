@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 9 August 2025                                             Cisco
+Expires: 27 October 2025                                           Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                         5 February 2025
+                                                           25 April 2025
 
 
          DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support
@@ -23,7 +23,8 @@ Abstract
    DHCPv4-over-DHCPv6 in the client only.  This document specifies a
    RFC7341-based approach that allows DHCP 4o6 to be deployed as a Relay
    Agent (4o6RA) that implements the 4o6 DHCP encapsulation and
-   decapsulation in contexts where it is not possible at the client.
+   decapsulation in contexts where 4o6 DHCP encapsulation and
+   decapsulation cannot be implemented at the client.
 
 About This Document
 
@@ -51,7 +52,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 August 2025.
+   This Internet-Draft will expire on 27 October 2025.
 
 Copyright Notice
 
@@ -173,9 +174,10 @@ Table of Contents
    in [RFC7341] to be performed in the Relay Agent whereas the DHCPv4
    client does not require any change.  In this case it is up to the
    Relay Agent to provide the full DHCP 4o6 support whereas a legacy
-   client is not aware of being served via a DHCP 4o6 service.  All
-   prerequisites and configuration that apply to the DHCP client in
-   Section 5 of [RFC7341] shall be applied to 4o6RA instead.
+   client is not aware of being served via a DHCP 4o6 service.  As the
+   4o6RA is acting as a DHCP 4o6 client, all prerequisites and
+   configuration that apply to the DHCP client in Section 5 of [RFC7341]
+   shall be applied to 4o6RA.
 
    As 4o6RA takes the role of the client in respect to [RFC7341], it
    also takes the responsibility for finding a suitable interface, that
@@ -192,14 +194,13 @@ Table of Contents
 
    When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent, it
    looks for the DHCPv4 Message option within this message.  If this
-   option is not found, the DHCPv4-response message MUST be discarded.
-   If the DHCPv4 Message option is present, the 4o6RA MUST extract the
-   DHCPv4 message and forward the encapsulated DHCPv4-response to the
-   requesting DHCPv4 client.
+   option is not found or the DHCPv4-response message is not well-
+   formed, it MUST be discarded.  If the DHCPv4 Message option is
+   present, the 4o6RA MUST extract the DHCPv4 message and forward the
+   encapsulated DHCPv4-response to the requesting DHCPv4 client.
 
    Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE
-   messages are expected to handle them as specified in Section 6 of
-   [RFC6221].
+   messages MUST be handled as specified in Section 6 of [RFC6221].
 
    DHCPv6 servers must be compliant with 4o6 according to [RFC7341].  No
    additional requirements on DHCPv6 servers are set by this
@@ -264,7 +265,7 @@ Table of Contents
    As shown in Figure 2, the introduction of 4o6 at the edge of the IPv6
    network hides the L2 network from the DHCPv6 RA.
 
-   In order to preserve the topology information, it is recommended that
+   In order to preserve the topology information, it is RECOMMENDED that
    the implementation of 4o6RA is combined with the implementation of
    LDRA [RFC6221] and that the implementation has a mechanism for LDRA
    to get interface information that can be used for the Interface-ID
@@ -308,10 +309,10 @@ Table of Contents
 
    As clients are not aware of the presence of 4o6RA, the network
    deployment needs to ensure that all DHCPv4 broadcast and unicast
-   messages from clients are steered to a 4o6RA.  This can, e.g., be
-   achieved by placing the 4o6RA in a central position that can observe
-   all traffic from the clients or use of address translation with the
-   4o6RA address for unicast messages.
+   messages from clients are steered to a 4o6RA.  This can be achieved
+   by placing the 4o6RA in a central position that can observe all
+   traffic from the clients or use address translation with the 4o6RA
+   address for unicast messages.
 
 5.  Security Considerations
 
@@ -321,9 +322,11 @@ Table of Contents
    change anything else in the 4o6 DHCP specification and therefore the
    security consideration of [RFC7341] still apply.
 
-   This mechanism differs from [RFC7341] as the DHCP client sends and
-   receives DHCPv4 messages, whereas in [RFC7341] it only sends DHCPv6
-   messages.  This makes it possible that DHCPv4 messages could reach a
+   The mechanisms defined here differ from [RFC7341] as they allow the
+   DHCP client to send and receive DHCPv4 messages, whereas in [RFC7341]
+   the client only sends DHCPv6 messages.  This makes it possible that
+   in not properly configured networks where the client is located on
+   the same L2 scope of a DHCPv4 server, DHCPv4 messages could reach a
    DHCPv4 server without using the 4o6RA.  While this can cause
    erroneous state in both clients and servers and potentially even lead
    to misconfigurations that impact reachability, this is not seen as a
