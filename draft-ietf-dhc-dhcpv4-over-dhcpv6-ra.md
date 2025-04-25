@@ -174,7 +174,7 @@ and encapsulates the DHCP request message received from the legacy DHCPv4 client
 
 When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
 it looks for the DHCPv4 Message option within this message.
-If this option is not found, or the DHCPv4-response message is not well-formed,
+If this option is not found or the DHCPv4-response message is not well-formed,
 it MUST be discarded.
 If the DHCPv4 Message option is present, the 4o6RA MUST extract the DHCPv4
 message and forward the encapsulated DHCPv4-response to the requesting DHCPv4 client.
