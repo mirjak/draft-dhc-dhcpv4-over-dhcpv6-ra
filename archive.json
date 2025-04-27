@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-30T01:50:03.028492+00:00",
+  "timestamp": "2025-04-27T01:52:32.960312+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -811,6 +811,95 @@
           "createdAt": "2024-12-04T09:49:08Z",
           "updatedAt": "2024-12-04T09:49:08Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOLMlkXc6T4UK3",
+      "title": "Added comments from Alan Dekok",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/9",
+      "state": "MERGED",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-04-25T08:49:11Z",
+      "updatedAt": "2025-04-25T12:12:55Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "89a1d9d00d7001c0466c31546c35a2914caf4c2e",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "dekok",
+      "headRefOid": "bc6ca1c312c53b7f08484ce6f17ab63d1ec4acd3",
+      "closedAt": "2025-04-25T12:12:55Z",
+      "mergedAt": "2025-04-25T12:12:55Z",
+      "mergedBy": "teiclap",
+      "mergeCommit": {
+        "oid": "248dbeceba0922be73f014cdf73090503f2d980d"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLMlkXc6mgHln",
+          "commit": {
+            "abbreviatedOid": "461ba56"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-25T08:52:30Z",
+          "updatedAt": "2025-04-25T08:52:30Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "I'm not sure if this needs normative language as this is really just some advise and not something needed for the protocol to interoperate.",
+              "createdAt": "2025-04-25T08:52:30Z",
+              "updatedAt": "2025-04-25T08:52:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6mgHws",
+          "commit": {
+            "abbreviatedOid": "461ba56"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-25T08:52:47Z",
+          "updatedAt": "2025-04-25T08:52:48Z",
+          "comments": [
+            {
+              "originalPosition": 26,
+              "body": "```suggestion\r\nIf this option is not found or the DHCPv4-response message is not well-formed,\r\n```",
+              "createdAt": "2025-04-25T08:52:47Z",
+              "updatedAt": "2025-04-25T08:52:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6mh-Vq",
+          "commit": {
+            "abbreviatedOid": "461ba56"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-25T12:12:32Z",
+          "updatedAt": "2025-04-25T12:12:32Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "I would keep upcase, we actually want that the topology information is preserved.\r\nWe may have written in a different way, though. \r\nLet see if this is accepted.",
+              "createdAt": "2025-04-25T12:12:32Z",
+              "updatedAt": "2025-04-25T12:12:32Z"
+            }
+          ]
         }
       ]
     }
