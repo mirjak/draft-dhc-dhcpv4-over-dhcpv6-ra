@@ -93,7 +93,7 @@ the client.
 The mechanisms described in this document apply to the configuration phase
 of hosts that need to receive an IPv4 address but a DHCP server for IPv4 {{RFC2131}} is not
 reacheable directly from the host. Further the host is not able to implement
-a DHCP client conform to {{RFC7341}} itself as it is connected to an IPv4-only 
+a DHCP client conform to {{RFC7341}} itself as it is connected to an IPv4-only
 network. But there is a DHCPv6 server that can provide IPv4 addresses by means of
 the mechanisms described in {{RFC7341}}.
 
