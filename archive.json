@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-27T01:52:32.960312+00:00",
+  "timestamp": "2025-05-11T01:55:41.795037+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -898,6 +898,53 @@
               "body": "I would keep upcase, we actually want that the topology information is preserved.\r\nWe may have written in a different way, though. \r\nLet see if this is accepted.",
               "createdAt": "2025-04-25T12:12:32Z",
               "updatedAt": "2025-04-25T12:12:32Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOLMlkXc6Vlhou",
+      "title": "editorial pass",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/10",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-09T13:18:36Z",
+      "updatedAt": "2025-05-09T13:21:15Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "248dbeceba0922be73f014cdf73090503f2d980d",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "mirjak-patch-1",
+      "headRefOid": "76e9f0cf000934fb28586d0b6a450195e82bd958",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLMlkXc6olGZj",
+          "commit": {
+            "abbreviatedOid": "5dbb827"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-09T13:21:00Z",
+          "updatedAt": "2025-05-09T13:21:01Z",
+          "comments": [
+            {
+              "originalPosition": 33,
+              "body": "```suggestion\r\na DHCP client conform to {{RFC7341}} itself as it is connected to an IPv4-only\r\n```",
+              "createdAt": "2025-05-09T13:21:00Z",
+              "updatedAt": "2025-05-09T13:21:01Z"
             }
           ]
         }
