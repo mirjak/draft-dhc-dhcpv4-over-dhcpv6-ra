@@ -92,7 +92,7 @@ the client.
 
 The mechanisms described in this document apply to the configuration phase
 of hosts that need to receive an IPv4 address but a DHCP server for IPv4 {{RFC2131}} is not
-reacheable directly from the host. Further the host is not able to implement
+reacheable directly from the host. Furthermore, the host is not able to implement
 a DHCP client conform to {{RFC7341}} itself as it is connected to an IPv4-only
 network. But there is a DHCPv6 server that can provide IPv4 addresses by means of
 the mechanisms described in {{RFC7341}}.
@@ -112,7 +112,7 @@ The following terms and acronyms are used in this document:
    DHCPv4-over-DHCPv6 document {{RFC7341}}.
 
 * DHCP Relay Agent:
-   This is a concept in all of the follwing protocols, although the details differ
+   This is a concept in all of the following protocols, although the details differ
    between them: BOOTP {{RFC0951}} {{RFC1542}}, DHCPv4
    {{RFC2131}} {{RFC2132}}, and DHCPv6 {{RFC8415}}.
 
@@ -199,7 +199,7 @@ topology information provided by a DHCP relay, typically.
 
 Address/prefix allocation decisions are integral to the allocation of
 addresses and prefixes in DHCP, as decsribed in details
-in {{RFC7969}}. In specification aims to guarantee that the 4o6RA does not
+in {{RFC7969}}. This specification aims to guarantee that the 4o6RA does not
 break any legacy capability when used for topology discovery.
 
 Topology discovery as described in {{RFC7969}} differs between
