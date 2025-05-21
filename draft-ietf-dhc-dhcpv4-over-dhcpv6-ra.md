@@ -387,4 +387,6 @@ the switches.
 {:numbered="false"}
 
 The authors would also like to acknowledge interesting discussions in
-this problem space with Sarah Gannon, Ines Ramadza, and Siddharth Sharma.
+this problem space with Sarah Gannon, Ines Ramadza, and Siddharth Sharma
+as well as reviews and comments provided by Eric Vyncke, Mohamed Boucadair,
+David Lamparter, Michael Richardson, and Alan DeKok.
