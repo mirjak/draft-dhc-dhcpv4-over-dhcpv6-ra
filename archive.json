@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-11T01:55:41.795037+00:00",
+  "timestamp": "2025-05-22T01:51:05.484897+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -119,15 +119,15 @@
       "id": "I_kwDOLMlkXc6SstAD",
       "title": "4.1 and 4.5 questions",
       "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/issues/5",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "jariarkko",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Context:\r\n\r\n\t4.1.  DHCP scope limitation\t\r\n \t\t\r\n \t   Being the 4o6 mechanism implemented in the Relay Agent, special care\t\r\n \t   needs to be done at the nework node implementing the Relay Agent\t\r\n \t   itself when delaing with DHCP termination.  In order the 4o6\t\r\n \t   mechanism to work properly, it shall not be possible for DHCP traffic\t\r\n \t   generated from the DHCP client to reach any DHCP server but using the\t\r\n \t   4o6RA.  As a result, all the DHCP messages generated from the client\t\r\n \t   MUST be received only by the 4o6 Relay Agent.  The rule applies both\t\r\n \t   to the configuration of the node implementing the 4o6RA and the L2\t\r\n \t   network where DHCP client and 4o6RA are connected to.\r\n\r\n4.5.  Considerations about L2 terminations at 4o6\t\r\n \t\t\r\n \t   Deployng 4o6RA at the network edge requires care in the network\t\r\n \t   design as well as in the desing of the 4o6RA parser.\t\r\n \t\t\r\n \t   The network configuration shall guarantee that no DHCP server are\t\r\n \t   reacheable from the DHCP client and that at least one 4o6RA can be\t\r\n \t   reached.\r\n\r\nComments:\r\n\r\n- Some duplication perhaps between 4.1 and 4.5\r\n- Perhaps more importantly, can we be clearer who the requirements are for? This is an operational requirement, e.g., don't turn this thing on unless your network is like this? Perhaps you could just say that this is a requirement for the whoever operates the network. And then the MUST in 4.1 is probably inappropriate because the 4o6 Relay Agent can't really ensure this. But maybe I'm missing something... in either case, clarity would help the reader.\r\n",
       "createdAt": "2024-08-12T14:40:31Z",
-      "updatedAt": "2024-08-12T14:40:31Z",
-      "closedAt": null,
+      "updatedAt": "2025-05-21T11:40:57Z",
+      "closedAt": "2025-05-21T11:40:57Z",
       "comments": []
     }
   ],
@@ -313,7 +313,7 @@
       "labels": [],
       "body": "Thanks Med!",
       "createdAt": "2024-12-02T13:25:10Z",
-      "updatedAt": "2024-12-05T08:12:44Z",
+      "updatedAt": "2025-05-21T11:44:55Z",
       "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
       "baseRefName": "main",
       "baseRefOid": "277c210cc1e0598327122257597fdb8475341182",
@@ -826,7 +826,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-04-25T08:49:11Z",
-      "updatedAt": "2025-04-25T12:12:55Z",
+      "updatedAt": "2025-05-21T11:44:55Z",
       "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
       "baseRefName": "main",
       "baseRefOid": "89a1d9d00d7001c0466c31546c35a2914caf4c2e",
@@ -908,24 +908,26 @@
       "id": "PR_kwDOLMlkXc6Vlhou",
       "title": "editorial pass",
       "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/10",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-05-09T13:18:36Z",
-      "updatedAt": "2025-05-09T13:21:15Z",
+      "updatedAt": "2025-05-21T11:44:52Z",
       "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
       "baseRefName": "main",
       "baseRefOid": "248dbeceba0922be73f014cdf73090503f2d980d",
       "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
       "headRefName": "mirjak-patch-1",
-      "headRefOid": "76e9f0cf000934fb28586d0b6a450195e82bd958",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "d39e9cd48775d486f244b9dfa67efdbadf400d48",
+      "closedAt": "2025-05-21T11:33:07Z",
+      "mergedAt": "2025-05-21T11:33:07Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "080e804b3f666470fb14cd0c5b4ab0884335752c"
+      },
       "comments": [],
       "reviews": [
         {
@@ -947,6 +949,108 @@
               "updatedAt": "2025-05-09T13:21:01Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6qTsw_",
+          "commit": {
+            "abbreviatedOid": "76e9f0c"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-21T11:12:53Z",
+          "updatedAt": "2025-05-21T11:12:54Z",
+          "comments": [
+            {
+              "originalPosition": 32,
+              "body": "```suggestion\r\nreacheable directly from the host. Furthermore, the host is not able to implement\r\n```",
+              "createdAt": "2025-05-21T11:12:54Z",
+              "updatedAt": "2025-05-21T11:12:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6qTtiK",
+          "commit": {
+            "abbreviatedOid": "76e9f0c"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-21T11:13:58Z",
+          "updatedAt": "2025-05-21T11:13:58Z",
+          "comments": [
+            {
+              "originalPosition": 58,
+              "body": "```suggestion\r\n   This is a concept in all of the following protocols, although the details differ\r\n```",
+              "createdAt": "2025-05-21T11:13:58Z",
+              "updatedAt": "2025-05-21T11:13:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc6qTt8P",
+          "commit": {
+            "abbreviatedOid": "76e9f0c"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-05-21T11:14:37Z",
+          "updatedAt": "2025-05-21T11:14:37Z",
+          "comments": [
+            {
+              "originalPosition": 119,
+              "body": "```suggestion\r\nin {{RFC7969}}. This specification aims to guarantee that the 4o6RA does not\r\n```",
+              "createdAt": "2025-05-21T11:14:37Z",
+              "updatedAt": "2025-05-21T11:14:37Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOLMlkXc6XC5ub",
+      "title": "add reviewers to ack section",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/11",
+      "state": "MERGED",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-21T11:34:58Z",
+      "updatedAt": "2025-05-21T11:44:51Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "080e804b3f666470fb14cd0c5b4ab0884335752c",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "mirjak-patch-2",
+      "headRefOid": "a91fb3365fdf625cf635dfecb038bbd2f8dbb923",
+      "closedAt": "2025-05-21T11:37:23Z",
+      "mergedAt": "2025-05-21T11:37:23Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "b42a887018fde1f1228137871a38f4696f25dc8f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLMlkXc6qT9_K",
+          "commit": {
+            "abbreviatedOid": "a91fb33"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "That's fine for me",
+          "createdAt": "2025-05-21T11:36:22Z",
+          "updatedAt": "2025-05-21T11:36:22Z",
+          "comments": []
         }
       ]
     }
