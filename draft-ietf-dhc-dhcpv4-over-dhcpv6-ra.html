@@ -1053,12 +1053,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left">Internet-Draft</td>
-<td class="center">DCHP 4o6 Relay Agent</td>
+<td class="center">DHCP 4o6 Relay Agent</td>
 <td class="right">May 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Porfiri, et al.</td>
-<td class="center">Expires 22 November 2025</td>
+<td class="center">Expires 24 November 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1071,12 +1071,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-dhc-dhcpv4-over-dhcpv6-ra-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-05-21" class="published">21 May 2025</time>
+<time datetime="2025-05-23" class="published">23 May 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-11-22">22 November 2025</time></dd>
+<dd class="expires"><time datetime="2025-11-24">24 November 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1139,7 +1139,7 @@ and decapsulation in an intermediate node rather than the client.<a href="#secti
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1241,9 +1241,9 @@ or L3RA <span>[<a href="#RFC8415" class="cite xref">RFC8415</a>]</span> do not f
 other than implementing DHCP 4o6 in the client.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">This document specifies an <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>-based solution that can be
 implemented in intermediate nodes such as switches or routers,
-without putting any requirements on clients. No new protocols or extensions are needed,
+without putting any requirements on clients. No new protocols or extensions are needed;
 instead this document specifies an amendment to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> that allows
-a Relay Agent to perform the DHCP 4o6 encapsulation and decapsultion instead of
+a Relay Agent to perform the DHCP 4o6 encapsulation and decapsulation instead of
 the client.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <div id="applicability">
 <section id="section-1.1">
@@ -1252,8 +1252,8 @@ the client.<a href="#section-1-3" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-1.1-1">The mechanisms described in this document apply to the configuration phase
 of hosts that need to receive an IPv4 address but a DHCP server for IPv4 <span>[<a href="#RFC2131" class="cite xref">RFC2131</a>]</span> is not
-reacheable directly from the host. Furthermore, the host is not able to implement
-a DHCP client conform to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> itself as it is connected to an IPv4-only
+reachable directly from the host. Furthermore, the host is unable to implement
+a DHCP client conformant to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> as it is connected to an IPv4-only
 network. But there is a DHCPv6 server that can provide IPv4 addresses by means of
 the mechanisms described in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 </section>
@@ -1269,7 +1269,7 @@ the mechanisms described in <span>[<a href="#RFC7341" class="cite xref">RFC7341<
 <ul class="normal">
 <li class="normal" id="section-2-2.1">
           <p id="section-2-2.1.1">DHCP:
-If not otherwise specified, DHCP referes to DHCPv4 and/or DHCPv6.<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
+If not otherwise specified, DHCP refers to DHCPv4 and/or DHCPv6.<a href="#section-2-2.1.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-2-2.2">
           <p id="section-2-2.2.1">DHCPv4:
@@ -1376,11 +1376,11 @@ DHCPv6 Relay Agents with DHCPv4-over-DHCPv6, as shown in <a href="#fig_4o6RA" cl
 </div>
 <p id="section-3-4">This document specifies the encapsulation
 and decapsulation described in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> to be performed in the Relay Agent
-whereas the DHCPv4 client does not require any change.
+without requiring any changes on the DHCPv4 client.
 In this case it is up to the Relay Agent to provide the full DHCP
-4o6 support whereas a legacy client is not aware of being served
+4o6 support and the legacy DHCPv4 client is not aware that it is being served
 via a DHCP 4o6 service.
-As the 4o6RA is acting as a DHCP 4o6 client, all prerequisites and configuration
+As the 4o6RA acts as a DHCP 4o6 client, all prerequisites and configuration
 that apply to the DHCP client in <span><a href="https://rfc-editor.org/rfc/rfc7341#section-5" class="relref">Section 5</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> are also applied to the 4o6RA.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <p id="section-3-5">As the 4o6RA takes the role of the client in respect to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>,
 it also takes the responsibility for finding a suitable interface; that can be
@@ -1392,13 +1392,13 @@ the same message types as a DHCPv6 Relay Agent <span><a href="https://rfc-editor
 and encapsulates the DHCP request message received from the legacy DHCPv4 client.<a href="#section-3-7" class="pilcrow">¶</a></p>
 <p id="section-3-8">When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
 it looks for the DHCPv4 Message option within this message.
-If this option is not found or the DHCPv4-response message is not well-formed,
+If this option is not found or the DHCPv4-RESPONSE message is not well-formed,
 it <span class="bcp14">MUST</span> be discarded.
 If the DHCPv4 Message option is present, the 4o6RA <span class="bcp14">MUST</span> extract the DHCPv4
 message and forward the encapsulated DHCPv4-response to the requesting DHCPv4 client.<a href="#section-3-8" class="pilcrow">¶</a></p>
 <p id="section-3-9">Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
-<span class="bcp14">MUST</span> be handled as specified in <span><a href="https://rfc-editor.org/rfc/rfc6221#section-6" class="relref">Section 6</a> of [<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-3-9" class="pilcrow">¶</a></p>
-<p id="section-3-10">DHCPv6 servers is expected to be compliant with 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.
+<span class="bcp14">MUST</span> handle them as specified in <span><a href="https://rfc-editor.org/rfc/rfc6221#section-6" class="relref">Section 6</a> of [<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-3-9" class="pilcrow">¶</a></p>
+<p id="section-3-10">DHCPv6 servers are expected to be compliant with 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.
 No additional requirements on DHCPv6 servers are set by this specification.<a href="#section-3-10" class="pilcrow">¶</a></p>
 <div id="intermediate-relays">
 <section id="section-3.1">
@@ -1421,7 +1421,7 @@ has to be configured.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 describe how addresses can be allocated to clients based on network
 topology information provided by a DHCP relay, typically.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <p id="section-3.2-3">Address/prefix allocation decisions are integral to the allocation of
-addresses and prefixes in DHCP, as decsribed in details
+addresses and prefixes in DHCP, as described in details
 in <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>. This specification aims to guarantee that the 4o6RA does not
 break any legacy capability when used for topology discovery.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
 <p id="section-3.2-4">Topology discovery as described in <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span> differs between
@@ -1433,16 +1433,16 @@ is transported via DHCPv4.<a href="#section-3.2-4" class="pilcrow">¶</a></p>
 link-address and Interface-ID options, that provide
 information about the complete path
 between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.<a href="#section-3.2-5" class="pilcrow">¶</a></p>
-<p id="section-3.2-6">In L2 networks, Lightway DHCPv6 Relay Agents <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
+<p id="section-3.2-6">In L2 networks, Lightweight DHCPv6 Relay Agents <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
 can be used. Then, topology information for the given IP address
 can be obtained from the DHCPv6 server and used for configuration
 or other purposes.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
-<p id="section-3.2-7"><span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> anables the client to use DHCPv6 for topology discovery
+<p id="section-3.2-7"><span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> enables the client to use DHCPv6 for topology discovery
 even within an DHCPv4 context, as the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.
 As shown in <a href="#fig_4o6RA_RA" class="auto internal xref">Figure 2</a>, the introduction of 4o6 at the
 edge of the IPv6 network, however, hides the L2 network from the DHCPv6 RA.
-As such moving 4o6 in a intermediate node rather than performaing it at the client, breaks
+As such, moving 4o6 in a intermediate node rather than performing it at the client, breaks
 the topology propagation as 4o6RA-only does not provide any interface
 information in the encapsulated message.<a href="#section-3.2-7" class="pilcrow">¶</a></p>
 <span id="name-topology-broken-path"></span><div id="fig_4o6RA_RA">
@@ -1656,20 +1656,20 @@ messages.<a href="#section-4-1" class="pilcrow">¶</a></p>
       <h2 id="name-security-considerations">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-5-1">This documents specifies the applicability of 4o6 DHCP in a scenario where legacy IPv4 clients are
-connected to 4o6 DHCP Relay Agents that performs the encapsulation and decapsulation. This document
+<p id="section-5-1">This document specifies the applicability of 4o6 DHCP in a scenario where legacy IPv4 clients are
+connected to 4o6 DHCP Relay Agents that perform the encapsulation and decapsulation. This document
 does not change anything else in the 4o6 DHCP specification and therefore the
-security consideration of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> still apply.<a href="#section-5-1" class="pilcrow">¶</a></p>
+security considerations of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> still apply.<a href="#section-5-1" class="pilcrow">¶</a></p>
 <p id="section-5-2">The mechanisms defined here differ from <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> as they allow the DHCP client
 to send and receive DHCPv4 messages, whereas in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> the client
-only sends DHCPv6 messages. This makes it possible that in not properly configured
+only sends DHCPv6 messages. This makes it possible that in improperly configured
 networks where the client is located on the same L2 scope of a DHCPv4 server,
 DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
 While this can cause erroneous state in both clients and servers
 and potentially even lead to misconfigurations that impact reachability,
-this is not seen as a security concern rather than a deployment error.
-Further, even though it may be used for attacks from within the network,
-this is not new and it is not introduced because of this specification.<a href="#section-5-2" class="pilcrow">¶</a></p>
+this is seen as a deployment error rather than a security concern.
+Further, even though this mechanism may be used for attacks from within the network,
+this is not a new concern introduced by this specification.<a href="#section-5-2" class="pilcrow">¶</a></p>
 <p id="section-5-3">More generally, legacy IPv4 clients are not aware of this mechanism, however, even
 when DHCP 4o6 is used, the client does not have any control about the
 information provided by the Relay agent. As such this change does not
@@ -1771,7 +1771,7 @@ based on the cabling between the RUs and antennas.<a href="#appendix-A-2" class=
 added a level of complexity that requires the BBs to have a deeper
 knowledge of the topology in order to properly configure the RUs,
 involving knowledge of all the cabling in the switched network.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">Examples for switched networks are show in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>
+<p id="appendix-A-4">Examples for switched networks are shown in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>
 and demonstrate the different levels of complexity.
 An example of a FH is depicted in <a href="#l2_switched_fh" class="auto internal xref">Figure 5</a>.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 <span id="name-layer-2-switched-fronthaul-"></span><div id="l2_switched_fh">
@@ -1869,7 +1869,7 @@ An example of a FH is depicted in <a href="#l2_switched_fh" class="auto internal
 <p id="appendix-A-6">Among the various alternatives, DHCP topology knowledge can be used
 for solving the RU configuration problem when the FH is IPv6. Such solution
 would use the topology discovery mechanisms described in section 3.2
-of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>. The same mechanisms applies when RUs are connected via IPv4 and
+of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>. The same mechanisms are applicable when RUs are connected via IPv4 and
 implement 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
 <p id="appendix-A-7">In order to extend the solution described above also to the case where
 RUs are using IPv4 but cannot support <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>,
