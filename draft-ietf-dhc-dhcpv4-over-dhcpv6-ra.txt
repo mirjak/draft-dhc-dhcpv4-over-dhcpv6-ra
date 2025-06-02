@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 24 November 2025                                          Cisco
+Expires: 4 December 2025                                           Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                             23 May 2025
+                                                             2 June 2025
 
 
          DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 November 2025.
+   This Internet-Draft will expire on 4 December 2025.
 
 Copyright Notice
 
@@ -101,7 +101,7 @@ Table of Contents
    [RFC6221] or L3RA [RFC8415] do not foresee the possibility to handle
    legacy DHCPv4, other than implementing DHCP 4o6 in the client.
 
-   This document specifies an [RFC7341]-based solution that can be
+   This document specifies an [RFC7341] based solution that can be
    implemented in intermediate nodes such as switches or routers,
    without putting any requirements on clients.  No new protocols or
    extensions are needed; instead this document specifies an amendment
@@ -133,7 +133,7 @@ Table of Contents
 
    *  DHCP Relay Agent: This is a concept in all of the following
       protocols, although the details differ between them: BOOTP
-      [RFC0951] [RFC1542], DHCPv4 [RFC2131] [RFC2132], and DHCPv6
+      [RFC951] [RFC1542], DHCPv4 [RFC2131] [RFC2132], and DHCPv6
       [RFC8415].
 
    *  Lightweight DHCPv6 Relay Agent (or LDRA): This is an extension of
@@ -157,15 +157,15 @@ Table of Contents
    To address such a network setup, this document extends DHCPv6 Relay
    Agents with DHCPv4-over-DHCPv6, as shown in Figure 1.
 
-                     .-----------.             .-----------.
-                    |             |           |             |
-           +--------+-+    L2   +-+-----------+-+  IPv6   +-+--------+
-           |  DHCPv4  | Network |    DHCPv6     | Network | DHCP 4o6 |
-           |  Client  +---------+  Relay Agent  +---------+  Server  |
-           |          |         |   with 4o6RA  |         |          |
-           +--------+-+         +-+-----------+-+         +-+--------+
-                    |             |           |             |
-                     '-----------'             '-----------'
+                  .-----------.             .-----------.
+                 |             |           |             |
+        +--------+-+    L2   +-+-----------+-+  IPv6   +-+--------+
+        |  DHCPv4  | Network |    DHCPv6     | Network | DHCP 4o6 |
+        |  Client  +---------+  Relay Agent  +---------+  Server  |
+        |          |         |   with 4o6RA  |         |          |
+        +--------+-+         +-+-----------+-+         +-+--------+
+                 |             |           |             |
+                  '-----------'             '-----------'
 
            Figure 1: Architecture Example with Legacy DHCP Client
 
@@ -217,12 +217,12 @@ Table of Contents
    be unaware of the topology and respectively how it has to be
    configured.
 
-   DHCPv4 [RFC2131] and DHCPv6 [RFC3315] specifications describe how
+   DHCPv4 [RFC2131] and DHCPv6 [RFC8415] specifications describe how
    addresses can be allocated to clients based on network topology
    information provided by a DHCP relay, typically.
 
    Address/prefix allocation decisions are integral to the allocation of
-   addresses and prefixes in DHCP, as described in details in [RFC7969].
+   addresses and prefixes in DHCP, as described in detail in [RFC7969].
    This specification aims to guarantee that the 4o6RA does not break
    any legacy capability when used for topology discovery.
 
@@ -349,11 +349,6 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2119>.
 
-   [RFC3315]  Droms, R., Ed., Bound, J., Volz, B., Lemon, T., Perkins,
-              C., and M. Carney, "Dynamic Host Configuration Protocol
-              for IPv6 (DHCPv6)", RFC 3315, DOI 10.17487/RFC3315, July
-              2003, <https://www.rfc-editor.org/rfc/rfc3315>.
-
    [RFC6221]  Miles, D., Ed., Ooghe, S., Dec, W., Krishnan, S., and A.
               Kavanagh, "Lightweight DHCPv6 Relay Agent", RFC 6221,
               DOI 10.17487/RFC6221, May 2011,
@@ -363,11 +358,6 @@ Table of Contents
               Farrer, "DHCPv4-over-DHCPv6 (DHCP 4o6) Transport",
               RFC 7341, DOI 10.17487/RFC7341, August 2014,
               <https://www.rfc-editor.org/rfc/rfc7341>.
-
-   [RFC7969]  Lemon, T. and T. Mrugalski, "Customizing DHCP
-              Configuration on the Basis of Network Topology", RFC 7969,
-              DOI 10.17487/RFC7969, October 2016,
-              <https://www.rfc-editor.org/rfc/rfc7969>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -381,10 +371,6 @@ Table of Contents
 
 7.2.  Informative References
 
-   [RFC0951]  Croft, W. and J. Gilmore, "Bootstrap Protocol", RFC 951,
-              DOI 10.17487/RFC0951, September 1985,
-              <https://www.rfc-editor.org/rfc/rfc951>.
-
    [RFC1542]  Wimer, W., "Clarifications and Extensions for the
               Bootstrap Protocol", RFC 1542, DOI 10.17487/RFC1542,
               October 1993, <https://www.rfc-editor.org/rfc/rfc1542>.
@@ -396,6 +382,15 @@ Table of Contents
    [RFC2132]  Alexander, S. and R. Droms, "DHCP Options and BOOTP Vendor
               Extensions", RFC 2132, DOI 10.17487/RFC2132, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2132>.
+
+   [RFC7969]  Lemon, T. and T. Mrugalski, "Customizing DHCP
+              Configuration on the Basis of Network Topology", RFC 7969,
+              DOI 10.17487/RFC7969, October 2016,
+              <https://www.rfc-editor.org/rfc/rfc7969>.
+
+   [RFC951]   Croft, W. and J. Gilmore, "Bootstrap Protocol", RFC 951,
+              DOI 10.17487/RFC0951, September 1985,
+              <https://www.rfc-editor.org/rfc/rfc951>.
 
 Appendix A.  Example Use Case: Topology Discovery for IPv4-only Radio
              Unit in the RAN Switched Fronthaul
