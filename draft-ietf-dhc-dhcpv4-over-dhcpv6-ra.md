@@ -41,17 +41,17 @@ author:
     email: mirja.kuehlewind@ericsson.com
 
 normative:
-   RFC3315:
    RFC6221:
    RFC7341:
-   RFC7969:
    RFC8415:
 
 informative:
-   RFC0951:
+   RFC951:
    RFC1542:
    RFC2131:
    RFC2132:
+   RFC7969:
+
 
 --- abstract
 
@@ -81,7 +81,7 @@ Similarly, the specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
 or L3RA {{RFC8415}} do not foresee the possibility to handle legacy DHCPv4,
 other than implementing DHCP 4o6 in the client.
 
-This document specifies an {{RFC7341}}-based solution that can be
+This document specifies an {{RFC7341}} based solution that can be
 implemented in intermediate nodes such as switches or routers,
 without putting any requirements on clients. No new protocols or extensions are needed;
 instead this document specifies an amendment to [RFC7341] that allows
@@ -113,7 +113,7 @@ The following terms and acronyms are used in this document:
 
 * DHCP Relay Agent:
    This is a concept in all of the following protocols, although the details differ
-   between them: BOOTP {{RFC0951}} {{RFC1542}}, DHCPv4
+   between them: BOOTP {{RFC951}} {{RFC1542}}, DHCPv4
    {{RFC2131}} {{RFC2132}}, and DHCPv6 {{RFC8415}}.
 
 * Lightweight DHCPv6 Relay Agent (or LDRA):
@@ -136,15 +136,15 @@ DHCPv6 Relay Agents with DHCPv4-over-DHCPv6, as shown in {{fig_4o6RA}}.
 
 ~~~aasvg
 
-                 .-----------.             .-----------.
-                |             |           |             |
-       +--------+-+    L2   +-+-----------+-+  IPv6   +-+--------+
-       |  DHCPv4  | Network |    DHCPv6     | Network | DHCP 4o6 |
-       |  Client  +---------+  Relay Agent  +---------+  Server  |
-       |          |         |   with 4o6RA  |         |          |
-       +--------+-+         +-+-----------+-+         +-+--------+
-                |             |           |             |
-                 '-----------'             '-----------'
+           .-----------.             .-----------.
+          |             |           |             |
+ +--------+-+    L2   +-+-----------+-+  IPv6   +-+--------+
+ |  DHCPv4  | Network |    DHCPv6     | Network | DHCP 4o6 |
+ |  Client  +---------+  Relay Agent  +---------+  Server  |
+ |          |         |   with 4o6RA  |         |          |
+ +--------+-+         +-+-----------+-+         +-+--------+
+          |             |           |             |
+           '-----------'             '-----------'
 
 ~~~
 {: #fig_4o6RA title="Architecture Example with Legacy DHCP Client" artwork-align="center"}
@@ -193,12 +193,12 @@ topology.  However, when the new host attaches to a
 network, it may be unaware of the topology and respectively how it
 has to be configured.
 
-DHCPv4 {{RFC2131}} and DHCPv6 {{RFC3315}} specifications
+DHCPv4 {{RFC2131}} and DHCPv6 {{RFC8415}} specifications
 describe how addresses can be allocated to clients based on network
 topology information provided by a DHCP relay, typically.
 
 Address/prefix allocation decisions are integral to the allocation of
-addresses and prefixes in DHCP, as described in details
+addresses and prefixes in DHCP, as described in detail
 in {{RFC7969}}. This specification aims to guarantee that the 4o6RA does not
 break any legacy capability when used for topology discovery.
 
