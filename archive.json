@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-25T01:59:41.567454+00:00",
+  "timestamp": "2025-06-03T01:53:58.293800+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -1078,6 +1078,34 @@
       "mergedBy": "mirjak",
       "mergeCommit": {
         "oid": "c353746c575e5225a393a64fd371ce1272824917"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 13,
+      "id": "PR_kwDOLMlkXc6YnQwz",
+      "title": "Passed the NITS tests",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/13",
+      "state": "MERGED",
+      "author": "teiclap",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Implemented all comments from Bernie and other local NITS",
+      "createdAt": "2025-06-02T12:13:18Z",
+      "updatedAt": "2025-06-02T12:21:14Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "c353746c575e5225a393a64fd371ce1272824917",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "nits",
+      "headRefOid": "110e0b6d0e0d74dc8405c677d26e1786e883e875",
+      "closedAt": "2025-06-02T12:21:13Z",
+      "mergedAt": "2025-06-02T12:21:13Z",
+      "mergedBy": "teiclap",
+      "mergeCommit": {
+        "oid": "6b43847fef236977881cebf68c118987a0dd5dc1"
       },
       "comments": [],
       "reviews": []
