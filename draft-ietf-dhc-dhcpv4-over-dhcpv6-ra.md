@@ -57,11 +57,11 @@ informative:
 
 This document describes a mechanism for networks
 with legacy IPv4-only clients to use services provided by
-DHCPv6 using DHCPv4-over-DHCPv6 (DHCP 4o6) in a Relay Agent.
+DHCPv6 using DHCPv4-over-DHCPv6 in a Relay Agent.
 RFC7341 specifies use of DHCPv4-over-DHCPv6 in the client only.
 This document specifies
 a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
-Relay Agent (4o6RA) that implements the 4o6 DHCP encapsulation
+Relay Agent that implements the 4o6 DHCP encapsulation
 and decapsulation in an intermediate node rather than the client.
 
 --- middle
