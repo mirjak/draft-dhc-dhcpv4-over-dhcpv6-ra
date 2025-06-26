@@ -57,7 +57,7 @@ informative:
 
 This document describes a mechanism for networks
 with legacy IPv4-only clients to use services provided by
-DHCPv6 using DHCPv4-over-DHCPv6 in a Relay Agent.
+DHCPv4-over-DHCPv6 in a Relay Agent.
 RFC7341 specifies use of DHCPv4-over-DHCPv6 in the client only.
 This document specifies
 a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
