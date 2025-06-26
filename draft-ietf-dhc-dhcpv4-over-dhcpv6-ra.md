@@ -43,7 +43,11 @@ author:
 normative:
    RFC6221:
    RFC7341:
+
    draft-ietf-dhc-rfc8415bis:
+      target: "https://datatracker.ietf.org/doc/draft-ietf-dhc-rfc8415bis/"
+      title: "Dynamic Host Configuration Protocol for IPv6 (DHCPv6)"
+      date: June 2025
 
 informative:
    RFC951:
