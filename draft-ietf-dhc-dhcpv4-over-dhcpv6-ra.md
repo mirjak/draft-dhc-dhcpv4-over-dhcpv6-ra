@@ -43,7 +43,7 @@ author:
 normative:
    RFC6221:
    RFC7341:
-   RFC8415:
+   draft-ietf-dhc-rfc8415bis:
 
 informative:
    RFC951:
@@ -69,7 +69,7 @@ and decapsulation in an intermediate node rather than the client.
 # Introduction {#introduction}
 
 {{RFC7341}} describes a transport mechanism for carrying DHCPv4 {{RFC2131}}
-messages using DHCPv6 {{RFC8415}} for dynamic provisioning
+messages using DHCPv6 {{draft-ietf-dhc-rfc8415bis}} for dynamic provisioning
 of IPv4 addresses and other DHCPv4 specific configuration parameters
 across IPv6-only networks. The deployment of {{RFC7341}} requires support in
 DHCP clients and at the DHCPv6 server.
@@ -78,7 +78,7 @@ easily be replaced or updated due to a number of technical or business reasons,
 this approach does not work.
 
 Similarly, the specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
-or L3RA {{RFC8415}} do not foresee the possibility to handle legacy DHCPv4,
+or L3RA {{draft-ietf-dhc-rfc8415bis}} do not foresee the possibility to handle legacy DHCPv4,
 other than implementing DHCP 4o6 in the client.
 
 This document specifies an {{RFC7341}} based solution that can be
@@ -114,7 +114,7 @@ The following terms and acronyms are used in this document:
 * DHCP Relay Agent:
    This is a concept in all of the following protocols, although the details differ
    between them: BOOTP {{RFC951}} {{RFC1542}}, DHCPv4
-   {{RFC2131}} {{RFC2132}}, and DHCPv6 {{RFC8415}}.
+   {{RFC2131}} {{RFC2132}}, and DHCPv6 {{draft-ietf-dhc-rfc8415bis}}.
 
 * Lightweight DHCPv6 Relay Agent (or LDRA):
    This is an extension of the original DHCPv6 Relay Agent,
@@ -163,7 +163,7 @@ it also takes the responsibility for finding a suitable interface; that can be
 a network interface or another Relay Agent.
 
 To maintain interoperability with existing DHCPv6 relays and servers,
-the message format is unchanged from {{RFC8415}}. The 4o6RA implements
+the message format is unchanged from {{draft-ietf-dhc-rfc8415bis}}. The 4o6RA implements
 the same message types as a DHCPv6 Relay Agent {{Section 6 of RFC7341}}.
 
 However, in this specification, the 4o6RA, instead of the client, creates the DHCPV4-QUERY Message
@@ -193,7 +193,7 @@ topology.  However, when the new host attaches to a
 network, it may be unaware of the topology and respectively how it
 has to be configured.
 
-DHCPv4 {{RFC2131}} and DHCPv6 {{RFC8415}} specifications
+DHCPv4 {{RFC2131}} and DHCPv6 {{draft-ietf-dhc-rfc8415bis}} specifications
 describe how addresses can be allocated to clients based on network
 topology information provided by a DHCP relay, typically.
 
