@@ -100,7 +100,7 @@ of hosts that need to receive an IPv4 address but a DHCP server for IPv4 {{RFC21
 reachable directly from the host. Furthermore, the host is unable to implement
 a DHCP client conformant to {{RFC7341}} as it is connected to an IPv4-only
 network. But there is a DHCPv6 server that can provide IPv4 addresses by means of
-the mechanisms described in {{RFC7341}}.
+the mechanisms specified in {{RFC7341}}.
 
 # Conventions and Definitions
 
@@ -113,7 +113,7 @@ The following terms and acronyms are used in this document:
    DHCP as defined in {{RFC2131}}.
 
 * DHCPv4 over DHCPv6 (or 4o6):
-   The architecture, the procedures, and the protocols described in the
+   The architecture, the procedures, and the protocols specified in the
    DHCPv4-over-DHCPv6 document {{RFC7341}}.
 
 * DHCP Relay Agent:
@@ -156,7 +156,7 @@ DHCPv6 Relay Agents with DHCPv4-over-DHCPv6, as shown in {{fig_4o6RA}}.
 {: #fig_4o6RA title="Architecture Example with Legacy DHCP Client" artwork-align="center"}
 
 This document specifies the encapsulation
-and decapsulation described in {{RFC7341}} to be performed in the Relay Agent
+and decapsulation specified in {{RFC7341}} to be performed in the Relay Agent
 without requiring any changes on the DHCPv4 client.
 In this case it is up to the Relay Agent to provide the full DHCP
 4o6 support and the legacy DHCPv4 client is not aware that it is being served
