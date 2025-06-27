@@ -5,14 +5,14 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 28 December 2025                                          Cisco
+Expires: 29 December 2025                                          Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                            26 June 2025
+                                                            27 June 2025
 
 
-         DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support
+              DHCPv4-over-DHCPv6 with Relay Agent Support
               draft-ietf-dhc-dhcpv4-over-dhcpv6-ra-latest
 
 Abstract
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 December 2025.
+   This Internet-Draft will expire on 29 December 2025.
 
 Copyright Notice
 
@@ -97,10 +97,10 @@ Table of Contents
    supports IPv4 and cannot easily be replaced or updated due to a
    number of technical or business reasons, this approach does not work.
 
-   Similarly, the specifications for DHCPv6 Relay Agents such as LDRA
-   [RFC6221] or L3RA [draft-ietf-dhc-rfc8415bis] do not foresee the
-   possibility to handle legacy DHCPv4, other than implementing DHCP 4o6
-   in the client.
+   Similarly, the specifications for DHCPv6 Relay Agents such as
+   Lightweight DHCPv6 Relay Agent (LDRA) [RFC6221] or DHCPv6 Relay Agent
+   (L3RA) [draft-ietf-dhc-rfc8415bis] do not foresee the possibility to
+   handle legacy DHCPv4, other than implementing DHCP 4o6 in the client.
 
    This document specifies an [RFC7341] based solution that can be
    implemented in intermediate nodes such as switches or routers,
@@ -117,7 +117,7 @@ Table of Contents
    Furthermore, the host is unable to implement a DHCP client conformant
    to [RFC7341] as it is connected to an IPv4-only network.  But there
    is a DHCPv6 server that can provide IPv4 addresses by means of the
-   mechanisms described in [RFC7341].
+   mechanisms specified in [RFC7341].
 
 2.  Conventions and Definitions
 
@@ -129,7 +129,7 @@ Table of Contents
    *  DHCPv4: DHCP as defined in [RFC2131].
 
    *  DHCPv4 over DHCPv6 (or 4o6): The architecture, the procedures, and
-      the protocols described in the DHCPv4-over-DHCPv6 document
+      the protocols specified in the DHCPv4-over-DHCPv6 document
       [RFC7341].
 
    *  DHCP Relay Agent: This is a concept in all of the following
@@ -170,7 +170,7 @@ Table of Contents
 
            Figure 1: Architecture Example with Legacy DHCP Client
 
-   This document specifies the encapsulation and decapsulation described
+   This document specifies the encapsulation and decapsulation specified
    in [RFC7341] to be performed in the Relay Agent without requiring any
    changes on the DHCPv4 client.  In this case it is up to the Relay
    Agent to provide the full DHCP 4o6 support and the legacy DHCPv4
@@ -197,7 +197,9 @@ Table of Contents
    option is not found or the DHCPv4-RESPONSE message is not well-
    formed, it MUST be discarded.  If the DHCPv4 Message option is
    present, the 4o6RA MUST extract the DHCPv4 message and forward the
-   encapsulated DHCPv4-response to the requesting DHCPv4 client.
+   encapsulated DHCPv4-response to the requesting DHCPv4 client, given
+   that the encapsulated DHCPv4-response is correct and can be actually
+   forwarded.
 
    Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE
    messages MUST handle them as specified in Section 6 of [RFC6221].
@@ -277,15 +279,16 @@ Table of Contents
    is implementing 4o6RA and LDRA, and has an internal interface to
    propagate topology information from 4o6RA to LDRA.
 
-                  .-----------.     .---------------------------.
-                 | L2 Network  |   |          IPv6 Network       |
-        +--------+-+         +-+---+--+---------+      +----------+
-        |  DHCPv4  |         |  4o6   |  LDRA   |      | DHCP 4o6 |
-        |  Client  +---------+  Relay + RFC6221 +------+  Server  |
-        |          |         |  Agent |         |      |          |
-        +--------+-+         +-+---+--+---------+      +----------+
-                 |             |   |                             |
-                  '-----------'     '---------------------------'
+                 .--------------.     .------------------------.
+                | L2 Network or  |   |       IPv6 Network       |
+                | IPv6-only link |   |                          |
+       +--------+-+            +-+---+--+---------+      +------+---+
+       |  DHCPv4  |            |  4o6   |  LDRA   |      | DHCP 4o6 |
+       |  Client  +------------+  Relay + RFC6221 +------+  Server  |
+       |          |            |  Agent |         |      |          |
+       +--------+-+            +-+---+--+---------+      +------+---+
+                |                |   |                          |
+                 '--------------'     '------------------------'
 
                 Figure 3: Topology path preserved with LDRA
 
