@@ -81,8 +81,9 @@ However, if a client is embedded in a host that only supports IPv4 and cannot
 easily be replaced or updated due to a number of technical or business reasons,
 this approach does not work.
 
-Similarly, the specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
-or L3RA {{draft-ietf-dhc-rfc8415bis}} do not foresee the possibility to handle legacy DHCPv4,
+Similarly, the specifications for DHCPv6 Relay Agents such as Lightweight
+DHCPv6 Relay Agent (LDRA) {{RFC6221}} or DHCPv6 Relay Agent (L3RA)
+{{draft-ietf-dhc-rfc8415bis}} do not foresee the possibility to handle legacy DHCPv4,
 other than implementing DHCP 4o6 in the client.
 
 This document specifies an {{RFC7341}} based solution that can be
@@ -127,6 +128,7 @@ The following terms and acronyms are used in this document:
 * DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
    Refers to a Relay Agent that implements the 4o6
    specified in this document.
+
 
 {::boilerplate bcp14-tagged}
 
