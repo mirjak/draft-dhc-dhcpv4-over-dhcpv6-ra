@@ -1,5 +1,5 @@
 ---
-title: "DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support"
+title: "DHCPv4-over-DHCPv6 with Relay Agent Support"
 abbrev: "DHCP 4o6 Relay Agent"
 category: std
 
