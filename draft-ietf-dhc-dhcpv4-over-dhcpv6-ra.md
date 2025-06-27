@@ -214,13 +214,13 @@ Topology discovery as described in {{RFC7969}} differs between
 IPv4 and IPv6:
 
 * IPv4:
-when using DHCP on IPv4 only the first Relay Agent can
+when using DHCP on IPv4 only the first Relay Agent SHOULD
 set the giaddr field (section 3.1 of {{RFC7969}}). Thus in a
 network that has more than one Relay Agent only part of the topology
 is transported via DHCPv4.
 
 * IPv6:
-when using DHCPv6, all Relay Agents can send
+when using DHCPv6, all Relay Agents SHOULD send
 link-address and Interface-ID options, that provide
 information about the complete path
 between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.
