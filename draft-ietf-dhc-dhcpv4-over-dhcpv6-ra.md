@@ -211,12 +211,16 @@ in {{RFC7969}}. This specification aims to guarantee that the 4o6RA does not
 break any legacy capability when used for topology discovery.
 
 Topology discovery as described in {{RFC7969}} differs between
-IPv4 and IPv6 as for IPv4 only the first Relay Agent can
+IPv4 and IPv6:
+
+* IPv4:
+when using DHCP on IPv4 only the first Relay Agent can
 set the giaddr field (section 3.1 of {{RFC7969}}). Thus in a
 network that has more than one Relay Agent only part of the topology
 is transported via DHCPv4.
 
-When using DHCPv6, all Relay Agents can send
+* IPv6:
+when using DHCPv6, all Relay Agents can send
 link-address and Interface-ID options, that provide
 information about the complete path
 between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.
