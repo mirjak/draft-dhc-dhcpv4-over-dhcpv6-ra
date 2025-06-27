@@ -180,7 +180,9 @@ it looks for the DHCPv4 Message option within this message.
 If this option is not found or the DHCPv4-RESPONSE message is not well-formed,
 it MUST be discarded.
 If the DHCPv4 Message option is present, the 4o6RA MUST extract the DHCPv4
-message and forward the encapsulated DHCPv4-response to the requesting DHCPv4 client.
+message and forward the encapsulated DHCPv4-response to the requesting DHCPv4
+client, given that the encapsulated DHCPv4-response is correct and can be
+actually forwarded.
 
 Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
 MUST handle them as specified in {{Section 6 of RFC6221}}.
