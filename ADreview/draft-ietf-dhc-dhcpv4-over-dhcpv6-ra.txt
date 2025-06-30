@@ -5,11 +5,11 @@
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
 Intended status: Standards Track                             S. Krishnan
-Expires: 29 December 2025                                          Cisco
+Expires: 1 January 2026                                            Cisco
                                                                 J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                            27 June 2025
+                                                            30 June 2025
 
 
               DHCPv4-over-DHCPv6 with Relay Agent Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 December 2025.
+   This Internet-Draft will expire on 1 January 2026.
 
 Copyright Notice
 
@@ -82,7 +82,7 @@ Table of Contents
      7.1.  Normative References
      7.2.  Informative References
    Appendix A.  Example Use Case: Topology Discovery for IPv4-only
-           Radio Unit in the RAN Switched Fronthaul
+           Radio Unit in 3GPP RAN with Switched Fronthaul
    Acknowledgments
    Authors' Addresses
 
@@ -244,9 +244,13 @@ Table of Contents
       the DHCPv6 server.
 
    In L2 networks, Lightweight DHCPv6 Relay Agents [RFC6221] can be
-   used.  Then, topology information for the given IP address can be
-   obtained from the DHCPv6 server and used for configuration or other
-   purposes.
+   used.
+
+   When provided, the topology information is available at the DHCPv6
+   server in form of sequence of the link-address and Interface-ID.
+
+   Then, topology information for the given IP address can be obtained
+   from the DHCPv6 server and used for configuration or other purposes.
 
    [RFC7341] enables the client to use DHCPv6 for topology discovery
    even within an DHCPv4 context, as the DHCPv6 Relay Agent knows the
@@ -257,17 +261,17 @@ Table of Contents
    breaks the topology propagation as 4o6RA-only does not provide any
    interface information in the encapsulated message.
 
-               .-----------.     .-------------------------.
-              | L2 Network  |   |        IPv6 Network       |
-     +--------+-+         +-+---+---+    +--------+       +-+--------+
-     |  DHCPv4  |         |  4o6    |    | DHCPv6 |       | DHCP 4o6 |
-     |  Client  +---------+  Relay  +----+ Relay  +-------+  Server  |
-     |          |         |  Agent  |    | Agent  |       |          |
-     +--------+-+         +-+---+---+    +--------+       +-+--------+
-              |             |   |                           |
-               '-----------'     '-------------------------'
+           .-----------------.     .-------------------------.
+          |    L2 Network     |   |        IPv6 Network       |
+ +--------+-+  +---------+  +-+---+---+    +--------+       +-+--------+
+ |  DHCPv4  |  |   L2    |  |  4o6    |    | DHCPv6 |       | DHCP 4o6 |
+ |  Client  +--+ Switch  +--+  Relay  +----+ Relay  +-------+  Server  |
+ |          |  |         |  |  Agent  |    | Agent  |       |          |
+ +--------+-+  +---------+  +-+---+---+    +--------+       +-+--------+
+          |                   |   |                           |
+           '-----------------'     '-------------------------'
 
-                       Figure 2: Topology broken path
+                    Figure 2: Topology broken path
 
    In order to preserve the topology information, it is RECOMMENDED that
    the implementation of 4o6RA is combined with the implementation of
@@ -282,16 +286,16 @@ Table of Contents
    is implementing 4o6RA and LDRA, and has an internal interface to
    propagate topology information from 4o6RA to LDRA.
 
-                 .--------------.     .------------------------.
-                | L2 Network or  |   |       IPv6 Network       |
-                | IPv6-only link |   |                          |
-       +--------+-+            +-+---+--+---------+      +------+---+
-       |  DHCPv4  |            |  4o6   |  LDRA   |      | DHCP 4o6 |
-       |  Client  +------------+  Relay + RFC6221 +------+  Server  |
-       |          |            |  Agent |         |      |          |
-       +--------+-+            +-+---+--+---------+      +------+---+
-                |                |   |                          |
-                 '--------------'     '------------------------'
+               .-----------------.     .------------------------.
+              |  L2 Network or    |   |       IPv6 Network       |
+              |  IPv6-only link   |   |                          |
+     +--------+-+  +---------+  +-+---+--+---------+      +------+---+
+     |  DHCPv4  |  |   L2    |  |  4o6   |  LDRA   |      | DHCP 4o6 |
+     |  Client  +--+ Switch  +--+  Relay + RFC6221 +------+  Server  |
+     |          |  |         |  |  Agent |         |      |          |
+     +--------+-+  +---------+  +-+---+--+---------+      +------+---+
+              |                   |   |                          |
+               '-----------------'     '------------------------'
 
                 Figure 3: Topology path preserved with LDRA
 
@@ -314,10 +318,10 @@ Table of Contents
 
    As clients are not aware of the presence of 4o6RA, the network
    deployment needs to ensure that all DHCPv4 broadcast and unicast
-   messages from clients are steered to a 4o6RA.  This can be achieved
-   by placing the 4o6RA in a central position that can observe all
-   traffic from the clients or use address translation with the 4o6RA
-   address for unicast messages.
+   messages from and to clients are steered via a 4o6RA.  This can be
+   achieved by placing the 4o6RA in a central position that can observe
+   all traffic from the clients or use address translation with the
+   4o6RA address for unicast messages.
 
 5.  Security Considerations
 
@@ -400,14 +404,16 @@ Table of Contents
               <https://www.rfc-editor.org/rfc/rfc951>.
 
 Appendix A.  Example Use Case: Topology Discovery for IPv4-only Radio
-             Unit in the RAN Switched Fronthaul
+             Unit in 3GPP RAN with Switched Fronthaul
 
-   The Radio Fronthaul Network (FH) is built up with Radio Units (RU)
-   and Baseband Units (BB), each being an IP host.  Each RU is unique as
-   it is tied to a set of antennas, and each antenna is serving a
-   specific Cell and Sector.  Each RU is configured by the BB depending
-   on the Cell and Sectors it serves.  However, that dependency is only
-   specified by the cabling between RU and antennas.
+   In 3GPP mobile network architecture, the User Equipments (UE) are
+   connected via Radio Access Network (RAN).  RAN is built up with
+   Baseband Unis (BB) and Radio Units (RU).  Radio Fronthaul Network
+   (FH) connects RU and BB, each of RU and BB is an IP host.  Each RU is
+   unique as it is tied to a set of antennas, and each antenna is
+   serving a specific Cell and Sector.  Each RU is configured by the BB
+   depending on the Cell and Sectors it serves.  However, that
+   dependency is only specified by the cabling between RU and antennas.
 
    If BB is directly cabled to a set of RUs, the BB can recognize the
    relationship between RUs and Cell/Sectors based on the cabling
@@ -420,7 +426,7 @@ Appendix A.  Example Use Case: Topology Discovery for IPv4-only Radio
 
    Examples for switched networks are shown in section 3 of [RFC7969]
    and demonstrate the different levels of complexity.  An example of a
-   FH is depicted in Figure 5.
+   FH is depicted in Figure 5, where IPv6 is used.
 
      +--------+
      |  RU1   |     P1 +-+------+     |                   |
