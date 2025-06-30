@@ -246,15 +246,15 @@ information in the encapsulated message.
 
 ~~~aasvg
 
-           .-----------.     .-------------------------.
-          | L2 Network  |   |        IPv6 Network       |
- +--------+-+         +-+---+---+    +--------+       +-+--------+
- |  DHCPv4  |         |  4o6    |    | DHCPv6 |       | DHCP 4o6 |
- |  Client  +---------+  Relay  +----+ Relay  +-------+  Server  |
- |          |         |  Agent  |    | Agent  |       |          |
- +--------+-+         +-+---+---+    +--------+       +-+--------+
-          |             |   |                           |
-           '-----------'     '-------------------------'
+           .-----------------.     .-------------------------.
+          |    L2 Network     |   |        IPv6 Network       |
+ +--------+-+  +---------+  +-+---+---+    +--------+       +-+--------+
+ |  DHCPv4  |  |   L2    |  |  4o6    |    | DHCPv6 |       | DHCP 4o6 |
+ |  Client  +--+ Switch  +--+  Relay  +----+ Relay  +-------+  Server  |
+ |          |  |         |  |  Agent  |    | Agent  |       |          |
+ +--------+-+  +---------+  +-+---+---+    +--------+       +-+--------+
+          |                   |   |                           |
+           '-----------------'     '-------------------------'
 
 ~~~
 {: #fig_4o6RA_RA title="Topology broken path" artwork-align="center"}
@@ -274,16 +274,16 @@ propagate topology information from 4o6RA to LDRA.
 
 ~~~aasvg
 
-           .--------------.     .------------------------.
-          | L2 Network or  |   |       IPv6 Network       |
-          | IPv6-only link |   |                          |
- +--------+-+            +-+---+--+---------+      +------+---+
- |  DHCPv4  |            |  4o6   |  LDRA   |      | DHCP 4o6 |
- |  Client  +------------+  Relay + RFC6221 +------+  Server  |
- |          |            |  Agent |         |      |          |
- +--------+-+            +-+---+--+---------+      +------+---+
-          |                |   |                          |
-           '--------------'     '------------------------'
+           .-----------------.     .------------------------.
+          |  L2 Network or    |   |       IPv6 Network       |
+          |  IPv6-only link   |   |                          |
+ +--------+-+  +---------+  +-+---+--+---------+      +------+---+
+ |  DHCPv4  |  |   L2    |  |  4o6   |  LDRA   |      | DHCP 4o6 |
+ |  Client  +--+ Switch  +--+  Relay + RFC6221 +------+  Server  |
+ |          |  |         |  |  Agent |         |      |          |
+ +--------+-+  +---------+  +-+---+--+---------+      +------+---+
+          |                   |   |                          |
+           '-----------------'     '------------------------'
 
 ~~~
 {: #fig_4o6LDRA title="Topology path preserved with LDRA" artwork-align="center"}
