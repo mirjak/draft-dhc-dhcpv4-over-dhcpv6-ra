@@ -367,7 +367,8 @@ involving knowledge of all the cabling in the switched network.
 
 Examples for switched networks are shown in section 3 of {{RFC7969}}
 and demonstrate the different levels of complexity.
-An example of a FH is depicted in {{l2_switched_fh}}.
+An example of a FH is depicted in {{l2_switched_fh}}, where
+IPv6 is used.
 
 ~~~aasvg
      +--------+
