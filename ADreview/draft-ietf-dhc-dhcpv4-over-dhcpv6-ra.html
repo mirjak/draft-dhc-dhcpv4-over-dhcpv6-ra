@@ -1243,7 +1243,7 @@ other than implementing DHCP 4o6 in the client.<a href="#section-1-2" class="pil
 <p id="section-1-3">This document specifies an <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> based solution that can be
 implemented in intermediate nodes such as switches or routers,
 without putting any requirements on clients. No new protocols or extensions are needed;
-instead this document specifies an amendment to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> that allows
+instead, this document specifies an amendment to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> that allows
 a Relay Agent to perform the DHCP 4o6 encapsulation and decapsulation instead of
 the client.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <div id="applicability">
@@ -1290,7 +1290,7 @@ If not otherwise specified, DHCP refers to DHCPv4 and/or DHCPv6.<a href="#sectio
         <li class="normal" id="section-2-2.5">
           <p id="section-2-2.5.1">Lightweight DHCPv6 Relay Agent (or LDRA):
  This is an extension of the original DHCPv6 Relay Agent,
- to support also Layer 2 devices performing a Relay Agent function <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-2-2.5.1" class="pilcrow">¶</a></p>
+ to support also layer-2 devices performing a Relay Agent function <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-2-2.5.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-2-2.6">
           <p id="section-2-2.6.1">DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
@@ -1399,7 +1399,7 @@ If the DHCPv4 Message option is present, the 4o6RA <span class="bcp14">MUST</spa
 message and forward the encapsulated DHCPv4-response to the requesting DHCPv4
 client, given that the encapsulated DHCPv4-response is correct and can be
 actually forwarded.<a href="#section-3-8" class="pilcrow">¶</a></p>
-<p id="section-3-9">Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
+<p id="section-3-9">Layer-2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
 <span class="bcp14">MUST</span> handle them as specified in <span><a href="https://rfc-editor.org/rfc/rfc6221#section-6" class="relref">Section 6</a> of [<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-3-9" class="pilcrow">¶</a></p>
 <p id="section-3-10">DHCPv6 servers are expected to be compliant with 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.
 No additional requirements on DHCPv6 servers are set by this specification.<a href="#section-3-10" class="pilcrow">¶</a></p>
@@ -1433,7 +1433,7 @@ IPv4 and IPv6:<a href="#section-3.2-4" class="pilcrow">¶</a></p>
 <li class="normal" id="section-3.2-5.1">
             <p id="section-3.2-5.1.1">IPv4:
 when using DHCP on IPv4 only the first Relay Agent <span class="bcp14">SHOULD</span>
-set the giaddr field (section 3.1 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>). Thus in a
+set the giaddr field (section 3.1 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>). Thus, in a
 network that has more than one Relay Agent only part of the topology
 is transported via DHCPv4.<a href="#section-3.2-5.1.1" class="pilcrow">¶</a></p>
 </li>
@@ -1445,7 +1445,7 @@ information about the complete path
 between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.<a href="#section-3.2-5.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.2-6">In L2 networks, Lightweight DHCPv6 Relay Agents <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
+<p id="section-3.2-6">In Layer-2 networks, Lightweight DHCPv6 Relay Agents <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
 can be used.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
 <p id="section-3.2-7">When provided, the topology information is available at the DHCPv6
 server in form of sequence of the link-address and Interface-ID.<a href="#section-3.2-7" class="pilcrow">¶</a></p>
@@ -1456,7 +1456,7 @@ or other purposes.<a href="#section-3.2-8" class="pilcrow">¶</a></p>
 even within an DHCPv4 context, as the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.
 As shown in <a href="#fig_4o6RA_RA" class="auto internal xref">Figure 2</a>, the introduction of 4o6 at the
-edge of the IPv6 network, however, hides the L2 network from the DHCPv6 RA.
+edge of the IPv6 network, however, hides the Layer-2 network from the DHCPv6 RA.
 As such, moving 4o6 in a intermediate node rather than performing it at the client, breaks
 the topology propagation as 4o6RA-only does not provide any interface
 information in the encapsulated message.<a href="#section-3.2-9" class="pilcrow">¶</a></p>
@@ -1695,7 +1695,7 @@ security considerations of <span>[<a href="#RFC7341" class="cite xref">RFC7341</
 <p id="section-5-2">The mechanisms defined here differ from <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> as they allow the DHCP client
 to send and receive DHCPv4 messages, whereas in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> the client
 only sends DHCPv6 messages. This makes it possible that in improperly configured
-networks where the client is located on the same L2 scope of a DHCPv4 server,
+networks where the client is located on the same Layer-2 scope of a DHCPv4 server,
 DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
 While this can cause erroneous state in both clients and servers
 and potentially even lead to misconfigurations that impact reachability,
@@ -1894,7 +1894,7 @@ IPv6 is used.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
 </div>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
-<a href="#name-layer-2-switched-fronthaul-" class="selfRef">Layer 2 Switched Fronthaul Example</a>
+<a href="#name-layer-2-switched-fronthaul-" class="selfRef">Layer-2 Switched Fronthaul Example</a>
         </figcaption></figure>
 </div>
 <p id="appendix-A-6">Among the various alternatives, DHCP topology knowledge can be used
