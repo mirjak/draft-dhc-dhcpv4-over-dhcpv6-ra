@@ -89,7 +89,7 @@ other than implementing DHCP 4o6 in the client.
 This document specifies an {{RFC7341}} based solution that can be
 implemented in intermediate nodes such as switches or routers,
 without putting any requirements on clients. No new protocols or extensions are needed;
-instead this document specifies an amendment to [RFC7341] that allows
+instead, this document specifies an amendment to [RFC7341] that allows
 a Relay Agent to perform the DHCP 4o6 encapsulation and decapsulation instead of
 the client.
 
@@ -123,7 +123,7 @@ The following terms and acronyms are used in this document:
 
 * Lightweight DHCPv6 Relay Agent (or LDRA):
    This is an extension of the original DHCPv6 Relay Agent,
-   to support also Layer 2 devices performing a Relay Agent function {{RFC6221}}.
+   to support also layer-2 devices performing a Relay Agent function {{RFC6221}}.
 
 * DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
    Refers to a Relay Agent that implements the 4o6
@@ -184,7 +184,7 @@ message and forward the encapsulated DHCPv4-response to the requesting DHCPv4
 client, given that the encapsulated DHCPv4-response is correct and can be
 actually forwarded.
 
-Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
+Layer-2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
 MUST handle them as specified in {{Section 6 of RFC6221}}.
 
 DHCPv6 servers are expected to be compliant with 4o6 according to {{RFC7341}}.
@@ -215,7 +215,7 @@ IPv4 and IPv6:
 
 * IPv4:
 when using DHCP on IPv4 only the first Relay Agent SHOULD
-set the giaddr field (section 3.1 of {{RFC7969}}). Thus in a
+set the giaddr field (section 3.1 of {{RFC7969}}). Thus, in a
 network that has more than one Relay Agent only part of the topology
 is transported via DHCPv4.
 
@@ -225,7 +225,7 @@ link-address and Interface-ID options, that provide
 information about the complete path
 between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.
 
-In L2 networks, Lightweight DHCPv6 Relay Agents {{RFC6221}}
+In Layer-2 networks, Lightweight DHCPv6 Relay Agents {{RFC6221}}
 can be used.
 
 When provided, the topology information is available at the DHCPv6
@@ -239,7 +239,7 @@ or other purposes.
 even within an DHCPv4 context, as the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.
 As shown in {{fig_4o6RA_RA}}, the introduction of 4o6 at the
-edge of the IPv6 network, however, hides the L2 network from the DHCPv6 RA.
+edge of the IPv6 network, however, hides the Layer-2 network from the DHCPv6 RA.
 As such, moving 4o6 in a intermediate node rather than performing it at the client, breaks
 the topology propagation as 4o6RA-only does not provide any interface
 information in the encapsulated message.
@@ -324,7 +324,7 @@ security considerations of {{RFC7341}} still apply.
 The mechanisms defined here differ from {{RFC7341}} as they allow the DHCP client
 to send and receive DHCPv4 messages, whereas in {{RFC7341}} the client
 only sends DHCPv6 messages. This makes it possible that in improperly configured
-networks where the client is located on the same L2 scope of a DHCPv4 server,
+networks where the client is located on the same Layer-2 scope of a DHCPv4 server,
 DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
 While this can cause erroneous state in both clients and servers
 and potentially even lead to misconfigurations that impact reachability,
@@ -391,7 +391,7 @@ IPv6 is used.
      |        |        +--------+     |  +-----------+    |
      +--------+                       |                   |
 ~~~
-{: #l2_switched_fh title="Layer 2 Switched Fronthaul Example" artwork-align="center"}
+{: #l2_switched_fh title="Layer-2 Switched Fronthaul Example" artwork-align="center"}
 
 Among the various alternatives, DHCP topology knowledge can be used
 for solving the RU configuration problem when the FH is IPv6. Such solution
