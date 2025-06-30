@@ -309,7 +309,7 @@ it might be enough to only use 4o6RA, as shown in {{fig_4o6RAserver}}.
 # Deployment Considerations
 
 As clients are not aware of the presence of 4o6RA, the network deployment needs to ensure that
-all DHCPv4 broadcast and unicast messages from clients are steered to a 4o6RA.
+all DHCPv4 broadcast and unicast messages from and to clients are steered via a 4o6RA.
 This can be achieved by placing the 4o6RA in a central position that can observe all traffic
 from the clients or use address translation with the 4o6RA address for unicast
 messages.
