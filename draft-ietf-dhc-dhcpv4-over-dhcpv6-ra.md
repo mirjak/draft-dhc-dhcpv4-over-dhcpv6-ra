@@ -345,10 +345,12 @@ This document has no IANA actions.
 
 --- back
 
-# Example Use Case: Topology Discovery for IPv4-only Radio Unit in the RAN Switched Fronthaul {#usecase}
+# Example Use Case: Topology Discovery for IPv4-only Radio Unit in 3GPP RAN with Switched Fronthaul {#usecase}
 
-The Radio Fronthaul Network (FH) is built up with Radio Units (RU) and
-Baseband Units (BB), each being an IP host.
+In 3GPP mobile network architecture, the User Equipments (UE) are connected
+via Radio Access Network (RAN). RAN is built up with Baseband Unis (BB)
+and Radio Units (RU). Radio Fronthaul Network (FH) connects RU and BB, each of
+RU and BB is an IP host.
 Each RU is unique as it is tied to a set of antennas, and each antenna
 is serving a specific Cell and Sector.
 Each RU is configured by the BB depending on the Cell and Sectors it serves.
