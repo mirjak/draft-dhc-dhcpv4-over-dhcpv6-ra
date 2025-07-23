@@ -1,5 +1,5 @@
 ---
-title: "DHCPv4-over-DHCPv6 (DHCP 4o6) with Relay Agent Support"
+title: "DHCPv4-over-DHCPv6 with Relay Agent Support"
 abbrev: "DHCP 4o6 Relay Agent"
 category: std
 
@@ -43,7 +43,11 @@ author:
 normative:
    RFC6221:
    RFC7341:
-   RFC8415:
+
+   draft-ietf-dhc-rfc8415bis:
+      target: "https://datatracker.ietf.org/doc/draft-ietf-dhc-rfc8415bis/"
+      title: "Dynamic Host Configuration Protocol for IPv6 (DHCPv6)"
+      date: June 2025
 
 informative:
    RFC951:
@@ -52,16 +56,15 @@ informative:
    RFC2132:
    RFC7969:
 
-
 --- abstract
 
 This document describes a mechanism for networks
 with legacy IPv4-only clients to use services provided by
-DHCPv6 using DHCPv4-over-DHCPv6 (DHCP 4o6) in a Relay Agent.
+DHCPv4-over-DHCPv6 in a Relay Agent.
 RFC7341 specifies use of DHCPv4-over-DHCPv6 in the client only.
 This document specifies
 a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
-Relay Agent (4o6RA) that implements the 4o6 DHCP encapsulation
+Relay Agent that implements the 4o6 DHCP encapsulation
 and decapsulation in an intermediate node rather than the client.
 
 --- middle
@@ -69,7 +72,7 @@ and decapsulation in an intermediate node rather than the client.
 # Introduction {#introduction}
 
 {{RFC7341}} describes a transport mechanism for carrying DHCPv4 {{RFC2131}}
-messages using DHCPv6 {{RFC8415}} for dynamic provisioning
+messages using DHCPv6 {{draft-ietf-dhc-rfc8415bis}} for dynamic provisioning
 of IPv4 addresses and other DHCPv4 specific configuration parameters
 across IPv6-only networks. The deployment of {{RFC7341}} requires support in
 DHCP clients and at the DHCPv6 server.
@@ -77,14 +80,15 @@ However, if a client is embedded in a host that only supports IPv4 and cannot
 easily be replaced or updated due to a number of technical or business reasons,
 this approach does not work.
 
-Similarly, the specifications for DHCPv6 Relay Agents such as LDRA {{RFC6221}}
-or L3RA {{RFC8415}} do not foresee the possibility to handle legacy DHCPv4,
+Similarly, the specifications for DHCPv6 Relay Agents such as Lightweight
+DHCPv6 Relay Agent (LDRA) {{RFC6221}} or DHCPv6 Relay Agent (L3RA)
+{{draft-ietf-dhc-rfc8415bis}} do not foresee the possibility to handle legacy DHCPv4,
 other than implementing DHCP 4o6 in the client.
 
 This document specifies an {{RFC7341}} based solution that can be
 implemented in intermediate nodes such as switches or routers,
 without putting any requirements on clients. No new protocols or extensions are needed;
-instead this document specifies an amendment to [RFC7341] that allows
+instead, this document specifies an amendment to [RFC7341] that allows
 a Relay Agent to perform the DHCP 4o6 encapsulation and decapsulation instead of
 the client.
 
@@ -95,7 +99,7 @@ of hosts that need to receive an IPv4 address but a DHCP server for IPv4 {{RFC21
 reachable directly from the host. Furthermore, the host is unable to implement
 a DHCP client conformant to {{RFC7341}} as it is connected to an IPv4-only
 network. But there is a DHCPv6 server that can provide IPv4 addresses by means of
-the mechanisms described in {{RFC7341}}.
+the mechanisms specified in {{RFC7341}}.
 
 # Conventions and Definitions
 
@@ -108,21 +112,22 @@ The following terms and acronyms are used in this document:
    DHCP as defined in {{RFC2131}}.
 
 * DHCPv4 over DHCPv6 (or 4o6):
-   The architecture, the procedures, and the protocols described in the
+   The architecture, the procedures, and the protocols specified in the
    DHCPv4-over-DHCPv6 document {{RFC7341}}.
 
 * DHCP Relay Agent:
    This is a concept in all of the following protocols, although the details differ
    between them: BOOTP {{RFC951}} {{RFC1542}}, DHCPv4
-   {{RFC2131}} {{RFC2132}}, and DHCPv6 {{RFC8415}}.
+   {{RFC2131}} {{RFC2132}}, and DHCPv6 {{draft-ietf-dhc-rfc8415bis}}.
 
 * Lightweight DHCPv6 Relay Agent (or LDRA):
    This is an extension of the original DHCPv6 Relay Agent,
-   to support also Layer 2 devices performing a Relay Agent function {{RFC6221}}.
+   to support also layer-2 devices performing a Relay Agent function {{RFC6221}}.
 
 * DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
    Refers to a Relay Agent that implements the 4o6
    specified in this document.
+
 
 {::boilerplate bcp14-tagged}
 
@@ -150,7 +155,7 @@ DHCPv6 Relay Agents with DHCPv4-over-DHCPv6, as shown in {{fig_4o6RA}}.
 {: #fig_4o6RA title="Architecture Example with Legacy DHCP Client" artwork-align="center"}
 
 This document specifies the encapsulation
-and decapsulation described in {{RFC7341}} to be performed in the Relay Agent
+and decapsulation specified in {{RFC7341}} to be performed in the Relay Agent
 without requiring any changes on the DHCPv4 client.
 In this case it is up to the Relay Agent to provide the full DHCP
 4o6 support and the legacy DHCPv4 client is not aware that it is being served
@@ -163,7 +168,7 @@ it also takes the responsibility for finding a suitable interface; that can be
 a network interface or another Relay Agent.
 
 To maintain interoperability with existing DHCPv6 relays and servers,
-the message format is unchanged from {{RFC8415}}. The 4o6RA implements
+the message format is unchanged from {{draft-ietf-dhc-rfc8415bis}}. The 4o6RA implements
 the same message types as a DHCPv6 Relay Agent {{Section 6 of RFC7341}}.
 
 However, in this specification, the 4o6RA, instead of the client, creates the DHCPV4-QUERY Message
@@ -174,9 +179,11 @@ it looks for the DHCPv4 Message option within this message.
 If this option is not found or the DHCPv4-RESPONSE message is not well-formed,
 it MUST be discarded.
 If the DHCPv4 Message option is present, the 4o6RA MUST extract the DHCPv4
-message and forward the encapsulated DHCPv4-response to the requesting DHCPv4 client.
+message and forward the encapsulated DHCPv4-response to the requesting DHCPv4
+client, given that the encapsulated DHCPv4-response is correct and can be
+actually forwarded.
 
-Layer 2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
+Layer-2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
 MUST handle them as specified in {{Section 6 of RFC6221}}.
 
 DHCPv6 servers are expected to be compliant with 4o6 according to {{RFC7341}}.
@@ -193,7 +200,7 @@ topology.  However, when the new host attaches to a
 network, it may be unaware of the topology and respectively how it
 has to be configured.
 
-DHCPv4 {{RFC2131}} and DHCPv6 {{RFC8415}} specifications
+DHCPv4 {{RFC2131}} and DHCPv6 {{draft-ietf-dhc-rfc8415bis}} specifications
 describe how addresses can be allocated to clients based on network
 topology information provided by a DHCP relay, typically.
 
@@ -203,18 +210,27 @@ in {{RFC7969}}. This specification aims to guarantee that the 4o6RA does not
 break any legacy capability when used for topology discovery.
 
 Topology discovery as described in {{RFC7969}} differs between
-IPv4 and IPv6 as for IPv4 only the first Relay Agent can
-set the giaddr field (section 3.1 of {{RFC7969}}). Thus in a
+IPv4 and IPv6:
+
+* IPv4:
+when using DHCP on IPv4 only the first Relay Agent SHOULD
+set the giaddr field (section 3.1 of {{RFC7969}}). Thus, in a
 network that has more than one Relay Agent only part of the topology
 is transported via DHCPv4.
 
-When using DHCPv6, all Relay Agents can send
+* IPv6:
+when using DHCPv6, all Relay Agents SHOULD send
 link-address and Interface-ID options, that provide
 information about the complete path
 between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.
 
-In L2 networks, Lightweight DHCPv6 Relay Agents {{RFC6221}}
-can be used. Then, topology information for the given IP address
+In Layer-2 networks, Lightweight DHCPv6 Relay Agents {{RFC6221}}
+can be used.
+
+When provided, the topology information is available at the DHCPv6
+server in form of sequence of the link-address and Interface-ID.
+
+Then, topology information for the given IP address
 can be obtained from the DHCPv6 server and used for configuration
 or other purposes.
 
@@ -222,22 +238,22 @@ or other purposes.
 even within an DHCPv4 context, as the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.
 As shown in {{fig_4o6RA_RA}}, the introduction of 4o6 at the
-edge of the IPv6 network, however, hides the L2 network from the DHCPv6 RA.
+edge of the IPv6 network, however, hides the Layer-2 network from the DHCPv6 RA.
 As such, moving 4o6 in a intermediate node rather than performing it at the client, breaks
 the topology propagation as 4o6RA-only does not provide any interface
 information in the encapsulated message.
 
 ~~~aasvg
 
-           .-----------.     .-------------------------.
-          | L2 Network  |   |        IPv6 Network       |
- +--------+-+         +-+---+---+    +--------+       +-+--------+
- |  DHCPv4  |         |  4o6    |    | DHCPv6 |       | DHCP 4o6 |
- |  Client  +---------+  Relay  +----+ Relay  +-------+  Server  |
- |          |         |  Agent  |    | Agent  |       |          |
- +--------+-+         +-+---+---+    +--------+       +-+--------+
-          |             |   |                           |
-           '-----------'     '-------------------------'
+           .-----------------.     .-------------------------.
+          |    L2 Network     |   |        IPv6 Network       |
+ +--------+-+  +---------+  +-+---+---+    +--------+       +-+--------+
+ |  DHCPv4  |  |   L2    |  |  4o6    |    | DHCPv6 |       | DHCP 4o6 |
+ |  Client  +--+ Switch  +--+  Relay  +----+ Relay  +-------+  Server  |
+ |          |  |         |  |  Agent  |    | Agent  |       |          |
+ +--------+-+  +---------+  +-+---+---+    +--------+       +-+--------+
+          |                   |   |                           |
+           '-----------------'     '-------------------------'
 
 ~~~
 {: #fig_4o6RA_RA title="Topology broken path" artwork-align="center"}
@@ -257,15 +273,16 @@ propagate topology information from 4o6RA to LDRA.
 
 ~~~aasvg
 
-           .-----------.     .---------------------------.
-          | L2 Network  |   |          IPv6 Network       |
- +--------+-+         +-+---+--+---------+      +----------+
- |  DHCPv4  |         |  4o6   |  LDRA   |      | DHCP 4o6 |
- |  Client  +---------+  Relay + RFC6221 +------+  Server  |
- |          |         |  Agent |         |      |          |
- +--------+-+         +-+---+--+---------+      +----------+
-          |             |   |                             |
-           '-----------'     '---------------------------'
+           .-----------------.     .------------------------.
+          |  L2 Network or    |   |       IPv6 Network       |
+          |  IPv6-only link   |   |                          |
+ +--------+-+  +---------+  +-+---+--+---------+      +------+---+
+ |  DHCPv4  |  |   L2    |  |  4o6   |  LDRA   |      | DHCP 4o6 |
+ |  Client  +--+ Switch  +--+  Relay + RFC6221 +------+  Server  |
+ |          |  |         |  |  Agent |         |      |          |
+ +--------+-+  +---------+  +-+---+--+---------+      +------+---+
+          |                   |   |                          |
+           '-----------------'     '------------------------'
 
 ~~~
 {: #fig_4o6LDRA title="Topology path preserved with LDRA" artwork-align="center"}
@@ -291,10 +308,10 @@ it might be enough to only use 4o6RA, as shown in {{fig_4o6RAserver}}.
 # Deployment Considerations
 
 As clients are not aware of the presence of 4o6RA, the network deployment needs to ensure that
-all DHCPv4 broadcast and unicast messages from clients are steered to a 4o6RA.
+all DHCPv4 broadcast and unicast messages from and to clients are steered via a 4o6RA.
 This can be achieved by placing the 4o6RA in a central position that can observe all traffic
-from the clients or use address translation with the 4o6RA address for unicast
-messages.
+from the clients or use Network Address Translation (NAT) with the 4o6RA address
+for unicast messages.
 
 # Security Considerations {#seccons}
 
@@ -306,7 +323,7 @@ security considerations of {{RFC7341}} still apply.
 The mechanisms defined here differ from {{RFC7341}} as they allow the DHCP client
 to send and receive DHCPv4 messages, whereas in {{RFC7341}} the client
 only sends DHCPv6 messages. This makes it possible that in improperly configured
-networks where the client is located on the same L2 scope of a DHCPv4 server,
+networks where the client is located on the same Layer-2 scope of a DHCPv4 server,
 DHCPv4 messages could reach a DHCPv4 server without using the 4o6RA.
 While this can cause erroneous state in both clients and servers
 and potentially even lead to misconfigurations that impact reachability,
@@ -327,10 +344,12 @@ This document has no IANA actions.
 
 --- back
 
-# Example Use Case: Topology Discovery for IPv4-only Radio Unit in the RAN Switched Fronthaul {#usecase}
+# Example Use Case: Topology Discovery for IPv4-only Radio Unit in 3GPP RAN with Switched Fronthaul {#usecase}
 
-The Radio Fronthaul Network (FH) is built up with Radio Units (RU) and
-Baseband Units (BB), each being an IP host.
+In 3GPP mobile network architecture, the User Equipments (UE) are connected
+via Radio Access Network (RAN). RAN is built up with Baseband Unis (BB)
+and Radio Units (RU). Radio Fronthaul Network (FH) connects RU and BB, each of
+RU and BB is an IP host.
 Each RU is unique as it is tied to a set of antennas, and each antenna
 is serving a specific Cell and Sector.
 Each RU is configured by the BB depending on the Cell and Sectors it serves.
@@ -347,7 +366,8 @@ involving knowledge of all the cabling in the switched network.
 
 Examples for switched networks are shown in section 3 of {{RFC7969}}
 and demonstrate the different levels of complexity.
-An example of a FH is depicted in {{l2_switched_fh}}.
+An example of a FH is depicted in {{l2_switched_fh}}, where
+IPv6 is used.
 
 ~~~aasvg
      +--------+
@@ -370,7 +390,7 @@ An example of a FH is depicted in {{l2_switched_fh}}.
      |        |        +--------+     |  +-----------+    |
      +--------+                       |                   |
 ~~~
-{: #l2_switched_fh title="Layer 2 Switched Fronthaul Example" artwork-align="center"}
+{: #l2_switched_fh title="Layer-2 Switched Fronthaul Example" artwork-align="center"}
 
 Among the various alternatives, DHCP topology knowledge can be used
 for solving the RU configuration problem when the FH is IPv6. Such solution
