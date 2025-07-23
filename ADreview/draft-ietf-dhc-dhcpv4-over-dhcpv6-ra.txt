@@ -4,12 +4,12 @@
 
 Dynamic Host Configuration                                    C. Porfiri
 Internet-Draft                                                  Ericsson
-Updates: 7341 (if approved)                                  S. Krishnan
-Intended status: Standards Track                                   Cisco
-Expires: 3 January 2026                                         J. Arkko
+Intended status: Standards Track                             S. Krishnan
+Expires: 24 January 2026                                           Cisco
+                                                                J. Arkko
                                                             M. Kühlewind
                                                                 Ericsson
-                                                             2 July 2025
+                                                            23 July 2025
 
 
               DHCPv4-over-DHCPv6 with Relay Agent Support
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2026.
+   This Internet-Draft will expire on 24 January 2026.
 
 Copyright Notice
 
@@ -321,7 +321,7 @@ Table of Contents
    messages from and to clients are steered via a 4o6RA.  This can be
    achieved by placing the 4o6RA in a central position that can observe
    all traffic from the clients or use Network Address Translation (NAT)
-   [RFC2663] with the 4o6RA address for unicast messages.
+   with the 4o6RA address for unicast messages.
 
 5.  Security Considerations
 
@@ -393,11 +393,6 @@ Table of Contents
    [RFC2132]  Alexander, S. and R. Droms, "DHCP Options and BOOTP Vendor
               Extensions", RFC 2132, DOI 10.17487/RFC2132, March 1997,
               <https://www.rfc-editor.org/rfc/rfc2132>.
-
-   [RFC2663]  Srisuresh, P. and M. Holdrege, "IP Network Address
-              Translator (NAT) Terminology and Considerations",
-              RFC 2663, DOI 10.17487/RFC2663, August 1999,
-              <https://www.rfc-editor.org/rfc/rfc2663>.
 
    [RFC7969]  Lemon, T. and T. Mrugalski, "Customizing DHCP
               Configuration on the Basis of Network Topology", RFC 7969,
