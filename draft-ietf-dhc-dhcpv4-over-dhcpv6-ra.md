@@ -167,7 +167,7 @@ As the 4o6RA acts as a DHCP 4o6 client, all prerequisites and configuration
 that apply to the DHCP client in {{Section 5 of RFC7341}} are also applied to the 4o6RA.
 
 As the 4o6RA takes the role of the client in respect to {{RFC7341}},
-it is responsible for determining a suitable interface on which to be a
+it is responsible for determining a suitable interface where it acts as a
 DHCPv6 client, and it is responsible for locating a suitable DHCPv6
 server or relay agent.
    It is RECOMMENDED that the 4o6RA requests the DHCP 4o6
