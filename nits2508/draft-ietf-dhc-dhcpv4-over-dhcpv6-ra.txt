@@ -143,7 +143,7 @@ Table of Contents
       2-only devices to perform a Relay Agent function [RFC6221].
 
    *  DHCPv4 over DHCPv6 Relay Agent (or 4o6RA): Refers to a Relay Agent
-      that implements the 4o6 functionality specified in this document.
+      that implements the 4o6 transport as specified in this document.
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
