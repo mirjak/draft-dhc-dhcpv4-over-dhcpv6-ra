@@ -129,7 +129,7 @@ The following terms and acronyms are used in this document:
 
 * DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
    Refers to a Relay Agent that implements the 4o6
-   functionality specified in this document.
+   transport as specified in this document.
 
 
 {::boilerplate bcp14-tagged}
