@@ -183,10 +183,11 @@ Table of Contents
    As the 4o6RA takes the role of the client in respect to [RFC7341], it
    is responsible for determining a suitable interface where it acts as
    a DHCPv6 client, and it is responsible for locating a suitable DHCPv6
-   server or relay agent.  It is RECOMMENDED that the 4o6RA requests the
-   DHCP 4o6 Server Address option from the server by sending the option
-   code in an Option Request option using an INFORMATION-REQUEST as
-   described in [draft-ietf-dhc-rfc8415bis].
+   server or relay agent and obtain the necessary IPv6 configuration..
+   As specified in [RFC7341], the 4o6RA, acting as 4o6 client, therefore
+   has to request the DHCP 4o6 Server Address option from the server by
+   sending the Option Request option as described in
+   [draft-ietf-dhc-rfc8415bis] before it can use the 4o6 transport.
 
    To maintain interoperability with existing DHCPv6 relays and servers,
    the message format is unchanged from [draft-ietf-dhc-rfc8415bis].

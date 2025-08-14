@@ -1387,11 +1387,11 @@ that apply to the DHCP client in <span><a href="https://rfc-editor.org/rfc/rfc73
 <p id="section-3-5">As the 4o6RA takes the role of the client in respect to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>,
 it is responsible for determining a suitable interface where it acts as a
 DHCPv6 client, and it is responsible for locating a suitable DHCPv6
-server or relay agent.
-   It is <span class="bcp14">RECOMMENDED</span> that the 4o6RA requests the DHCP 4o6
-   Server Address option from the server by sending the option code in
-   an Option Request option using an INFORMATION-REQUEST  as
-   described in <span>[<a href="#draft-ietf-dhc-rfc8415bis" class="cite xref">draft-ietf-dhc-rfc8415bis</a>]</span>.<a href="#section-3-5" class="pilcrow">¶</a></p>
+server or relay agent and obtain the necessary IPv6 configuration..
+As specified in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, the 4o6RA, acting as 4o6 client, therefore has to request
+the DHCP 4o6 Server Address option from the server by sending the
+Option Request option as described in <span>[<a href="#draft-ietf-dhc-rfc8415bis" class="cite xref">draft-ietf-dhc-rfc8415bis</a>]</span>
+before it can use the 4o6 transport.<a href="#section-3-5" class="pilcrow">¶</a></p>
 <p id="section-3-6">To maintain interoperability with existing DHCPv6 relays and servers,
 the message format is unchanged from <span>[<a href="#draft-ietf-dhc-rfc8415bis" class="cite xref">draft-ietf-dhc-rfc8415bis</a>]</span>. The 4o6RA implements
 the same message types as a DHCPv6 Relay Agent <span><a href="https://rfc-editor.org/rfc/rfc7341#section-6" class="relref">Section 6</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-3-6" class="pilcrow">¶</a></p>
