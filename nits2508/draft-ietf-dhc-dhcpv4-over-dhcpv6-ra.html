@@ -1803,12 +1803,12 @@ depending on the vendor and the model.
 Each RU is unique as it is tied to a set of antennas, and each antenna
 is serving a specific Cell and Sector.
 Each RU is configured by the BB depending on the Cell and Sectors it serves.
-However, that dependency is only specified by the cabling between RU and antennas.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">BB can be cabled to RU directly or via a Layer-2 switched network.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+However, that dependency is only specified by the cabling between RU and antennas.
+BB can be cabled to RU directly or via a Layer-2 switched network.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 <span id="name-3gpp-ran-where-ru-are-cable"></span><div id="bb_connected_to_ru">
 <figure id="figure-5">
-        <div id="appendix-A-3.1">
-          <div class="alignCenter art-svg artwork" id="appendix-A-3.1.1">
+        <div id="appendix-A-2.1">
+          <div class="alignCenter art-svg artwork" id="appendix-A-2.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="368" width="256" viewBox="0 0 256 368" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
               <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
               <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
@@ -1850,27 +1850,27 @@ However, that dependency is only specified by the cabling between RU and antenna
                 <text x="40" y="228">RU4</text>
                 <text x="40" y="308">RU2</text>
               </g>
-            </svg><a href="#appendix-A-3.1.1" class="pilcrow">¶</a>
+            </svg><a href="#appendix-A-2.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
 <a href="#name-3gpp-ran-where-ru-are-cable" class="selfRef">3GPP RAN where RU are cabled directly to BB</a>
         </figcaption></figure>
 </div>
-<p id="appendix-A-4">In <a href="#bb_connected_to_ru" class="auto internal xref">Figure 5</a> BB is directly cabled to a set of RUs, the
+<p id="appendix-A-3">In <a href="#bb_connected_to_ru" class="auto internal xref">Figure 5</a> BB is directly cabled to a set of RUs, the
 BB can recognize the relationship between RUs and Cell/Sectors
-based on the cabling between the RUs and antennas.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
-<p id="appendix-A-5">When BBs and RUs are connected via a Layer-2 switched network,
+based on the cabling between the RUs and antennas.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">When BBs and RUs are connected via a Layer-2 switched network,
 the added level of complexity requires the BBs to have a deeper
 knowledge of the topology in order to properly configure the RUs,
-involving knowledge of all the cabling in the switched network.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
-<p id="appendix-A-6">Examples for switched networks are shown in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>
+involving knowledge of all the cabling in the switched network.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-5">Examples for switched networks are shown in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>
 and demonstrate the different levels of complexity.
-An example of a FH is depicted in <a href="#l2_switched_fh" class="auto internal xref">Figure 6</a>.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+An example of a FH is depicted in <a href="#l2_switched_fh" class="auto internal xref">Figure 6</a>.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
 <span id="name-3gpp-ran-with-layer-2-switc"></span><div id="l2_switched_fh">
 <figure id="figure-6">
-        <div id="appendix-A-7.1">
-          <div class="alignCenter art-svg artwork" id="appendix-A-7.1.1">
+        <div id="appendix-A-6.1">
+          <div class="alignCenter art-svg artwork" id="appendix-A-6.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="352" width="544" viewBox="0 0 544 352" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
               <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
               <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
@@ -1952,21 +1952,21 @@ An example of a FH is depicted in <a href="#l2_switched_fh" class="auto internal
                 <text x="40" y="292">RU4</text>
                 <text x="180" y="292">#2</text>
               </g>
-            </svg><a href="#appendix-A-7.1.1" class="pilcrow">¶</a>
+            </svg><a href="#appendix-A-6.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
 <a href="#name-3gpp-ran-with-layer-2-switc" class="selfRef">3GPP RAN with Layer-2 Switched Fronthaul Example</a>
         </figcaption></figure>
 </div>
-<p id="appendix-A-8">If IPv6 is used and all RU are capable of DHCPv6 in <a href="#l2_switched_fh" class="auto internal xref">Figure 6</a>,
+<p id="appendix-A-7">If IPv6 is used and all RU are capable of DHCPv6 in <a href="#l2_switched_fh" class="auto internal xref">Figure 6</a>,
 DHCP topology knowledge can be used for solving the RU configuration problem.
 Such solution would use the topology discovery mechanisms described in section 3.2
-of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
-<p id="appendix-A-9">If RU are capable of IPv4 only but implement a 4o6 client according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, the same topology discovery mechanisms are applicable.<a href="#appendix-A-9" class="pilcrow">¶</a></p>
-<p id="appendix-A-10">If RU are capable of IPV4 only and cannot implement a 4o6 client according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>,
+of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+<p id="appendix-A-8">If RU are capable of IPv4 only but implement a 4o6 client according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, the same topology discovery mechanisms are applicable.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
+<p id="appendix-A-9">If RU are capable of IPV4 only and cannot implement a 4o6 client according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>,
 the topology discovery mechanisms described in section 3.2
-of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span> can be used by introducing 4o6RA in the switches as decribed in this document.<a href="#appendix-A-10" class="pilcrow">¶</a></p>
+of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span> can be used by introducing 4o6RA in the switches as decribed in this document.<a href="#appendix-A-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="acknowledgments">
