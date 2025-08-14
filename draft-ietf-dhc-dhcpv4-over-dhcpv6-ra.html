@@ -14,10 +14,10 @@
 with legacy IPv4-only clients to use services provided by
 DHCPv4-over-DHCPv6 in a Relay Agent.
 RFC7341 specifies use of DHCPv4-over-DHCPv6 in the client only.
-This document specifies
-a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
-Relay Agent that implements the 4o6 DHCP encapsulation
-and decapsulation in an intermediate node rather than the client. 
+This document specifies a RFC7341-based approach that
+allows a Relay Agent to implement the DHCP 4o6 encapsulation and
+decapsulation of DHCPv4 messages in DHCPv6 messages on behalf of a
+DHCPv4 client. 
     " name="description">
 <meta content="xml2rfc 3.30.0" name="generator">
 <meta content="dhcp" name="keyword">
@@ -1054,11 +1054,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">DHCP 4o6 Relay Agent</td>
-<td class="right">July 2025</td>
+<td class="right">August 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Porfiri, et al.</td>
-<td class="center">Expires 24 January 2026</td>
+<td class="center">Expires 15 February 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1071,12 +1071,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-dhc-dhcpv4-over-dhcpv6-ra-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-07-23" class="published">23 July 2025</time>
+<time datetime="2025-08-14" class="published">14 August 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-01-24">24 January 2026</time></dd>
+<dd class="expires"><time datetime="2026-02-15">15 February 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1105,10 +1105,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 with legacy IPv4-only clients to use services provided by
 DHCPv4-over-DHCPv6 in a Relay Agent.
 RFC7341 specifies use of DHCPv4-over-DHCPv6 in the client only.
-This document specifies
-a RFC7341-based approach that allows DHCP 4o6 to be deployed as a
-Relay Agent that implements the 4o6 DHCP encapsulation
-and decapsulation in an intermediate node rather than the client.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+This document specifies a RFC7341-based approach that
+allows a Relay Agent to implement the DHCP 4o6 encapsulation and
+decapsulation of DHCPv4 messages in DHCPv6 messages on behalf of a
+DHCPv4 client.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1139,7 +1139,7 @@ and decapsulation in an intermediate node rather than the client.<a href="#secti
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 January 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 February 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1233,9 +1233,10 @@ messages using DHCPv6 <span>[<a href="#draft-ietf-dhc-rfc8415bis" class="cite xr
 of IPv4 addresses and other DHCPv4 specific configuration parameters
 across IPv6-only networks. The deployment of <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> requires support in
 DHCP clients and at the DHCPv6 server.
-However, if a client is embedded in a host that only supports IPv4 and cannot
-easily be replaced or updated due to a number of technical or business reasons,
-this approach does not work.<a href="#section-1-1" class="pilcrow">¶</a></p>
+However, if a client is embedded in a host that only supports IPv4
+and cannot easily be replaced or updated (which could be due to any
+number of technical or business reasons), this approach does not
+work.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">Similarly, the specifications for DHCPv6 Relay Agents such as Lightweight
 DHCPv6 Relay Agent (LDRA) <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span> or DHCPv6 Relay Agent (L3RA)
 <span>[<a href="#draft-ietf-dhc-rfc8415bis" class="cite xref">draft-ietf-dhc-rfc8415bis</a>]</span> do not foresee the possibility to handle legacy DHCPv4,
@@ -1289,13 +1290,13 @@ If not otherwise specified, DHCP refers to DHCPv4 and/or DHCPv6.<a href="#sectio
 </li>
         <li class="normal" id="section-2-2.5">
           <p id="section-2-2.5.1">Lightweight DHCPv6 Relay Agent (or LDRA):
- This is an extension of the original DHCPv6 Relay Agent,
- to support also layer-2 devices performing a Relay Agent function <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-2-2.5.1" class="pilcrow">¶</a></p>
+ This is an extension of the original DHCPv6 Relay Agent specification, to allow
+ layer-2-only devices to perform a Relay Agent function <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-2-2.5.1" class="pilcrow">¶</a></p>
 </li>
         <li class="normal" id="section-2-2.6">
           <p id="section-2-2.6.1">DHCPv4 over DHCPv6 Relay Agent (or 4o6RA):
  Refers to a Relay Agent that implements the 4o6
- specified in this document.<a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
+ transport as specified in this document.<a href="#section-2-2.6.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-2-3">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
@@ -1384,8 +1385,13 @@ via a DHCP 4o6 service.
 As the 4o6RA acts as a DHCP 4o6 client, all prerequisites and configuration
 that apply to the DHCP client in <span><a href="https://rfc-editor.org/rfc/rfc7341#section-5" class="relref">Section 5</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span> are also applied to the 4o6RA.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <p id="section-3-5">As the 4o6RA takes the role of the client in respect to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>,
-it also takes the responsibility for finding a suitable interface; that can be
-a network interface or another Relay Agent.<a href="#section-3-5" class="pilcrow">¶</a></p>
+it is responsible for determining a suitable interface where it acts as a
+DHCPv6 client, and it is responsible for locating a suitable DHCPv6
+server or relay agent and obtain the necessary IPv6 configuration..
+As specified in <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, the 4o6RA, acting as 4o6 client, therefore has to request
+the DHCP 4o6 Server Address option from the server by sending the
+Option Request option as described in <span>[<a href="#draft-ietf-dhc-rfc8415bis" class="cite xref">draft-ietf-dhc-rfc8415bis</a>]</span>
+before it can use the 4o6 transport.<a href="#section-3-5" class="pilcrow">¶</a></p>
 <p id="section-3-6">To maintain interoperability with existing DHCPv6 relays and servers,
 the message format is unchanged from <span>[<a href="#draft-ietf-dhc-rfc8415bis" class="cite xref">draft-ietf-dhc-rfc8415bis</a>]</span>. The 4o6RA implements
 the same message types as a DHCPv6 Relay Agent <span><a href="https://rfc-editor.org/rfc/rfc7341#section-6" class="relref">Section 6</a> of [<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#section-3-6" class="pilcrow">¶</a></p>
@@ -1401,8 +1407,10 @@ client, given that the encapsulated DHCPv4-response is correct and can be
 actually forwarded.<a href="#section-3-8" class="pilcrow">¶</a></p>
 <p id="section-3-9">Layer-2 Relay Agents receiving DHCPV4-QUERY or DHCPV4-RESPONSE messages
 <span class="bcp14">MUST</span> handle them as specified in <span><a href="https://rfc-editor.org/rfc/rfc6221#section-6" class="relref">Section 6</a> of [<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-3-9" class="pilcrow">¶</a></p>
-<p id="section-3-10">DHCPv6 servers are expected to be compliant with 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.
-No additional requirements on DHCPv6 servers are set by this specification.<a href="#section-3-10" class="pilcrow">¶</a></p>
+<p id="section-3-10">In any given environment, DHCPv6 servers to which DHCPV4-QUERY
+requests are routed are expected to be compliant with 4o6 according
+to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.  No additional requirements on DHCPv6 servers are set
+by this specification.<a href="#section-3-10" class="pilcrow">¶</a></p>
 <div id="intermediate-relays">
 <section id="section-3.1">
         <h3 id="name-intermediate-relays">
@@ -1448,7 +1456,7 @@ between the DHCPv6 client and the DHCPv6 server to the DHCPv6 server.<a href="#s
 <p id="section-3.2-6">In Layer-2 networks, Lightweight DHCPv6 Relay Agents <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
 can be used.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
 <p id="section-3.2-7">When provided, the topology information is available at the DHCPv6
-server in form of sequence of the link-address and Interface-ID.<a href="#section-3.2-7" class="pilcrow">¶</a></p>
+server in form of sequence of the link-address field and Interface-ID option.<a href="#section-3.2-7" class="pilcrow">¶</a></p>
 <p id="section-3.2-8">Then, topology information for the given IP address
 can be obtained from the DHCPv6 server and used for configuration
 or other purposes.<a href="#section-3.2-8" class="pilcrow">¶</a></p>
@@ -1460,7 +1468,7 @@ edge of the IPv6 network, however, hides the Layer-2 network from the DHCPv6 RA.
 As such, moving 4o6 in a intermediate node rather than performing it at the client, breaks
 the topology propagation as 4o6RA-only does not provide any interface
 information in the encapsulated message.<a href="#section-3.2-9" class="pilcrow">¶</a></p>
-<span id="name-topology-broken-path"></span><div id="fig_4o6RA_RA">
+<span id="name-broken-topology-information"></span><div id="fig_4o6RA_RA">
 <figure id="figure-2">
           <div id="section-3.2-10.1">
             <div class="alignCenter art-svg artwork" id="section-3.2-10.1.1">
@@ -1532,24 +1540,25 @@ information in the encapsulated message.<a href="#section-3.2-9" class="pilcrow"
 </div>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
-<a href="#name-topology-broken-path" class="selfRef">Topology broken path</a>
+<a href="#name-broken-topology-information" class="selfRef">Broken topology information</a>
           </figcaption></figure>
 </div>
-<p id="section-3.2-11">In order to preserve the topology information, it is <span class="bcp14">RECOMMENDED</span> that the
-implementation of 4o6RA is combined with the implementation of LDRA <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>
-and that the implementation has a mechanism for LDRA to get interface information
-that can be used for the Interface-ID option, as specified in
-<span><a href="https://rfc-editor.org/rfc/rfc6221#section-5.3.2" class="relref">Section 5.3.2</a> of [<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.
-The internal mechanisms to exchange interface information,
+<p id="section-3.2-11">In order to provide full topology information, it is <span class="bcp14">RECOMMENDED</span>
+that any implementation of 4o6RA be combined with an implementation
+of an LDRA <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span> in a back-to-back structure, and that the LDRA
+implementation has a mechanism to get interface information that
+can be used to provide the Interface-ID option to outgoing
+DHCPV4-QUERY messages, as specified in Section 5.3.2 of <span>[<a href="#RFC6221" class="cite xref">RFC6221</a>]</span>.<a href="#section-3.2-11" class="pilcrow">¶</a></p>
+<p id="section-3.2-12">The internal mechanisms to exchange interface information,
 their format and whether the interface information contains an indication that a 4o6RA
-is involved are out of the scope for this document.<a href="#section-3.2-11" class="pilcrow">¶</a></p>
-<p id="section-3.2-12">The resulting architecture is shown in <a href="#fig_4o6LDRA" class="auto internal xref">Figure 3</a> where
+is involved are out of the scope for this document.<a href="#section-3.2-12" class="pilcrow">¶</a></p>
+<p id="section-3.2-13">The resulting architecture is shown in <a href="#fig_4o6LDRA" class="auto internal xref">Figure 3</a> where
 the Relay Agent is implementing 4o6RA and LDRA, and has an internal interface to
-propagate topology information from 4o6RA to LDRA.<a href="#section-3.2-12" class="pilcrow">¶</a></p>
-<span id="name-topology-path-preserved-wit"></span><div id="fig_4o6LDRA">
+propagate topology information from 4o6RA to LDRA.<a href="#section-3.2-13" class="pilcrow">¶</a></p>
+<span id="name-topology-information-preser"></span><div id="fig_4o6LDRA">
 <figure id="figure-3">
-          <div id="section-3.2-13.1">
-            <div class="alignCenter art-svg artwork" id="section-3.2-13.1.1">
+          <div id="section-3.2-14.1">
+            <div class="alignCenter art-svg artwork" id="section-3.2-14.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="224" width="528" viewBox="0 0 528 224" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 8,80 L 8,144" fill="none" stroke="black"></path>
                 <path d="M 80,48 L 80,80" fill="none" stroke="black"></path>
@@ -1612,19 +1621,19 @@ propagate topology information from 4o6RA to LDRA.<a href="#section-3.2-12" clas
                   <text x="476" y="116">Server</text>
                   <text x="264" y="132">Agent</text>
                 </g>
-              </svg><a href="#section-3.2-13.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-3.2-14.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
-<a href="#name-topology-path-preserved-wit" class="selfRef">Topology path preserved with LDRA</a>
+<a href="#name-topology-information-preser" class="selfRef">Topology information preserved with LDRA</a>
           </figcaption></figure>
 </div>
-<p id="section-3.2-14">In a simple case, where the same node hosts the 4o6RA and the DHCP4o6 server,
-it might be enough to only use 4o6RA, as shown in <a href="#fig_4o6RAserver" class="auto internal xref">Figure 4</a>.<a href="#section-3.2-14" class="pilcrow">¶</a></p>
-<span id="name-topology-path-preserved-4o6"></span><div id="fig_4o6RAserver">
+<p id="section-3.2-15">In a simple case, where the same node hosts the 4o6RA and the DHCP4o6 server,
+it might be enough to only use 4o6RA, as shown in <a href="#fig_4o6RAserver" class="auto internal xref">Figure 4</a>.<a href="#section-3.2-15" class="pilcrow">¶</a></p>
+<span id="name-topology-information-preserv"></span><div id="fig_4o6RAserver">
 <figure id="figure-4">
-          <div id="section-3.2-15.1">
-            <div class="alignCenter art-svg artwork" id="section-3.2-15.1.1">
+          <div id="section-3.2-16.1">
+            <div class="alignCenter art-svg artwork" id="section-3.2-16.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="208" width="344" viewBox="0 0 344 208" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
                 <path d="M 8,64 L 8,128" fill="none" stroke="black"></path>
                 <path d="M 80,48 L 80,64" fill="none" stroke="black"></path>
@@ -1660,11 +1669,11 @@ it might be enough to only use 4o6RA, as shown in <a href="#fig_4o6RAserver" cla
                   <text x="64" y="116">CPE</text>
                   <text x="216" y="116">Agent</text>
                 </g>
-              </svg><a href="#section-3.2-15.1.1" class="pilcrow">¶</a>
+              </svg><a href="#section-3.2-16.1.1" class="pilcrow">¶</a>
 </div>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
-<a href="#name-topology-path-preserved-4o6" class="selfRef">Topology path preserved 4o6 Relay Agent in DHCP server</a>
+<a href="#name-topology-information-preserv" class="selfRef">Topology information preserved by 4o6 Relay Agent in DHCP server</a>
           </figcaption></figure>
 </div>
 </section>
@@ -1787,28 +1796,81 @@ raise any additional security concerns.<a href="#section-5-3" class="pilcrow">¶
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-example-use-case-topology-d" class="section-name selfRef">Example Use Case: Topology Discovery for IPv4-only Radio Unit in 3GPP RAN with Switched Fronthaul</a>
       </h2>
 <p id="appendix-A-1">In 3GPP mobile network architecture, the User Equipments (UE) are connected
-via Radio Access Network (RAN). RAN is built up with Baseband Unis (BB)
+via Radio Access Network (RAN). RAN is built up with Baseband Units (BB)
 and Radio Units (RU). Radio Fronthaul Network (FH) connects RU and BB, each of
-RU and BB is an IP host.
+RU and BB is an IP host, they may support IPv4 only, IPv6 only or both
+depending on the vendor and the model.
 Each RU is unique as it is tied to a set of antennas, and each antenna
 is serving a specific Cell and Sector.
 Each RU is configured by the BB depending on the Cell and Sectors it serves.
-However, that dependency is only specified by the cabling between RU and antennas.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
-<p id="appendix-A-2">If BB is directly cabled to a set of RUs, the
-BB can recognize the relationship between RUs and Cell/Sectors
-based on the cabling between the RUs and antennas.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
-<p id="appendix-A-3">The introduction of a switched network between RUs and BBs has
-added a level of complexity that requires the BBs to have a deeper
-knowledge of the topology in order to properly configure the RUs,
-involving knowledge of all the cabling in the switched network.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
-<p id="appendix-A-4">Examples for switched networks are shown in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>
-and demonstrate the different levels of complexity.
-An example of a FH is depicted in <a href="#l2_switched_fh" class="auto internal xref">Figure 5</a>, where
-IPv6 is used.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
-<span id="name-layer-2-switched-fronthaul-"></span><div id="l2_switched_fh">
+However, that dependency is only specified by the cabling between RU and antennas.
+BB can be cabled to RU directly or via a Layer-2 switched network.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<span id="name-3gpp-ran-where-ru-are-cable"></span><div id="bb_connected_to_ru">
 <figure id="figure-5">
-        <div id="appendix-A-5.1">
-          <div class="alignCenter art-svg artwork" id="appendix-A-5.1.1">
+        <div id="appendix-A-2.1">
+          <div class="alignCenter art-svg artwork" id="appendix-A-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="368" width="256" viewBox="0 0 256 368" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
+              <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
+              <path d="M 8,208 L 8,256" fill="none" stroke="black"></path>
+              <path d="M 8,288 L 8,336" fill="none" stroke="black"></path>
+              <path d="M 80,32 L 80,80" fill="none" stroke="black"></path>
+              <path d="M 80,112 L 80,160" fill="none" stroke="black"></path>
+              <path d="M 80,208 L 80,256" fill="none" stroke="black"></path>
+              <path d="M 80,288 L 80,336" fill="none" stroke="black"></path>
+              <path d="M 104,144 L 104,176" fill="none" stroke="black"></path>
+              <path d="M 104,208 L 104,224" fill="none" stroke="black"></path>
+              <path d="M 128,48 L 128,160" fill="none" stroke="black"></path>
+              <path d="M 128,224 L 128,304" fill="none" stroke="black"></path>
+              <path d="M 152,144 L 152,240" fill="none" stroke="black"></path>
+              <path d="M 248,144 L 248,240" fill="none" stroke="black"></path>
+              <path d="M 8,32 L 80,32" fill="none" stroke="black"></path>
+              <path d="M 80,48 L 128,48" fill="none" stroke="black"></path>
+              <path d="M 8,80 L 80,80" fill="none" stroke="black"></path>
+              <path d="M 8,112 L 80,112" fill="none" stroke="black"></path>
+              <path d="M 80,144 L 104,144" fill="none" stroke="black"></path>
+              <path d="M 152,144 L 248,144" fill="none" stroke="black"></path>
+              <path d="M 8,160 L 80,160" fill="none" stroke="black"></path>
+              <path d="M 128,160 L 144,160" fill="none" stroke="black"></path>
+              <path d="M 104,176 L 144,176" fill="none" stroke="black"></path>
+              <path d="M 8,208 L 80,208" fill="none" stroke="black"></path>
+              <path d="M 104,208 L 144,208" fill="none" stroke="black"></path>
+              <path d="M 80,224 L 104,224" fill="none" stroke="black"></path>
+              <path d="M 128,224 L 144,224" fill="none" stroke="black"></path>
+              <path d="M 152,240 L 248,240" fill="none" stroke="black"></path>
+              <path d="M 8,256 L 80,256" fill="none" stroke="black"></path>
+              <path d="M 8,288 L 80,288" fill="none" stroke="black"></path>
+              <path d="M 80,304 L 128,304" fill="none" stroke="black"></path>
+              <path d="M 8,336 L 80,336" fill="none" stroke="black"></path>
+              <g class="text">
+                <text x="40" y="52">RU2</text>
+                <text x="40" y="132">RU3</text>
+                <text x="196" y="180">Baseband</text>
+                <text x="196" y="212">Unit</text>
+                <text x="40" y="228">RU4</text>
+                <text x="40" y="308">RU2</text>
+              </g>
+            </svg><a href="#appendix-A-2.1.1" class="pilcrow">¶</a>
+</div>
+</div>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<a href="#name-3gpp-ran-where-ru-are-cable" class="selfRef">3GPP RAN where RU are cabled directly to BB</a>
+        </figcaption></figure>
+</div>
+<p id="appendix-A-3">In <a href="#bb_connected_to_ru" class="auto internal xref">Figure 5</a> BB is directly cabled to a set of RUs, the
+BB can recognize the relationship between RUs and Cell/Sectors
+based on the cabling between the RUs and antennas.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">When BBs and RUs are connected via a Layer-2 switched network,
+the added level of complexity requires the BBs to have a deeper
+knowledge of the topology in order to properly configure the RUs,
+involving knowledge of all the cabling in the switched network.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-5">Examples for switched networks are shown in section 3 of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>
+and demonstrate the different levels of complexity.
+An example of a FH is depicted in <a href="#l2_switched_fh" class="auto internal xref">Figure 6</a>.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+<span id="name-3gpp-ran-with-layer-2-switc"></span><div id="l2_switched_fh">
+<figure id="figure-6">
+        <div id="appendix-A-6.1">
+          <div class="alignCenter art-svg artwork" id="appendix-A-6.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="352" width="544" viewBox="0 0 544 352" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
               <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
               <path d="M 8,112 L 8,160" fill="none" stroke="black"></path>
@@ -1890,22 +1952,21 @@ IPv6 is used.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
                 <text x="40" y="292">RU4</text>
                 <text x="180" y="292">#2</text>
               </g>
-            </svg><a href="#appendix-A-5.1.1" class="pilcrow">¶</a>
+            </svg><a href="#appendix-A-6.1.1" class="pilcrow">¶</a>
 </div>
 </div>
-<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
-<a href="#name-layer-2-switched-fronthaul-" class="selfRef">Layer-2 Switched Fronthaul Example</a>
+<figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
+<a href="#name-3gpp-ran-with-layer-2-switc" class="selfRef">3GPP RAN with Layer-2 Switched Fronthaul Example</a>
         </figcaption></figure>
 </div>
-<p id="appendix-A-6">Among the various alternatives, DHCP topology knowledge can be used
-for solving the RU configuration problem when the FH is IPv6. Such solution
-would use the topology discovery mechanisms described in section 3.2
-of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>. The same mechanisms are applicable when RUs are connected via IPv4 and
-implement 4o6 according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
-<p id="appendix-A-7">In order to extend the solution described above also to the case where
-RUs are using IPv4 but cannot support <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>,
-the mechanisms described in this document can be used by introducing 4o6RA in
-the switches.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+<p id="appendix-A-7">If IPv6 is used and all RU are capable of DHCPv6 in <a href="#l2_switched_fh" class="auto internal xref">Figure 6</a>,
+DHCP topology knowledge can be used for solving the RU configuration problem.
+Such solution would use the topology discovery mechanisms described in section 3.2
+of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span>.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+<p id="appendix-A-8">If RU are capable of IPv4 only but implement a 4o6 client according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>, the same topology discovery mechanisms are applicable.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
+<p id="appendix-A-9">If RU are capable of IPV4 only and cannot implement a 4o6 client according to <span>[<a href="#RFC7341" class="cite xref">RFC7341</a>]</span>,
+the topology discovery mechanisms described in section 3.2
+of <span>[<a href="#RFC7969" class="cite xref">RFC7969</a>]</span> can be used by introducing 4o6RA in the switches as decribed in this document.<a href="#appendix-A-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="acknowledgments">
@@ -1916,7 +1977,7 @@ the switches.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
 <p id="appendix-B-1">The authors would also like to acknowledge interesting discussions in
 this problem space with Sarah Gannon, Ines Ramadza, and Siddharth Sharma
 as well as reviews and comments provided by Eric Vyncke, Mohamed Boucadair,
-David Lamparter, Michael Richardson, and Alan DeKok.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+David Lamparter, Michael Richardson, Alan DeKok and Dale Worley.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
