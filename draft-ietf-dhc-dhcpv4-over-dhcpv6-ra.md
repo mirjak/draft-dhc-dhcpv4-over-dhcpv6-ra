@@ -368,7 +368,6 @@ Each RU is unique as it is tied to a set of antennas, and each antenna
 is serving a specific Cell and Sector.
 Each RU is configured by the BB depending on the Cell and Sectors it serves.
 However, that dependency is only specified by the cabling between RU and antennas.
-
 BB can be cabled to RU directly or via a Layer-2 switched network.
 
 ~~~aasvg
