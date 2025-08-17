@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-24T02:02:43.200098+00:00",
+  "timestamp": "2025-08-17T02:03:03.812701+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -1137,6 +1137,119 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOLMlkXc6johCt",
+      "title": "Nits2508",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/15",
+      "state": "MERGED",
+      "author": "teiclap",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "jariarkko",
+        "mirjak",
+        "teiclap"
+      ],
+      "labels": [],
+      "body": "Added changes as suggested by Dale Worley  in the Last Call",
+      "createdAt": "2025-08-14T08:09:41Z",
+      "updatedAt": "2025-08-14T11:08:48Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "b5f7c1b16f1a9e2de470c97d74fea104f8b5a982",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "nits2508",
+      "headRefOid": "74a2e5a835c3f51b457f9c31565c0fd00aff1ce4",
+      "closedAt": "2025-08-14T11:08:48Z",
+      "mergedAt": "2025-08-14T11:08:48Z",
+      "mergedBy": "teiclap",
+      "mergeCommit": {
+        "oid": "067dd3658e83f2eb2d30cd5d7cd86a6349b86496"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLMlkXc659JfS",
+          "commit": {
+            "abbreviatedOid": "3a38d43"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-14T09:29:30Z",
+          "updatedAt": "2025-08-14T09:29:31Z",
+          "comments": [
+            {
+              "originalPosition": 62,
+              "body": "```suggestion\r\nit is responsible for determining a suitable interface where it acts as a\r\n```",
+              "createdAt": "2025-08-14T09:29:30Z",
+              "updatedAt": "2025-08-14T09:29:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc659Z8X",
+          "commit": {
+            "abbreviatedOid": "3a38d43"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-14T09:43:16Z",
+          "updatedAt": "2025-08-14T09:43:17Z",
+          "comments": [
+            {
+              "originalPosition": 149,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2025-08-14T09:43:16Z",
+              "updatedAt": "2025-08-14T09:43:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc659gxd",
+          "commit": {
+            "abbreviatedOid": "3a38d43"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-14T09:51:19Z",
+          "updatedAt": "2025-08-14T09:51:19Z",
+          "comments": [
+            {
+              "originalPosition": 52,
+              "body": "```suggestion\r\n   transport as specified in this document.\r\n```\r\nThis aligns with the title of RFC7341",
+              "createdAt": "2025-08-14T09:51:19Z",
+              "updatedAt": "2025-08-14T09:51:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOLMlkXc659y0Z",
+          "commit": {
+            "abbreviatedOid": "3a38d43"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-14T10:11:40Z",
+          "updatedAt": "2025-08-14T10:11:41Z",
+          "comments": [
+            {
+              "originalPosition": 68,
+              "body": "```suggestion\r\nserver or relay agent and obtain the necessary IPv6 configuration..\r\nAs specified in {{RFC7341}}, the 4o6RA, acting as 4o6 client, therefore has to request\r\nthe DHCP 4o6 Server Address option from the server by sending the\r\nOption Request option as described in {{draft-ietf-dhc-rfc8415bis}}\r\nbefore it can use the 4o6 transport.\r\n```\r\nIt's not good practice to specify something normatively here again, which is already specified normatively somewhere else. There let's just give a reference and restate what's required by roc7341 already.",
+              "createdAt": "2025-08-14T10:11:40Z",
+              "updatedAt": "2025-08-14T10:11:41Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
