@@ -239,14 +239,14 @@ In Layer-2 networks, Lightweight DHCPv6 Relay Agents {{RFC6221}}
 can be used.
 
 When provided, the topology information is available at the DHCPv6
-server in form of sequence of the link-address field and Interface-ID option.
+server in the form of a sequence of the link-address field and Interface-ID option.
 
 Then, topology information for the given IP address
 can be obtained from the DHCPv6 server and used for configuration
 or other purposes.
 
 {{RFC7341}} enables the client to use DHCPv6 for topology discovery
-even within an DHCPv4 context, as the DHCPv6 Relay Agent knows
+even within a DHCPv4 context, as the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.
 As shown in {{fig_4o6RA_RA}}, however, the introduction of 4o6 at the
 edge of the IPv6 network hides the Layer-2 network from the DHCPv6 RA.
