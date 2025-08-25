@@ -186,7 +186,7 @@ When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
 it looks for the DHCPv4 Message option within this message.
 If this option is not found or the DHCPv4-RESPONSE message is not well-formed,
 it MUST be discarded.
-If the DHCPv4 Message option is present, the 4o6RA MUST extract the DHCPv4
+If the DHCPv4 Message option is present, and correct, the 4o6RA MUST extract the DHCPv4
 message and forward the encapsulated DHCPv4-response to the requesting DHCPv4
 client, given that the encapsulated DHCPv4-response is correct and can be
 actually forwarded.
@@ -333,6 +333,9 @@ This document specifies the applicability of 4o6 DHCP in a scenario where legacy
 connected to 4o6 DHCP Relay Agents that perform the encapsulation and decapsulation. This document
 does not change anything else in the 4o6 DHCP specification and therefore the
 security considerations of {{RFC7341}} still apply.
+Since the legacy IPv4 client is not aware of an additional
+mechanism, the 4o6RA has to provide the protections that {{RFC7341}}'s security
+considerations discusses.
 
 The mechanisms defined here differ from {{RFC7341}} as they allow the DHCP client
 to send and receive DHCPv4 messages, whereas in {{RFC7341}} the client
@@ -347,8 +350,8 @@ this is not a new concern introduced by this specification.
 
 More generally, legacy IPv4 clients are not aware of this mechanism, however, even
 when DHCP 4o6 is used, the client does not have any control about the
-information provided by the Relay agent. As such this change does not
-raise any additional security concerns.
+information provided by the Relay agent.
+As such this change does not raise any additional security concerns.
 
 
 # IANA Considerations
