@@ -91,14 +91,14 @@ other than implementing DHCP 4o6 in the client.
 This document specifies an {{RFC7341}} based solution that can be
 implemented in intermediate nodes such as switches or routers,
 without putting any requirements on clients. No new protocols or extensions are needed;
-instead, this document specifies an amendment to {{RFC7341}} that allows
+instead, this document specifies a new use case for {{RFC7341}} that allows
 a Relay Agent to perform the DHCP 4o6 encapsulation and decapsulation instead of
 the client.
 
 ## Applicability Scope {#applicability}
 
 The mechanisms described in this document apply to the configuration phase
-of hosts that need to receive an IPv4 address but a DHCP server for IPv4 {{RFC2131}} is not
+of hosts that need to receive an IPv4 address when a DHCP server for IPv4 {{RFC2131}} is not
 reachable directly from the host. Furthermore, the host is unable to implement
 a DHCP client conformant to {{RFC7341}} as it is connected to an IPv4-only
 network. But there is a DHCPv6 server that can provide IPv4 addresses by means of
@@ -208,8 +208,8 @@ Intermediate relays shall behave according to section 10 of {{RFC7341}}.
 
 In some networks the configuration of a host may depend on the
 topology.  However, when the new host attaches to a
-network, it may be unaware of the topology and respectively how it
-has to be configured.
+network, it may be unaware of the topology and, consequently,
+how it must be configured.
 
 DHCPv4 {{RFC2131}} and DHCPv6 {{draft-ietf-dhc-rfc8415bis}} specifications
 describe how addresses can be allocated to clients based on network
@@ -248,10 +248,10 @@ or other purposes.
 {{RFC7341}} enables the client to use DHCPv6 for topology discovery
 even within an DHCPv4 context, as the DHCPv6 Relay Agent knows
 the interface where the encapsulated DHCP request is received.
-As shown in {{fig_4o6RA_RA}}, the introduction of 4o6 at the
-edge of the IPv6 network, however, hides the Layer-2 network from the DHCPv6 RA.
-As such, moving 4o6 in a intermediate node rather than performing it at the client, breaks
-the topology propagation as 4o6RA-only does not provide any interface
+As shown in {{fig_4o6RA_RA}}, however, the introduction of 4o6 at the
+edge of the IPv6 network hides the Layer-2 network from the DHCPv6 RA.
+As such, moving 4o6 to a intermediate node rather than performing it at the client breaks
+the topology propagation, as 4o6RA-only solution does not provide any interface
 information in the encapsulated message.
 
 ~~~aasvg
@@ -269,10 +269,10 @@ information in the encapsulated message.
 ~~~
 {: #fig_4o6RA_RA title="Broken topology information" artwork-align="center"}
 
-In order to provide full topology information, it is RECOMMENDED
-that any implementation of 4o6RA be combined with an implementation
-of an LDRA {{RFC6221}} in a back-to-back structure, and that the LDRA
-implementation has a mechanism to get interface information that
+In order to provide full topology information, it is RECOMMENDED that
+any implementation of 4o6RA be combined
+with an LDRA implementation {{RFC6221}} in a back-to-back structure, and that the
+LDRA implementation include a mechanism to obtain interface information that
 can be used to provide the Interface-ID option to outgoing
 DHCPV4-QUERY messages, as specified in Section 5.3.2 of {{RFC6221}}.
 
@@ -320,11 +320,12 @@ it might be enough to only use 4o6RA, as shown in {{fig_4o6RAserver}}.
 
 # Deployment Considerations
 
-As clients are not aware of the presence of 4o6RA, the network deployment needs to ensure that
-all DHCPv4 broadcast and unicast messages from and to clients are steered via a 4o6RA.
-This can be achieved by placing the 4o6RA in a central position that can observe all traffic
-from the clients or use Network Address Translation (NAT) with the 4o6RA address
-for unicast messages.
+As clients are unaware of the presence of 4o6RA, the network
+deployment MUST ensure that all DHCPv4 broadcast and unicast messages to and
+from clients are steered via a 4o6RA.
+This can be achieved by placing the 4o6RA in a central position
+that can intercept all traffic from the clients, or by using Network Address
+Translation (NAT) with the 4o6RA address for unicast messages.
 
 # Security Considerations {#seccons}
 
