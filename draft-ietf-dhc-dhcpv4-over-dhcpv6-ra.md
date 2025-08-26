@@ -186,7 +186,7 @@ When DHCPV4-RESPONSE Message is received by the 4o6 Relay Agent,
 it looks for the DHCPv4 Message option within this message.
 If this option is not found or the DHCPv4-RESPONSE message is not well-formed,
 it MUST be discarded.
-If the DHCPv4 Message option is present, and correct, the 4o6RA MUST extract the DHCPv4
+If the DHCPv4 Message option is present and correct, the 4o6RA MUST extract the DHCPv4
 message and forward the encapsulated DHCPv4-response to the requesting DHCPv4
 client, given that the encapsulated DHCPv4-response is correct and can be
 actually forwarded.
@@ -208,7 +208,7 @@ Intermediate relays shall behave according to section 10 of {{RFC7341}}.
 
 In some networks, the configuration of a host may depend on the topology.
 However, when a new host attaches to a network, it may be unaware
-of the topology and, consequently, how it must be configured..
+of the topology and, consequently, how it has to be configured.
 
 DHCPv4 {{RFC2131}} and DHCPv6 {{draft-ietf-dhc-rfc8415bis}} specifications
 describe how addresses can be allocated to clients based on network
@@ -250,7 +250,7 @@ the interface where the encapsulated DHCP request is received.
 As shown in {{fig_4o6RA_RA}}, however, the introduction of 4o6 at
 the edge of the IPv6 network hides the Layer-2 network from the DHCPv6 RA.
 As such, moving 4o6 to a intermediate node rather than performing it at the client breaks
-the topology propagation, as 4o6RA-only solution does not provide any interface
+the topology propagation, as 4o6RA-only solutions does not provide any interface
 information in the encapsulated message.
 
 ~~~aasvg
@@ -320,10 +320,10 @@ it might be enough to only use 4o6RA, as shown in {{fig_4o6RAserver}}.
 # Deployment Considerations
 
 As clients are unaware of the presence of 4o6RA, the network
-deployment MUST ensure that all DHCPv4 broadcast and unicast messages to and
+deployment needs to ensure that all DHCPv4 broadcast and unicast messages to and
 from clients are steered via a 4o6RA.
 This can be achieved by placing the 4o6RA in a central position
-that can intercept all traffic from the clients, or by using Network Address
+that can intercept all traffic from the clients or by using Network Address
 Translation (NAT) with the 4o6RA address for unicast messages.
 
 # Security Considerations {#seccons}
@@ -332,9 +332,9 @@ This document specifies the applicability of 4o6 DHCP in a scenario where legacy
 connected to 4o6 DHCP Relay Agents that perform the encapsulation and decapsulation. This document
 does not change anything else in the 4o6 DHCP specification and therefore the
 security considerations of {{RFC7341}} still apply.
-Since the legacy IPv4 client is not aware of an additional
-mechanism, the 4o6RA has to provide the protections that {{RFC7341}}'s security
-considerations discusses.
+Specifically, since the legacy IPv4 client is not aware of the encapsulation and decapsulation,
+it is 4o6RA has to provide the protections that are specficed in the security
+considerations in {{Section 12 of RFC7341}}.
 
 The mechanisms defined here differ from {{RFC7341}} as they allow the DHCP client
 to send and receive DHCPv4 messages, whereas in {{RFC7341}} the client
