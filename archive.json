@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-17T02:03:03.812701+00:00",
+  "timestamp": "2025-08-28T01:45:06.259548+00:00",
   "repo": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
   "labels": [
     {
@@ -1248,6 +1248,48 @@
               "updatedAt": "2025-08-14T10:11:41Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOLMlkXc6lZJAF",
+      "title": "some revisions and nits",
+      "url": "https://github.com/mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra/pull/16",
+      "state": "MERGED",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-08-26T11:38:07Z",
+      "updatedAt": "2025-08-26T11:46:01Z",
+      "baseRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "baseRefName": "main",
+      "baseRefOid": "8ffaa90da11b36b9a7704e7937f0ec1cc8274904",
+      "headRepository": "mirjak/draft-dhc-dhcpv4-over-dhcpv6-ra",
+      "headRefName": "mirjak-patch-1",
+      "headRefOid": "91723811d0b62333fffc97792ece0dd128b7f032",
+      "closedAt": "2025-08-26T11:46:01Z",
+      "mergedAt": "2025-08-26T11:46:01Z",
+      "mergedBy": "teiclap",
+      "mergeCommit": {
+        "oid": "c346a6d34bed1dc633b7792c1238bb93e514b34f"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOLMlkXc68EYPY",
+          "commit": {
+            "abbreviatedOid": "9172381"
+          },
+          "author": "teiclap",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-08-26T11:44:53Z",
+          "updatedAt": "2025-08-26T11:44:53Z",
+          "comments": []
         }
       ]
     }
